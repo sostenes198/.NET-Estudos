@@ -1,4 +1,5 @@
-﻿using Estudos.Abstract.Dominio.Entidades.Cardapio;
+﻿using Estudos.Abstract.Dominio.Entidades;
+using Estudos.Abstract.Dominio.Entidades.Cardapio;
 using Estudos.Global.Atributos;
 using Estudos.Global.Enuns;
 using System.Collections.Generic;

@@ -29,8 +29,8 @@ namespace Estudos.IoC
 
         private static void RegistrarDominio()
         {
-            var dominioAbstrato = AssemblyHelper.ObterEntidadesAssemblyAbstrato<IEntidade>();
-            var dominio = AssemblyHelper.ObterEntidadeAssemblyImplementacao<AEntidade>();
+            var dominioAbstrato = AssemblyHelper.ObterEntidadesAssemblyAbstrato<IEntidade>("Estudos.Abstract.Dominio");
+            var dominio = AssemblyHelper.ObterEntidadeAssemblyImplementacao<AEntidade>("Estudos.Dominio");
 
             RegistrarDependencias(dominioAbstrato, dominio);
         }      

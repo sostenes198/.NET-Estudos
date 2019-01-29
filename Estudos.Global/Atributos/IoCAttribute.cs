@@ -5,7 +5,7 @@ namespace Estudos.Global.Atributos
 {
     public class IoCAttribute : Attribute
     {
-        public LifeStyleIoCEnum LifeStyleIoCEnum { get; private set; };
+        public LifeStyleIoCEnum LifeStyleIoCEnum { get; private set; }
 
         public IoCAttribute()
             : this(LifeStyleIoCEnum.Transient)

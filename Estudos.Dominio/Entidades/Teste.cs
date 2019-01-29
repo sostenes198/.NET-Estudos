@@ -1,4 +1,5 @@
-﻿using Estudos.Global.Atributos;
+﻿using Estudos.Abstract.Dominio.Entidades;
+using Estudos.Global.Atributos;
 
 namespace Estudos.Dominio.Entidades
 {
