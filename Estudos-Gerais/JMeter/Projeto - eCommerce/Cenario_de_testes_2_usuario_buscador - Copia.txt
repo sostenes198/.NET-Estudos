@@ -1,0 +1,8 @@
+Cenário de testes 2 - passo a passo
+Cenário de teste 2 (usuário buscador):
+
+Abrir home
+
+Realizar busca
+
+Abrir produto da busca

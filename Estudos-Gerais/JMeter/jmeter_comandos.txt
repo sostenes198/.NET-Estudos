@@ -1,0 +1,53 @@
+Opções:
+
+
+
+-n: Essa opção diz para o JMeter ser executado apenas por linha de comando (sem a interface gráfica)
+
+-t: Seu script plano de teste (arquivo JMX)
+
+-l: Arquivo log de resultados do seu teste (arquivo JTL)
+
+-j: Arquivo log de execução do JMeter.
+
+-r: opção para execução remota, usando os servidores especificados na propriedade "remote_hosts"
+
+-R: executa em um servidor específico
+
+-g: Arquivo CSV file, para geração do dashboard
+
+-o: Pasta de saída onde será gerado o dashboard. Pasta não pode existir ou deve estar vazia
+
+-H: proxy server hostname
+
+-P: proxy server porta
+
+
+
+Exemplo 1 - Apenas executar o teste:
+
+jmeter -n - t meu_plano.jmx
+
+
+
+Exemplo 2 - Executar o teste e salvar o log de resultados:
+
+jmeter -n -t meu_plano.jmx -l resultado.jtl
+
+
+
+Exemplo 3 - Executar o teste e gerar a dashboard quando o teste finalizar:
+
+jmeter -n -t meu_plano.jmx -l resultado.jtl -e -o nomeMinhaDashboard
+
+
+
+Exemplo 4 - Apenas gerar a dashboard (é necessário ter o arquivo de resultado de testes):
+
+jmeter -g resultado.jtl -o nomeMinhaDashBoard
+
+
+
+Exemplo 5 - Executar um teste usando proxy:
+
+jmeter -n -t meu_plano.jmx -l resultado.jtl -H my.proxy.server -P 8080

@@ -1,0 +1,63 @@
+<html>
+
+<body>
+<button onclick="test()">
+    Teste
+</button>
+<script type="text/javascript">
+
+    if (!!window.EventSource) {
+        console.log("EntroAqui")
+        var source = new EventSource('http://localhost:5000/sse-endpoint', {
+            
+        });
+        
+        source.onmessage = function(e){
+            console.log("On Message genérico")
+            console.log(e);
+        }
+
+        source.addEventListener('KEEPALIVE', function (e) {
+            console.log("KEEPALIVE")
+            console.log(e);
+        }, false)
+
+        source.addEventListener('CHANNEL1', function (e) {
+            console.log("CHANNEL1")
+            console.log(e);
+        }, false)
+
+        source.addEventListener("CHANNEL2", function (e) {
+            console.log("CHANNEL2")
+            console.log(e)
+        }, false)
+
+        source.addEventListener('open', function (e) {
+            console.log("open")
+            console.log(e);
+        }, false)
+
+        source.addEventListener('error', function (e) {
+            console.log("error")
+            console.log(e)
+            if (e.eventPhase == EventSource.CLOSED)
+                source.close()
+            if (e.target.readyState == EventSource.CLOSED) {
+                console.log("Disconnected");
+            } else if (e.target.readyState == EventSource.CONNECTING) {
+                console.log("Connecting...");
+            }
+        }, false)
+
+        function test() {
+            console.log("Fechando conexão")
+            source.close();
+        }
+
+    } else {
+        console.log("Your browser doesn't support SSE")
+    }
+</script>
+</body>
+
+</html>

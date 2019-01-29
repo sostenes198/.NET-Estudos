@@ -1,0 +1,9 @@
+version: "3.4"
+
+services:
+  Redis:
+      container_name: Redis
+      image: redis
+      command: redis-server --requirepass Pass@word
+      ports:
+        - "7000:6379"  

@@ -1,0 +1,47 @@
+version: '3.7'
+
+services:
+  
+  order_api:
+    build:
+      context: .
+      dockerfile: Order.API/Dockerfile
+    ports:
+      - "5001:80"
+    environment:
+      - HOST_PAYMENT=http://payment_api:80/api/
+      - JAEGER_SERVICE_NAME=order_api
+      - COLLECTOR_ZIPKIN_HTTP_PORT=9411
+      - JAEGER_AGENT_HOST=jaeger
+      - JAEGER_AGENT_PORT=6831
+      - JAEGER_SAMPLER_TYPE=const
+      - JAEGER_SAMPLING_ENDPOINT=jaeger:5778
+    depends_on:
+      - jaeger
+    
+  payment_api:
+    build:
+      context: .
+      dockerfile: Payment.API/Dockerfile
+    ports:
+      - "5002:80"
+    environment:
+      - JAEGER_SERVICE_NAME=payment_api
+      - COLLECTOR_ZIPKIN_HTTP_PORT=9411
+      - JAEGER_AGENT_HOST=jaeger
+      - JAEGER_AGENT_PORT=6831
+      - JAEGER_SAMPLER_TYPE=const
+      - JAEGER_SAMPLING_ENDPOINT=jaeger:5778
+    depends_on:
+      - jaeger
+      
+  jaeger:
+    image: jaegertracing/all-in-one:latest
+    ports:
+      - "5775:5775/udp"
+      - "6831:6831/udp"
+      - "6832:6832/udp"
+      - "5778:5778"
+      - "16686:16686"
+      - "14268:14268"
+      - "9411:9411"

@@ -1,0 +1,8 @@
+Cenário de testes 1 - passo a passo
+Cenário de teste 1 (usuário navegador):
+
+Abrir home
+
+Acessar categorias
+
+Acessar produtos

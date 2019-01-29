@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="SimpleInjector" Version="4.4.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Estudos.Abstract.Repositorio\Estudos.Abstract.Repositorio.csproj" />
+    <ProjectReference Include="..\Estudos.Abstract.Servico\Estudos.Abstract.Servico.csproj" />
+    <ProjectReference Include="..\Estudos.Api.GraphQL\Estudos.Api.GraphQL.csproj" />
+    <ProjectReference Include="..\Estudos.Global\Estudos.Global.csproj" />
+    <ProjectReference Include="..\Estudos.Repositorio.EntityFramework\Estudos.Repositorio.EntityFrameworkCore.csproj" />
+    <ProjectReference Include="..\Estudos.Servico\Estudos.Servico.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions">
+      <HintPath>C:\Program Files\dotnet\sdk\NuGetFallbackFolder\microsoft.extensions.dependencyinjection.abstractions\2.1.1\lib\netstandard2.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

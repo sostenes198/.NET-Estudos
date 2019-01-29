@@ -1,0 +1,29 @@
+version: "3.4"
+
+services:
+  SqlServer:
+    container_name: SqlServer
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    environment:
+      - MSSQL_SA_PASSWORD=Pass@word
+      - ACCEPT_EULA=Y
+    ports:
+      - "1433:1433"
+    volumes:
+      - "./scripts/:/scripts/"
+    command:
+      - /bin/bash
+      - -c
+      - |
+        /opt/mssql/bin/sqlservr &
+        sleep 30
+        /opt/mssql-tools/bin/sqlcmd -U sa -P Pass@word -l 30 -e -i /scripts/SCRIPT.sql
+        sleep infinity
+  Redis:
+      container_name: Redis
+      image: redis
+      command: redis-server --requirepass Pass@word
+      ports:
+        - "7000:6379"
+      depends_on:
+        - SqlServer

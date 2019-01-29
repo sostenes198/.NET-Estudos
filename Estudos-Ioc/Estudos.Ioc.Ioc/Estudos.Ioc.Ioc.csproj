@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Castle.Windsor" Version="5.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Estudos.Ioc.Ioc.Abstractions\Estudos.Ioc.Ioc.Abstractions.csproj" />
+    <ProjectReference Include="..\Estudos.Ioc.Services\Estudos.Ioc.Services.csproj" />
+  </ItemGroup>
+
+</Project>

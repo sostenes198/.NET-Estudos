@@ -1,0 +1,35 @@
+version: "3.4"
+
+services:
+  EstudosIntegrationTestExampleDockerSqlServer:
+    container_name: EstudosIntegrationTestExampleDockerSqlServer
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    environment:
+      - MSSQL_SA_PASSWORD=Pass@word
+      - ACCEPT_EULA=Y
+    ports:
+      - "1433:1433"
+    volumes:
+      - "./scripts/:/scripts/"
+    command:
+      - /bin/bash
+      - -c
+      - |
+        /opt/mssql/bin/sqlservr &
+        sleep 30
+        /opt/mssql-tools/bin/sqlcmd -U sa -P Pass@word -l 30 -e -i /scripts/DATABASE_SQLSERVER.sql        
+        sleep infinity
+
+  EstudosIntegrationTestExampleDockerMongoDb:
+      container_name: EstudosIntegrationTestExampleDockerMongoDb
+      image: mongo
+      restart: always
+      environment:
+        MONGO_INITDB_ROOT_USERNAME: admin
+        MONGO_INITDB_ROOT_PASSWORD: Password
+        MONGO_INITDB_DATABASE: MDB_ESTUDOS_DOCKER_MONGO
+      ports:
+        - 27017:27017
+      command: [--auth]        
+      volumes:
+        - "./scripts/MONGO_SCRIPT.js:/docker-entrypoint-initdb.d/mongo-init.js:ro"        

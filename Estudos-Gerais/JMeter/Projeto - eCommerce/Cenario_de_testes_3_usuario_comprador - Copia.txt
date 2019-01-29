@@ -1,0 +1,26 @@
+Cenário de testes 3 - passo a passo
+Cenário de teste 3 (usuário comprador):
+
+Abrir home
+
+Realizar login
+
+Abrir home
+
+Escolher produto
+
+Adicionar produto na cesta (carrinho de compras)
+
+Proceder com a compra - Iniciar
+
+Proceder com a compra etapa 1 (ir para endereço)
+
+Proceder com a compra etapa 2 (confirmar endereço)
+
+Proceder com a compra etapa 3 (aceitar termos de uso)
+
+Proceder com a compra etapa 4 (forma de pagamento)
+
+Finalizar compra (confirmar ordem)
+
+Abrir oderm
