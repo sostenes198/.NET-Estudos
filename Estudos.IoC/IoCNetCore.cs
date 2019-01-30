@@ -4,6 +4,7 @@ using System.Linq;
 using System.Reflection;
 using Estudos.Abstract.Dominio.Entidades;
 using Estudos.Global.Atributos;
+using Estudos.Global.Constantes;
 using Estudos.Global.Enuns;
 using Estudos.IoC.Helpers;
 using Microsoft.Extensions.DependencyInjection;
@@ -19,8 +20,8 @@ namespace Estudos.IoC
 
         private static void RegistrarDominio(IServiceCollection services)
         {
-            var dominioAbstrato = AssemblyHelper.ObterEntidadesAssemblyAbstrato<IEntidade>("Estudos.Abstract.Dominio");
-            var dominio = AssemblyHelper.ObterEntidadeAssemblyImplementacao<AEntidade>("Estudos.Dominio");
+            var dominioAbstrato = AssemblyHelper.ObterEntidadesAssemblyAbstrato<IEntidade>(NameSpaceContant.AbstractDominio);
+            var dominio = AssemblyHelper.ObterEntidadeAssemblyImplementacao<AEntidade>(NameSpaceContant.Dominio);
 
             RegistrarDependencias(dominioAbstrato, dominio, services);
         }

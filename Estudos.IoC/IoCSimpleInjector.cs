@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using Estudos.Global.Atributos;
 using Estudos.Global.Enuns;
 using Estudos.IoC.Helpers;
-using Estudos.Dominio.Entidades;
+using Estudos.Global.Constantes;
 
 namespace Estudos.IoC
 {
@@ -29,8 +29,8 @@ namespace Estudos.IoC
 
         private static void RegistrarDominio()
         {
-            var dominioAbstrato = AssemblyHelper.ObterEntidadesAssemblyAbstrato<IEntidade>("Estudos.Abstract.Dominio");
-            var dominio = AssemblyHelper.ObterEntidadeAssemblyImplementacao<AEntidade>("Estudos.Dominio");
+            var dominioAbstrato = AssemblyHelper.ObterEntidadesAssemblyAbstrato<IEntidade>(NameSpaceContant.AbstractDominio);
+            var dominio = AssemblyHelper.ObterEntidadeAssemblyImplementacao<AEntidade>(NameSpaceContant.Dominio);
 
             RegistrarDependencias(dominioAbstrato, dominio);
         }      
