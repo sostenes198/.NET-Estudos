@@ -1,6 +1,6 @@
 ﻿namespace Estudos.Abstract.Dominio.Entidades
 {
-    internal interface IEntidade
+    public interface IEntidade
     {
         int Codigo { get; set; }
     }

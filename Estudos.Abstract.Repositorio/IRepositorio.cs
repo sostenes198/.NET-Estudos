@@ -1,19 +1,19 @@
 ﻿using Estudos.Abstract.Dominio.Entidades;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Estudos.Abstract.Repositorio
 {
-    internal interface IRepositorio<T>
-        where T: AEntidade
+    public interface IRepositorio        
     {
-        T ObterEntidadePorChavePrimaria(params object[] list);
+        Task<T> ObterEntidadePorChavePrimaria<T>(params object[] list) where T : AEntidade;
 
-        IEnumerable<T> ObterTodasEntidades(params object[] list);
+        Task<List<T>> ObterTodasEntidades<T>() where T : AEntidade;
 
-        T InserirEntidade(T entidade);
+        Task<T> InserirEntidade<T>(T entidade) where T : AEntidade;
 
-        T AtualizarEntidade(T entidade);
+        Task<T> AtualizarEntidade<T>(T entidade) where T : AEntidade;
 
-        void ExcluirEntidade(params object[] list);
+        Task ExcluirEntidade<T>(params object[] list) where T : AEntidade;
     } 
 }
