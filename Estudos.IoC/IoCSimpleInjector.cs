@@ -1,12 +1,12 @@
 ﻿using SimpleInjector;
 using System.Linq;
-using Estudos.Abstract.Dominio.Entidades;
 using System;
 using System.Collections.Generic;
 using Estudos.Global.Atributos;
 using Estudos.Global.Enuns;
-using Estudos.IoC.Helpers;
-using Estudos.Global.Constantes;
+using Estudos.Global.Helpers;
+using Estudos.IoC.Configuracao;
+using Estudos.Global.NameSpace.Definicao;
 
 namespace Estudos.IoC
 {
@@ -21,18 +21,21 @@ namespace Estudos.IoC
 
             _container = new Container();
 
-            RegistrarDominio();
+            InjetarTodasDependencias();
             _container.Verify();
 
             return _container;
         }
 
-        private static void RegistrarDominio()
+        private static void InjetarTodasDependencias()
         {
-            var dominioAbstrato = AssemblyHelper.ObterEntidadesAssemblyAbstrato<IEntidade>(NameSpaceContant.AbstractDominio);
-            var dominio = AssemblyHelper.ObterEntidadeAssemblyImplementacao<AEntidade>(NameSpaceContant.Dominio);
+            foreach (NameSpaceDefinition nameSpace in NamesSpacesInjection.NamesSpaces)
+            {
+                IEnumerable<Type> abstracoes = AssemblyHelper.ObterEntidadesAssemblyAbstrato(nameSpace.Abstracao);
+                IEnumerable<Type> implementacoes = AssemblyHelper.ObterEntidadeAssemblyImplementacao(nameSpace.Implementacao);
 
-            RegistrarDependencias(dominioAbstrato, dominio);
+                RegistrarDependencias(abstracoes, implementacoes);
+            }
         }      
 
         private static void RegistrarDependencias(IEnumerable<Type> abstracoes, IEnumerable<Type> implementacoes)

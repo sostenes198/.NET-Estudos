@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
-using Estudos.Abstract.Dominio.Entidades;
 using Estudos.Global.Atributos;
-using Estudos.Global.Constantes;
 using Estudos.Global.Enuns;
-using Estudos.IoC.Helpers;
+using Estudos.Global.Helpers;
+using Estudos.Global.NameSpace.Definicao;
+using Estudos.IoC.Configuracao;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Estudos.IoC
@@ -15,16 +14,14 @@ namespace Estudos.IoC
     {
         public static void InjetarDependencias(this IServiceCollection services)
         {
-            RegistrarDominio(services);
-        }
+            foreach (NameSpaceDefinition nameSpace in NamesSpacesInjection.NamesSpaces)
+            {
+                IEnumerable<Type> abstracoes = AssemblyHelper.ObterEntidadesAssemblyAbstrato(nameSpace.Abstracao);
+                IEnumerable<Type> implementacoes = AssemblyHelper.ObterEntidadeAssemblyImplementacao(nameSpace.Implementacao);
 
-        private static void RegistrarDominio(IServiceCollection services)
-        {
-            var dominioAbstrato = AssemblyHelper.ObterEntidadesAssemblyAbstrato<IEntidade>(NameSpaceContant.AbstractDominio);
-            var dominio = AssemblyHelper.ObterEntidadeAssemblyImplementacao<AEntidade>(NameSpaceContant.Dominio);
-
-            RegistrarDependencias(dominioAbstrato, dominio, services);
-        }
+                RegistrarDependencias(abstracoes, implementacoes, services);
+            }
+        }           
 
         private static void RegistrarDependencias(IEnumerable<Type> abstracoes, IEnumerable<Type> implemetacoes, IServiceCollection services)
         {

@@ -1,5 +1,4 @@
-﻿using Estudos.Abstract.Dominio.Entidades;
-using Estudos.Repositorio.EntityFrameworkCore.Context;
+﻿using Estudos.Dominio.Entidades;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 using System;

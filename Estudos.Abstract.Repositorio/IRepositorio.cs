@@ -1,4 +1,4 @@
-﻿using Estudos.Abstract.Dominio.Entidades;
+﻿using Estudos.Dominio.Entidades;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 

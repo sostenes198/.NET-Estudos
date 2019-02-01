@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.168
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Estudos.GraphQLApi", "Estudos.GraphQLApi\Estudos.GraphQLApi.csproj", "{D24E913A-325F-47C8-8DFC-DD8FC5C4A64C}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Estudos.Dominio", "Estudos.Dominio\Estudos.Dominio.csproj", "{CAAF043E-43B3-4E85-A95D-1B5A1901C292}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Estudos.Abstract.Dominio", "Estudos.Abstract.Dominio\Estudos.Abstract.Dominio.csproj", "{FF59F36F-08EC-47C8-A5EA-631D32D5545E}"
@@ -29,7 +27,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "04 - Repositorio", "04 - Re
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Estudos.Abstract.Repositorio", "Estudos.Abstract.Repositorio\Estudos.Abstract.Repositorio.csproj", "{1D98CCD2-5FB3-48F4-97B8-DF56F2963839}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Estudos.Repositorio.EntityFrameworkCore", "Estudos.Repositorio.EntityFramework\Estudos.Repositorio.EntityFrameworkCore.csproj", "{8A3AF135-B00F-420A-AA83-F3F318460F1E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Estudos.Repositorio.EntityFrameworkCore", "Estudos.Repositorio.EntityFramework\Estudos.Repositorio.EntityFrameworkCore.csproj", "{8A3AF135-B00F-420A-AA83-F3F318460F1E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Estudos.Api.GraphQl", "Estudos.Api.GraphQl\Estudos.Api.GraphQl.csproj", "{9194C423-31DC-4E9D-A58B-A57104B87734}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -37,10 +37,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{D24E913A-325F-47C8-8DFC-DD8FC5C4A64C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D24E913A-325F-47C8-8DFC-DD8FC5C4A64C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D24E913A-325F-47C8-8DFC-DD8FC5C4A64C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D24E913A-325F-47C8-8DFC-DD8FC5C4A64C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{CAAF043E-43B3-4E85-A95D-1B5A1901C292}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{CAAF043E-43B3-4E85-A95D-1B5A1901C292}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CAAF043E-43B3-4E85-A95D-1B5A1901C292}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -69,12 +65,15 @@ Global
 		{8A3AF135-B00F-420A-AA83-F3F318460F1E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8A3AF135-B00F-420A-AA83-F3F318460F1E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8A3AF135-B00F-420A-AA83-F3F318460F1E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9194C423-31DC-4E9D-A58B-A57104B87734}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9194C423-31DC-4E9D-A58B-A57104B87734}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9194C423-31DC-4E9D-A58B-A57104B87734}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9194C423-31DC-4E9D-A58B-A57104B87734}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{D24E913A-325F-47C8-8DFC-DD8FC5C4A64C} = {72B1D6F9-96D4-4604-8A16-9C7ABDD8A0C7}
 		{CAAF043E-43B3-4E85-A95D-1B5A1901C292} = {4ACF3C6F-BF8A-436D-AA23-328314476F87}
 		{FF59F36F-08EC-47C8-A5EA-631D32D5545E} = {4ACF3C6F-BF8A-436D-AA23-328314476F87}
 		{BC91DC2B-62C0-4262-950F-476216CC7750} = {1C343BDE-70D5-4DB7-9CB4-57024771E1B0}
@@ -82,6 +81,7 @@ Global
 		{C6CBDE2E-812A-4041-8EB8-E9C3DC023A6C} = {2E9350D7-8523-4FA8-A036-36D4E51A95D1}
 		{1D98CCD2-5FB3-48F4-97B8-DF56F2963839} = {8D102670-175A-4946-AA89-B59EACFF95A8}
 		{8A3AF135-B00F-420A-AA83-F3F318460F1E} = {8D102670-175A-4946-AA89-B59EACFF95A8}
+		{9194C423-31DC-4E9D-A58B-A57104B87734} = {72B1D6F9-96D4-4604-8A16-9C7ABDD8A0C7}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C17E424A-53EB-4327-89AB-D8A758AE8E67}

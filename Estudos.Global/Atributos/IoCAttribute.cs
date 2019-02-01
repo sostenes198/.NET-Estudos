@@ -3,10 +3,13 @@ using System;
 
 namespace Estudos.Global.Atributos
 {
+    /// <summary>
+    /// LifeStyle Default Transient
+    /// </summary>
     public class IoCAttribute : Attribute
     {
         public LifeStyleIoCEnum LifeStyleIoCEnum { get; private set; }
-
+        
         public IoCAttribute()
             : this(LifeStyleIoCEnum.Transient)
         { }

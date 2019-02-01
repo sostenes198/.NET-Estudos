@@ -1,5 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Estudos.Global.NameSpace;
+using Estudos.Repositorio.EntityFrameworkCore.Mapeamento;
+using Microsoft.EntityFrameworkCore;
 using System.Linq;
+using System.Reflection;
 
 namespace Estudos.Repositorio.EntityFrameworkCore.Extensoes
 {
@@ -12,8 +15,14 @@ namespace Estudos.Repositorio.EntityFrameworkCore.Extensoes
                .SelectMany(t => t.GetProperties())
                .Where(p => p.ClrType == typeof(decimal)))
             {
-                property.Relational().ColumnType = $"decimal(${escala}, ${precisao})";
+                property.Relational().ColumnType = $"decimal({escala}, {precisao})";
             }
+        }
+
+        public static void CriarMapeamento(this ModelBuilder modelBuilder)
+        {
+            modelBuilder.ApplyConfigurationsFromAssembly(Assembly.Load(NameSpaceContant.ImplementacaoRepositorioEntityFrameworkCore),
+                    ((lnq => lnq.IsClass && !lnq.IsAbstract && typeof(AMap).IsAssignableFrom(lnq))));
         }
     }
 }

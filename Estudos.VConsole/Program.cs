@@ -1,8 +1,4 @@
-﻿using Estudos.Abstract.Dominio.Entidades.Pedido;
-using Estudos.Dominio.Entidades.Pedido;
-using Estudos.IoC;
-using SimpleInjector;
-using System;
+﻿using Estudos.IoC;
 
 namespace Estudos.VConsole
 {
@@ -10,11 +6,7 @@ namespace Estudos.VConsole
     {
         static void Main(string[] args)
         {
-            Container _container = IoCSimpleInjector.InjetarDependencias();
-
-            IPedido _pedido = _container.GetInstance<Pedido>();
-
-            Console.WriteLine("Hello World!");
+            IoCSimpleInjector.InjetarDependencias();
         }
     }
 }
