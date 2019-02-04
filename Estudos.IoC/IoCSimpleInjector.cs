@@ -1,12 +1,13 @@
-﻿using SimpleInjector;
-using System.Linq;
-using System;
-using System.Collections.Generic;
-using Estudos.Global.Atributos;
+﻿using Estudos.Global.Atributos;
 using Estudos.Global.Enuns;
 using Estudos.Global.Helpers;
-using Estudos.IoC.Configuracao;
 using Estudos.Global.NameSpace.Definicao;
+using Estudos.IoC.Configuracao;
+using SimpleInjector;
+using SimpleInjector.Lifestyles;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Estudos.IoC
 {
@@ -17,9 +18,12 @@ namespace Estudos.IoC
         public static Container InjetarDependencias()
         {
             if (_container != null)
+            {
                 return _container;
+            }
 
             _container = new Container();
+            _container.Options.DefaultScopedLifestyle = new AsyncScopedLifestyle();
 
             InjetarTodasDependencias();
             _container.Verify();
@@ -31,12 +35,19 @@ namespace Estudos.IoC
         {
             foreach (NameSpaceDefinition nameSpace in NamesSpacesInjection.NamesSpaces)
             {
-                IEnumerable<Type> abstracoes = AssemblyHelper.ObterEntidadesAssemblyAbstrato(nameSpace.Abstracao);
-                IEnumerable<Type> implementacoes = AssemblyHelper.ObterEntidadeAssemblyImplementacao(nameSpace.Implementacao);
+                if (nameSpace.Abstracao is string && nameSpace.Implementacao is string)
+                {
+                    IEnumerable<Type> abstracoes = AssemblyHelper.ObterEntidadesAssemblyAbstrato((string)nameSpace.Abstracao);
+                    IEnumerable<Type> implementacoes = AssemblyHelper.ObterEntidadeAssemblyImplementacao((string)nameSpace.Implementacao);
 
-                RegistrarDependencias(abstracoes, implementacoes);
+                    RegistrarDependencias(abstracoes, implementacoes);
+                }
+                else if (nameSpace.Abstracao is Type && nameSpace.Implementacao is Type)
+                {
+                    RegistrarDependencias((Type)nameSpace.Abstracao, (Type)nameSpace.Implementacao);
+                }
             }
-        }      
+        }
 
         private static void RegistrarDependencias(IEnumerable<Type> abstracoes, IEnumerable<Type> implementacoes)
         {
@@ -45,17 +56,34 @@ namespace Estudos.IoC
                 var atributo = (IoCAttribute)implementacao.GetCustomAttributes(true)
                     .FirstOrDefault(lnq => lnq.GetType() == typeof(IoCAttribute));
                 var abstracao = implementacao.GetInterfaces()
-                    .FirstOrDefault(lnq => abstracoes.Any(o => o.Name == lnq.Name));
+                    .LastOrDefault(lnq => abstracoes.Any(o => o.Name == lnq.Name));
 
-                Lifestyle lifestyle = RetornarTipoLyfeStyleInjecao(atributo.LifeStyleIoCEnum);
-                if (abstracao != null)
-                    _container.Register(abstracao, implementacao, lifestyle);
-                else
-                    _container.Register(implementacao);
+                RegistrarDependencias(abstracao, implementacao, atributo.LifeStyleIoCEnum);
             }
         }
 
-        private static Lifestyle RetornarTipoLyfeStyleInjecao(LifeStyleIoCEnum lifeStyle)
+        private static void RegistrarDependencias(Type abstracao, Type implementacao)
+        {
+            var atributo = (LifeStyleAttribute)implementacao.GetCustomAttributes(true)
+                      .FirstOrDefault(lnq => lnq.GetType() == typeof(LifeStyleAttribute));
+
+            RegistrarDependencias(abstracao, implementacao, atributo.LifeStyleIoCEnum);
+        }
+
+        private static void RegistrarDependencias(Type abstracao, Type implementacao, LifeStyleIoCEnum lifeStyle)
+        {
+            Lifestyle lifestyle = RetornarTipoLyfeStyleInjecao(lifeStyle);
+            if (abstracao != null)
+            {
+                _container.Register(abstracao, implementacao, lifestyle);
+            }
+            else
+            {
+                _container.Register(implementacao);
+            }
+        }
+
+        private static Lifestyle RetornarTipoLyfeStyleInjecao(LifeStyleIoCEnum? lifeStyle)
         {
             switch (lifeStyle)
             {

@@ -9,8 +9,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Estudos.Abstract.Dominio\Estudos.Abstract.Dominio.csproj" />
-    <ProjectReference Include="..\Estudos.Dominio\Estudos.Dominio.csproj" />
+    <ProjectReference Include="..\Estudos.Abstract.Repositorio\Estudos.Abstract.Repositorio.csproj" />
+    <ProjectReference Include="..\Estudos.Global\Estudos.Global.csproj" />
+    <ProjectReference Include="..\Estudos.Repositorio.EntityFramework\Estudos.Repositorio.EntityFrameworkCore.csproj" />
   </ItemGroup>
 
   <ItemGroup>

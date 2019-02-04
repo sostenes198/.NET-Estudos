@@ -1,22 +1,25 @@
-﻿using Estudos.Abstract.Repositorio;
-using Estudos.Dominio.Entidades;
+﻿using Estudos.Dominio.Entidades;
 using Estudos.Dominio.Entidades.Entidades_Cardapio;
 using Estudos.Dominio.Entidades.Entidades_Pedido;
+using Estudos.Global.Atributos;
+using Estudos.Global.Enuns;
 using Estudos.Repositorio.EntityFrameworkCore.Base;
 using Estudos.Repositorio.EntityFrameworkCore.Extensoes;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Estudos.Repositorio.EntityFrameworkCore
 {
-    public partial class EntityContext : DbContext, IRepositorio, IContext
+    [LifeStyleAttribute(LifeStyleIoCEnum.Scoped)]
+    public partial class EntityContext : DbContext, IContext
     {
         public EntityContext()
             : base()
         { }
 
-        public EntityContext(DbContextOptions options)
+        protected EntityContext(DbContextOptions options)
             : base(options)
         { }
 
@@ -30,37 +33,39 @@ namespace Estudos.Repositorio.EntityFrameworkCore
 
         public Task<T> ObterEntidadePorChavePrimaria<T>(params object[] list) where T : AEntidade
         {
-            return FindAsync<T>(list);
+            return Task.Run(() => Find<T>(list));
         }
 
         public Task<List<T>> ObterTodasEntidades<T>() where T : AEntidade
         {
-            return Set<T>().ToListAsync();
+            return Task.Run(() => Set<T>().ToList());
         }
 
-        public async Task<T> InserirEntidade<T>(T entidade) where T : AEntidade
+        public Task<T> InserirEntidade<T>(T entidade) where T : AEntidade
         {
             Set<T>().Add(entidade);
-            await SaveChangesAsync();
-            return entidade;
+            SaveChanges();
+            return Task.Run(() => entidade);
         }
 
-        public async Task<T> AtualizarEntidade<T>(T entidade) where T : AEntidade
+        public Task<T> AtualizarEntidade<T>(T entidade) where T : AEntidade
         {
-            T entidadeBanco = await this.FindAsync(entidade);
+            T entidadeBanco = this.Find(entidade);
             Entry(entidadeBanco).CurrentValues.SetValues(entidade);
             Entry(entidadeBanco).State = EntityState.Modified;
 
-            await SaveChangesAsync();
+            SaveChanges();
 
-            return entidadeBanco;
+            return Task.Run(() => entidadeBanco);
         }
 
-        public async Task ExcluirEntidade<T>(params object[] list) where T : AEntidade
+        public Task ExcluirEntidade<T>(T entidade) where T : AEntidade
         {
-            var entidadeBanco = await this.FindAsync<T>(list);
+            var entidadeBanco = this.Find(entidade);
             Set<T>().Remove(entidadeBanco);
-            await SaveChangesAsync();
+            SaveChanges();
+
+            return Task.Run(() => { });
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -69,6 +74,16 @@ namespace Estudos.Repositorio.EntityFrameworkCore
             modelBuilder.CriarMapeamento();
 
             base.OnModelCreating(modelBuilder);
+        }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            if (!optionsBuilder.IsConfigured)
+            {
+                optionsBuilder.UseSqlServer("Data Source=DESKTOP-QBS77K7\\SQLEXPRESS2017;Initial Catalog=Estudos;Integrated Security=False;User ID=sa;Password=123456");
+            }
+
+            //base.OnConfiguring(optionsBuilder);
         }
     }
 }

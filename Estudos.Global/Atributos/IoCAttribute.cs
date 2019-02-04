@@ -6,17 +6,15 @@ namespace Estudos.Global.Atributos
     /// <summary>
     /// LifeStyle Default Transient
     /// </summary>
-    public class IoCAttribute : Attribute
+    public class IoCAttribute : LifeStyleAttribute
     {
-        public LifeStyleIoCEnum LifeStyleIoCEnum { get; private set; }
-        
         public IoCAttribute()
-            : this(LifeStyleIoCEnum.Transient)
+            : base(LifeStyleIoCEnum.Transient)
         { }
 
         public IoCAttribute(LifeStyleIoCEnum lifeStyleIoCEnum)
+            :base(lifeStyleIoCEnum)
         {
-            LifeStyleIoCEnum = lifeStyleIoCEnum;
         }
     }
 }

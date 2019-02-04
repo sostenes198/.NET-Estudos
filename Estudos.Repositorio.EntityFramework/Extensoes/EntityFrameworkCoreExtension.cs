@@ -4,7 +4,6 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace Estudos.Repositorio.EntityFrameworkCore.Extensoes
 {
@@ -12,32 +11,36 @@ namespace Estudos.Repositorio.EntityFrameworkCore.Extensoes
     {
         #region Métodos Extensivos
 
-        public static Task<T> FindAsync<T>(this EntityContext context, T entidade)
+        public static T Find<T>(this EntityContext context, T entidade)
             where T : AEntidade
         {
+
             if (context == null)
+            {
                 throw new ArgumentNullException(nameof(context));
+            }
 
             if (entidade == null)
+            {
                 throw new ArgumentNullException(nameof(entidade));
+            }
 
-
-            return context.Set<T>().FindAsync(context.FindPrimaryKeyValues(entidade));
-        }       
+            return context.Set<T>().Find(context.FindPrimaryKeyValues(entidade));
+        }
 
         public static IEnumerable<string> FindPrimaryNames<T>(this EntityContext context, T entidade)
             where T : AEntidade
         {
             return context.FindPrimaryKeyProperties(entidade)
-                .Select(lnq => lnq.Name);                
+                .Select(lnq => lnq.Name);
         }
 
-        public static IEnumerable<object> FindPrimaryKeyValues<T>(this EntityContext context, T entidade)
+        public static object[] FindPrimaryKeyValues<T>(this EntityContext context, T entidade)
             where T : AEntidade
         {
             return context.FindPrimaryKeyProperties(entidade)
-                .Select(lnq => entidade.GetPropertyValue(lnq.Name));
-        }        
+                .Select(lnq => entidade.GetPropertyValue(lnq.Name)).ToArray();
+        }
 
         #endregion
 

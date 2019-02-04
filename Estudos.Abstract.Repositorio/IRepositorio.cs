@@ -14,6 +14,6 @@ namespace Estudos.Abstract.Repositorio
 
         Task<T> AtualizarEntidade<T>(T entidade) where T : AEntidade;
 
-        Task ExcluirEntidade<T>(params object[] list) where T : AEntidade;
+        Task ExcluirEntidade<T>(T entidade) where T : AEntidade;
     } 
 }

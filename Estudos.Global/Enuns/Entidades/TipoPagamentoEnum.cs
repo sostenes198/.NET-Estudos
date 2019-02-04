@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Estudos.Dominio.Enuns
+namespace Estudos.Global.Enuns.Entidades
 {
     public enum TipoPagamentoEnum
     {

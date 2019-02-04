@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using Estudos.Dominio.Enuns;
+using Estudos.Global.Enuns.Entidades;
 
 namespace Estudos.Dominio.Entidades.Entidades_Pedido
 {

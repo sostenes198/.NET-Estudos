@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Estudos.Global.Atributos;
+﻿using Estudos.Global.Atributos;
 using Estudos.Global.Enuns;
 using Estudos.Global.Helpers;
 using Estudos.Global.NameSpace.Definicao;
 using Estudos.IoC.Configuracao;
 using Microsoft.Extensions.DependencyInjection;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Estudos.IoC
 {
@@ -16,12 +16,34 @@ namespace Estudos.IoC
         {
             foreach (NameSpaceDefinition nameSpace in NamesSpacesInjection.NamesSpaces)
             {
-                IEnumerable<Type> abstracoes = AssemblyHelper.ObterEntidadesAssemblyAbstrato(nameSpace.Abstracao);
-                IEnumerable<Type> implementacoes = AssemblyHelper.ObterEntidadeAssemblyImplementacao(nameSpace.Implementacao);
+                if (nameSpace.Abstracao is string && nameSpace.Implementacao is string)
+                {
+                    IEnumerable<Type> abstracoes = AssemblyHelper.ObterEntidadesAssemblyAbstrato((string)nameSpace.Abstracao);
+                    IEnumerable<Type> implementacoes = AssemblyHelper.ObterEntidadeAssemblyImplementacao((string)nameSpace.Implementacao);
 
-                RegistrarDependencias(abstracoes, implementacoes, services);
+                    RegistrarDependencias(abstracoes, implementacoes, services);
+                }
+                else if (nameSpace.Abstracao is Type && nameSpace.Implementacao is Type)
+                {
+                    RegistrarDependencias((Type)nameSpace.Abstracao, (Type)nameSpace.Implementacao, services);
+                }
             }
-        }           
+        }
+
+        private static void RegistrarDependencias(Type abstracao, Type implementacao, IServiceCollection services)
+        {
+            var atributo = (LifeStyleAttribute)implementacao.GetCustomAttributes(true)
+                .FirstOrDefault(lnq => lnq.GetType() == typeof(LifeStyleAttribute));
+
+            if (abstracao != null)
+            {
+                RegistrarDependencia(services, atributo.LifeStyleIoCEnum, abstracao, implementacao);
+            }
+            else
+            {
+                RegistrarDependencia(services, atributo.LifeStyleIoCEnum, implementacao);
+            }
+        }
 
         private static void RegistrarDependencias(IEnumerable<Type> abstracoes, IEnumerable<Type> implemetacoes, IServiceCollection services)
         {
@@ -33,9 +55,13 @@ namespace Estudos.IoC
                     .FirstOrDefault(lnq => abstracoes.Any(o => o.Name == lnq.Name));
 
                 if (abstracao != null)
+                {
                     RegistrarDependencia(services, atributo.LifeStyleIoCEnum, abstracao, implementacao);
+                }
                 else
+                {
                     RegistrarDependencia(services, atributo.LifeStyleIoCEnum, implementacao);
+                }
             }
         }
 

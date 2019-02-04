@@ -11,6 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Estudos.IoC\Estudos.IoC.csproj" />
     <ProjectReference Include="..\Estudos.Repositorio.EntityFramework\Estudos.Repositorio.EntityFrameworkCore.csproj" />
   </ItemGroup>
 

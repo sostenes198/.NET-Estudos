@@ -12,7 +12,7 @@ namespace Estudos.Global.Helpers
         {
             return Assembly.Load(nameSpace)
                 .GetTypes()
-                .Where(lnq => lnq.IsInterface && lnq.IsAbstract && lnq.GetInterfaces().Any());
+                .Where(lnq => lnq.IsInterface && lnq.IsAbstract);
 
         }
 

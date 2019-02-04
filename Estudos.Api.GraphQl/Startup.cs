@@ -1,4 +1,5 @@
-﻿using Estudos.Repositorio.EntityFrameworkCore;
+﻿using Estudos.IoC;
+using Estudos.Repositorio.EntityFrameworkCore;
 using Estudos.Repositorio.EntityFrameworkCore.Base;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -25,7 +26,9 @@ namespace Estudos.Api.GraphQl
 
             services.AddTransient<IContext, EntityContext>();
 
-            services.AddDbContext<EntityContext>(lnq =>lnq.UseSqlServer(connectionString));
+            services.AddDbContext<EntityContext>(lnq => lnq.UseSqlServer(connectionString));
+
+            services.InjetarDependencias();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }

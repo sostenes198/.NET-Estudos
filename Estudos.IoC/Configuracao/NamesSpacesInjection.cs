@@ -1,5 +1,7 @@
-﻿using Estudos.Global.NameSpace;
+﻿using Estudos.Abstract.Repositorio;
+using Estudos.Global.NameSpace;
 using Estudos.Global.NameSpace.Definicao;
+using Estudos.Repositorio.EntityFrameworkCore;
 using System.Collections.Generic;
 
 namespace Estudos.IoC.Configuracao
@@ -12,7 +14,8 @@ namespace Estudos.IoC.Configuracao
             {
                 return new List<NameSpaceDefinition>()
                 {
-                    new NameSpaceDefinition(NameSpaceContant.AbstractRepositorio, NameSpaceContant.ImplementacaoRepositorioEntityFrameworkCore)
+                    new NameSpaceDefinition(NameSpaceContant.AbstractRepositorio, NameSpaceContant.ImplementacaoRepositorioEntityFrameworkCore),
+                    new NameSpaceDefinition(typeof(IRepositorio), typeof(EntityContext))
                 };
             }
         }        

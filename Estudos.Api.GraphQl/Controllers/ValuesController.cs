@@ -1,15 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Estudos.Abstract.Repositorio;
+using Estudos.Dominio.Entidades.Entidades_Cardapio;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Estudos.Api.GraphQl.Controllers
-{
+{    
+
     [Route("api/[controller]")]
     [ApiController]
     public class ValuesController : ControllerBase
     {
+        readonly IRepositorio _repositorio;
+
+        public ValuesController(IRepositorio repositorio)
+        {
+            _repositorio = repositorio;
+        }
+
         // GET api/values
         [HttpGet]
         public ActionResult<IEnumerable<string>> Get()
@@ -17,29 +25,20 @@ namespace Estudos.Api.GraphQl.Controllers
             return new string[] { "value1", "value2" };
         }
 
-        // GET api/values/5
-        [HttpGet("{id}")]
-        public ActionResult<string> Get(int id)
+        [HttpGet("listarTodos")]
+        public async Task<ActionResult<List<CardapioCategoria>>> ListarTodos()
         {
-            return "value";
+            var resultado = await _repositorio.ObterTodasEntidades<CardapioCategoria>();
+
+            return resultado;
         }
 
-        // POST api/values
-        [HttpPost]
-        public void Post([FromBody] string value)
+        [HttpGet("listarpor/{codigo:int}")]
+        public async Task<ActionResult<CardapioCategoria>> ListarTodos(int codigo)
         {
-        }
+            var resultado = await _repositorio.ObterEntidadePorChavePrimaria<CardapioCategoria>(codigo);
 
-        // PUT api/values/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE api/values/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
+            return resultado;
         }
     }
 }
