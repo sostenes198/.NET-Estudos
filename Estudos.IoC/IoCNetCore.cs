@@ -3,6 +3,11 @@ using Estudos.Global.Enuns;
 using Estudos.Global.Helpers;
 using Estudos.Global.NameSpace.Definicao;
 using Estudos.IoC.Configuracao;
+using Estudos.Repositorio.EntityFrameworkCore;
+using Estudos.Repositorio.EntityFrameworkCore.Base;
+using GraphQL;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -12,11 +17,25 @@ namespace Estudos.IoC
 {
     public static class IoCNetCore
     {
-        public static void InjetarDependencias(this IServiceCollection services)
+        public static IServiceCollection IoC(this IServiceCollection services, IConfiguration configuration)
+        {
+            services.AddTransient<IContext, EntityContext>();
+            services.AddDbContext<EntityContext>(lnq => lnq.UseSqlServer(configuration.GetConnectionString("Default")));
+            services.AddSingleton<IDocumentExecuter, DocumentExecuter>();
+
+            services.InjetarDependencias();
+
+            //var sp = services.BuildServiceProvider();            
+            //services.AddSingleton<ISchema>(new CardapioCategoriaSchema(new FuncDependencyResolver(type => sp.GetService(type))));
+
+            return services;
+        }
+
+        private static void InjetarDependencias(this IServiceCollection services)
         {
             foreach (NameSpaceDefinition nameSpace in NamesSpacesInjection.NamesSpaces)
             {
-                if (nameSpace.Abstracao is string && nameSpace.Implementacao is string)
+                if (nameSpace.Implementacao is string)
                 {
                     IEnumerable<Type> abstracoes = AssemblyHelper.ObterEntidadesAssemblyAbstrato((string)nameSpace.Abstracao);
                     IEnumerable<Type> implementacoes = AssemblyHelper.ObterEntidadeAssemblyImplementacao((string)nameSpace.Implementacao);
@@ -25,12 +44,12 @@ namespace Estudos.IoC
                 }
                 else if (nameSpace.Abstracao is Type && nameSpace.Implementacao is Type)
                 {
-                    RegistrarDependencias((Type)nameSpace.Abstracao, (Type)nameSpace.Implementacao, services);
+                    RegistrarDependencia((Type)nameSpace.Abstracao, (Type)nameSpace.Implementacao, services);
                 }
             }
         }
 
-        private static void RegistrarDependencias(Type abstracao, Type implementacao, IServiceCollection services)
+        private static void RegistrarDependencia(Type abstracao, Type implementacao, IServiceCollection services)
         {
             var atributo = (LifeStyleAttribute)implementacao.GetCustomAttributes(true)
                 .FirstOrDefault(lnq => lnq.GetType() == typeof(LifeStyleAttribute));

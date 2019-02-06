@@ -4,7 +4,7 @@ using Estudos.Global.Enuns;
 
 namespace Estudos.Repositorio.EntityFrameworkCore.Repositorio_Cardapio
 {
-    [IoC(LifeStyleIoCEnum.Scoped)]
+    [IoC(LifeStyleIoCEnum.Transient)]
     public class CardapioCategoriaRepositorio : EntityContext, ICardapioCategoriaRepositorio
     { }
 }

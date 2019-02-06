@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace Estudos.Repositorio.EntityFrameworkCore
 {
-    [LifeStyleAttribute(LifeStyleIoCEnum.Scoped)]
+    [LifeStyleAttribute(LifeStyleIoCEnum.Transient)]
     public partial class EntityContext : DbContext, IContext
     {
         public EntityContext()

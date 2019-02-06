@@ -4,7 +4,7 @@ using Estudos.Global.Enuns;
 
 namespace Estudos.Repositorio.EntityFrameworkCore.Repositorios.Repositorio_Pedido
 {
-    [IoC(LifeStyleIoCEnum.Scoped)]
+    [IoC(LifeStyleIoCEnum.Transient)]
     public class PedidoCompletoRepositorio : EntityContext, IPedidoCompletoRepositorio
     { }
 }

@@ -14,7 +14,9 @@ namespace Estudos.IoC.Configuracao
             {
                 return new List<NameSpaceDefinition>()
                 {
+                    new NameSpaceDefinition(null, NameSpaceContant.ImplementacaoGraphQL),
                     new NameSpaceDefinition(NameSpaceContant.AbstractRepositorio, NameSpaceContant.ImplementacaoRepositorioEntityFrameworkCore),
+                    new NameSpaceDefinition(NameSpaceContant.AbstractService, NameSpaceContant.ImplementacaoService),
                     new NameSpaceDefinition(typeof(IRepositorio), typeof(EntityContext))
                 };
             }

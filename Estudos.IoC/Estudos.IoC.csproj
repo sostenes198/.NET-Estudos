@@ -10,8 +10,11 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Estudos.Abstract.Repositorio\Estudos.Abstract.Repositorio.csproj" />
+    <ProjectReference Include="..\Estudos.Abstract.Servico\Estudos.Abstract.Servico.csproj" />
+    <ProjectReference Include="..\Estudos.Api.GraphQL\Estudos.Api.GraphQL.csproj" />
     <ProjectReference Include="..\Estudos.Global\Estudos.Global.csproj" />
     <ProjectReference Include="..\Estudos.Repositorio.EntityFramework\Estudos.Repositorio.EntityFrameworkCore.csproj" />
+    <ProjectReference Include="..\Estudos.Servico\Estudos.Servico.csproj" />
   </ItemGroup>
 
   <ItemGroup>

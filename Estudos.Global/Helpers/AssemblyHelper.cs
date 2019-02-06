@@ -10,6 +10,9 @@ namespace Estudos.Global.Helpers
     {
         public static IEnumerable<Type> ObterEntidadesAssemblyAbstrato(string nameSpace)
         {
+            if (string.IsNullOrEmpty(nameSpace))
+                return new Stack<Type>();
+
             return Assembly.Load(nameSpace)
                 .GetTypes()
                 .Where(lnq => lnq.IsInterface && lnq.IsAbstract);
@@ -18,7 +21,7 @@ namespace Estudos.Global.Helpers
 
         public static IEnumerable<Type> ObterEntidadeAssemblyImplementacao(string nameSpace)
         {
-            return Assembly.Load(nameSpace).GetTypes()
+            return Assembly.Load(nameSpace.Trim()).GetTypes()
                 .Where(lnq => lnq.IsClass && !lnq.IsAbstract
                         && lnq.GetInterfaces().Any() && lnq.GetCustomAttributes(typeof(IoCAttribute), true).Any());
         }

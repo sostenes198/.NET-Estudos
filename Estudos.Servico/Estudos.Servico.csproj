@@ -5,15 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="graphiql" Version="1.2.0" />
-    <PackageReference Include="GraphQL" Version="2.4.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Mutations\" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <ProjectReference Include="..\Estudos.Abstract.Repositorio\Estudos.Abstract.Repositorio.csproj" />
     <ProjectReference Include="..\Estudos.Abstract.Servico\Estudos.Abstract.Servico.csproj" />
   </ItemGroup>
 

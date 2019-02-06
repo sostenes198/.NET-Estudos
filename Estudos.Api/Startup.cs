@@ -1,14 +1,13 @@
-﻿using Estudos.IoC;
-using Estudos.Repositorio.EntityFrameworkCore;
-using Estudos.Repositorio.EntityFrameworkCore.Base;
+﻿using AutoMapper;
+using Estudos.IoC;
+using GraphiQl;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Estudos.Api.GraphQl
+namespace Estudos.Api
 {
     public class Startup
     {
@@ -22,14 +21,10 @@ namespace Estudos.Api.GraphQl
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            string connectionString = Configuration.GetConnectionString("Default");
 
-            services.AddTransient<IContext, EntityContext>();
+            services.IoC(Configuration);
 
-            services.AddDbContext<EntityContext>(lnq => lnq.UseSqlServer(connectionString));
-
-            services.InjetarDependencias();
-
+            services.AddAutoMapper();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
@@ -41,6 +36,7 @@ namespace Estudos.Api.GraphQl
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseGraphiQl();
             app.UseMvc();
         }
     }
