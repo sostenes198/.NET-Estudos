@@ -1,6 +1,5 @@
-﻿using Estudos.Abstract.Servico.Servcice_Cardapio;
+﻿using Estudos.Abstract.Servico.Servico_Cardapio;
 using Estudos.Api.GraphQL.Queries;
-using Estudos.Api.GraphQL.Queries.Query_Cardapio;
 using GraphQL;
 using GraphQL.Types;
 using Microsoft.AspNetCore.Mvc;
@@ -15,23 +14,26 @@ namespace Estudos.Api.Controllers
     {
         readonly ICardapioCategoriaService _service;
         readonly IDocumentExecuter _documentExecuter;
+        readonly ISchema _schema;
 
-        public CardapioCategoriaGraphQLController(ICardapioCategoriaService service, IDocumentExecuter documentExecuter)
+        public CardapioCategoriaGraphQLController(ICardapioCategoriaService service, IDocumentExecuter documentExecuter,
+            ISchema schema)
         {
             _service = service;
             _documentExecuter = documentExecuter;
+            _schema = schema;
         }
 
         [HttpPost]
         public async Task<ActionResult> Post([FromBody] GraphQLQuery query)
         {
             if (query == null) { throw new ArgumentNullException(nameof(query)); }
-            var inputs = query.Variaveis.ToInputs();
+            var inputs = query.Variables.ToInputs();
             var executionOptions = new ExecutionOptions
             {
-                Schema = new Schema() { Query = new CardapioCategoriaQuery(_service) },
+                Schema = _schema,
                 Query = query.Query,
-                OperationName = query.NomeOperacao,
+                OperationName = query.OperationName,
                 Inputs = inputs
             };
 

@@ -13,15 +13,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Estudos.Global", "Estudos.G
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01 - Global", "01 - Global", "{2E9350D7-8523-4FA8-A036-36D4E51A95D1}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03 - Dominio", "03 - Dominio", "{4ACF3C6F-BF8A-436D-AA23-328314476F87}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "04 - Dominio", "04 - Dominio", "{4ACF3C6F-BF8A-436D-AA23-328314476F87}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02 - IoC", "02 - IoC", "{1C343BDE-70D5-4DB7-9CB4-57024771E1B0}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03 - IoC", "03 - IoC", "{1C343BDE-70D5-4DB7-9CB4-57024771E1B0}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "06 - Api", "06 - Api", "{72B1D6F9-96D4-4604-8A16-9C7ABDD8A0C7}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "07 - Api", "07 - Api", "{72B1D6F9-96D4-4604-8A16-9C7ABDD8A0C7}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "07 - View", "07 - View", "{CB9756C4-79F4-41DB-ADE8-52280CD1837F}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "08 - View", "08 - View", "{CB9756C4-79F4-41DB-ADE8-52280CD1837F}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "04 - Repositorio", "04 - Repositorio", "{8D102670-175A-4946-AA89-B59EACFF95A8}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "05 - Repositorio", "05 - Repositorio", "{8D102670-175A-4946-AA89-B59EACFF95A8}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Estudos.Abstract.Repositorio", "Estudos.Abstract.Repositorio\Estudos.Abstract.Repositorio.csproj", "{1D98CCD2-5FB3-48F4-97B8-DF56F2963839}"
 EndProject
@@ -29,15 +29,19 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Estudos.Repositorio.EntityF
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Estudos.Repositorio.Dapper", "Estudos.Repositorio.Dapper\Estudos.Repositorio.Dapper.csproj", "{8E9C0C16-0355-4454-8FA6-E644DFAC4B42}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "05 - Servico", "05 - Servico", "{09C23E9E-5817-4798-AF81-327683C2350B}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "06 - Servico", "06 - Servico", "{09C23E9E-5817-4798-AF81-327683C2350B}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Estudos.Abstract.Servico", "Estudos.Abstract.Servico\Estudos.Abstract.Servico.csproj", "{84B387C6-D904-452C-9EC8-BCF1445A0437}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Estudos.Servico", "Estudos.Servico\Estudos.Servico.csproj", "{8162ED8D-0AD7-4006-9391-9159448C4B5E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Estudos.Api", "Estudos.Api\Estudos.Api.csproj", "{B3F90C9E-5FC1-43F4-8DEE-DAFA16887675}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Estudos.Api", "Estudos.Api\Estudos.Api.csproj", "{B3F90C9E-5FC1-43F4-8DEE-DAFA16887675}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Estudos.Api.GraphQL", "Estudos.Api.GraphQL\Estudos.Api.GraphQL.csproj", "{964A3946-A48E-43E3-BE57-F5C29020B233}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Estudos.Api.GraphQL", "Estudos.Api.GraphQL\Estudos.Api.GraphQL.csproj", "{964A3946-A48E-43E3-BE57-F5C29020B233}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02 - Mapper", "02 - Mapper", "{FD1F824E-D310-4FC9-B275-FC7B22D3C29B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Estudos.AutoMapper", "Estudos.AutoMapper\Estudos.AutoMapper.csproj", "{6B281E62-94AD-4755-AB26-A77453FD2D0C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -89,6 +93,10 @@ Global
 		{964A3946-A48E-43E3-BE57-F5C29020B233}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{964A3946-A48E-43E3-BE57-F5C29020B233}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{964A3946-A48E-43E3-BE57-F5C29020B233}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6B281E62-94AD-4755-AB26-A77453FD2D0C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B281E62-94AD-4755-AB26-A77453FD2D0C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B281E62-94AD-4755-AB26-A77453FD2D0C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B281E62-94AD-4755-AB26-A77453FD2D0C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -105,6 +113,7 @@ Global
 		{8162ED8D-0AD7-4006-9391-9159448C4B5E} = {09C23E9E-5817-4798-AF81-327683C2350B}
 		{B3F90C9E-5FC1-43F4-8DEE-DAFA16887675} = {72B1D6F9-96D4-4604-8A16-9C7ABDD8A0C7}
 		{964A3946-A48E-43E3-BE57-F5C29020B233} = {72B1D6F9-96D4-4604-8A16-9C7ABDD8A0C7}
+		{6B281E62-94AD-4755-AB26-A77453FD2D0C} = {FD1F824E-D310-4FC9-B275-FC7B22D3C29B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C17E424A-53EB-4327-89AB-D8A758AE8E67}

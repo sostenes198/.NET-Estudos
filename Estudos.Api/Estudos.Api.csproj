@@ -6,6 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="6.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.0" />
@@ -14,6 +15,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Estudos.Abstract.Servico\Estudos.Abstract.Servico.csproj" />
     <ProjectReference Include="..\Estudos.Api.GraphQL\Estudos.Api.GraphQL.csproj" />
+    <ProjectReference Include="..\Estudos.AutoMapper\Estudos.AutoMapper.csproj" />
     <ProjectReference Include="..\Estudos.IoC\Estudos.IoC.csproj" />
   </ItemGroup>
 

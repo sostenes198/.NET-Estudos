@@ -10,10 +10,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Mutations\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Estudos.Abstract.Servico\Estudos.Abstract.Servico.csproj" />
   </ItemGroup>
 

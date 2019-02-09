@@ -1,4 +1,5 @@
-﻿using Estudos.Global.Atributos;
+﻿using Estudos.Api.GraphQL.GraphQL_Schema.Schema_Cardapio;
+using Estudos.Global.Atributos;
 using Estudos.Global.Enuns;
 using Estudos.Global.Helpers;
 using Estudos.Global.NameSpace.Definicao;
@@ -6,6 +7,7 @@ using Estudos.IoC.Configuracao;
 using Estudos.Repositorio.EntityFrameworkCore;
 using Estudos.Repositorio.EntityFrameworkCore.Base;
 using GraphQL;
+using GraphQL.Types;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -25,8 +27,8 @@ namespace Estudos.IoC
 
             services.InjetarDependencias();
 
-            //var sp = services.BuildServiceProvider();            
-            //services.AddSingleton<ISchema>(new CardapioCategoriaSchema(new FuncDependencyResolver(type => sp.GetService(type))));
+            var sp = services.BuildServiceProvider();            
+            services.AddSingleton<ISchema>(new CardapioCategoriaSchema(new FuncDependencyResolver(type => sp.GetService(type))));
 
             return services;
         }
@@ -70,8 +72,8 @@ namespace Estudos.IoC
             {
                 var atributo = (IoCAttribute)implementacao.GetCustomAttributes(true)
                     .FirstOrDefault(lnq => lnq.GetType() == typeof(IoCAttribute));
-                var abstracao = implementacao.GetInterfaces()
-                    .FirstOrDefault(lnq => abstracoes.Any(o => o.Name == lnq.Name));
+                var abstracao = abstracoes
+                    .LastOrDefault(lnq => lnq.Name == "I" + implementacao.Name);
 
                 if (abstracao != null)
                 {
