@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using WhereDynamic.Atributo;
 using WhereDynamic.Entidade;
 using WhereDynamic.Enum;
@@ -11,7 +9,6 @@ namespace WhereDynamic.Filtros
     {
         public FiltroPessoa()
         {
-            Endereco = new FiltroEndereco();
         }
 
         [WhereDynamic(nameof(Pessoa.Id))]
@@ -26,7 +23,7 @@ namespace WhereDynamic.Filtros
         public DateTime DataNascimento { get; set; }
 
         [WhereDynamic(nameof(Pessoa.Sexo))]
-        public Sexo Genero{ get; set; }
+        public Sexo Genero { get; set; }
 
         [WhereDynamic(nameof(Pessoa.Endereco))]
         public FiltroEndereco Endereco { get; set; }

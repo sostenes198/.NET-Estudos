@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using WhereDynamic.Atributo;
+﻿using WhereDynamic.Atributo;
 using WhereDynamic.Entidade;
 
 namespace WhereDynamic.Filtros
@@ -16,13 +13,10 @@ namespace WhereDynamic.Filtros
         [WhereDynamic(nameof(Endereco.Id))]
         public int Codigo { get; set; }
 
-        [WhereDynamic(nameof(Endereco.Pais))]
         public string Pais { get; set; }
 
-        public string UF { get; set; }
 
-        public string Bairro { get; set; }
-
-        public string Rua { get; set; }
+        [WhereDynamic(nameof(Endereco.Cidade))]
+        public FiltroCidade Cidade { get; set; }
     }
 }

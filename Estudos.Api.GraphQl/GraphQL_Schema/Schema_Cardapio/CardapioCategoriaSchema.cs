@@ -11,7 +11,6 @@ namespace Estudos.Api.GraphQL.GraphQL_Schema.Schema_Cardapio
             : base(resolver)
         {
             Query = resolver.Resolve<CardapioCategoriaQuery>();
-            var x = resolver.Resolve<CardapioCategoriaMutation>();
             Mutation = resolver.Resolve<CardapioCategoriaMutation>();
         }
     }
