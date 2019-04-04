@@ -10,7 +10,7 @@ namespace WhereDynamic.Filtros
 
         }
 
-        [WhereDynamic(nameof(Endereco.Id))]
+        //[WhereDynamic(nameof(Endereco.Id))]
         public int Codigo { get; set; }
 
         public string Pais { get; set; }
