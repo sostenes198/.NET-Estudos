@@ -28,6 +28,7 @@ namespace WhereDynamic.Test
         {
             IEnumerable<Empresa> empresas = ConstruirEmpresas();
 
+
             IEnumerable<Empresa> resultado = empresas.WhereDynamic(filtro);
 
             Assert.Equal(valorEsperado, resultado.Count());

@@ -11,7 +11,7 @@ namespace WhereDynamic.Filtros
 
         }
 
-        [WhereDynamic(nameof(Empresa.Id))]
+        //[WhereDynamic(nameof(Empresa.Id))]
         public int Codigo { get; set; }
 
         public string NomeEmpresa { get; set; }
