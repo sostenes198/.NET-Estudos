@@ -45,7 +45,7 @@ namespace WhereDynamic.Test
         public static IEnumerable<object[]> FiltroEmpresa =>
             new List<object[]>()
             {
-               new object[]{ 2, new FiltroEmpresa(){ Codigo = 1, NomeEmpresa = "Soso", Pessoas = FiltrosPessoas.Select(lnq => (FiltroPessoa)lnq.Last()) } }
+               new object[]{ 2, new FiltroEmpresa(){ Codigo = 1, NomeEmpresa = "Soso", Pessoas = FiltrosPessoas.Select(lnq => (FiltroPessoa)lnq.Last()).ToList() } }
             };
 
         public static IEnumerable<Pessoa> ConstruirPessoas() =>
