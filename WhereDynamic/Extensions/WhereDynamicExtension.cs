@@ -15,18 +15,18 @@ namespace WhereDynamic.Extensions
 
         public static IEnumerable<TSource> WhereDynamic<TSource, TFilter>(this IEnumerable<TSource> source, TFilter filtro)
         {
-            valorParameterExpression = "";            
+            valorParameterExpression = "";
 
             IEnumerable<PropertyInfo> propriedadesFiltro = ListarPropertiesInfo(filtro);
 
             ParameterExpression expressaoParametro = ObterParameterExpression<TSource>();
 
-            Func<TSource, bool> lambda = ConstruirLambdaExpression<TSource, TFilter>(filtro);
+            Func<TSource, bool> lambda = ConstruirLambdaExpression<TSource, TFilter>(filtro).Compile();
 
             return source.Where(lambda);
         }
 
-        private static Func<TSource, bool> ConstruirLambdaExpression<TSource, TFilter>(TFilter filtro)
+        private static Expression<Func<TSource, bool>> ConstruirLambdaExpression<TSource, TFilter>(TFilter filtro)
         {
             BinaryExpression expressao = null;
 
@@ -37,7 +37,7 @@ namespace WhereDynamic.Extensions
             return ConstruirFiltro<TFilter, TSource>(expressao, expressaoParametro, propriedadesFiltro, filtro);
         }
 
-        private static Func<TSource, bool> ConstruirFiltro<TFilter, TSource>(BinaryExpression expressao, ParameterExpression expressaoParametro,
+        private static Expression<Func<TSource, bool>> ConstruirFiltro<TFilter, TSource>(BinaryExpression expressao, ParameterExpression expressaoParametro,
             IEnumerable<PropertyInfo> propriedades, TFilter filtro)
         {
             MemberExpression NomePropriedade = null;
@@ -57,10 +57,13 @@ namespace WhereDynamic.Extensions
                 }
                 else if (ObjectIsList(obj))
                 {
-
+                    
+                    var teste = ((IEnumerable)obj).ObterPrimeiroElemento();
+                    var tipo = teste.GetType();
+                    //Expression<Func<TSource, bool>> expressaoAny = ConstruirLambdaExpression<TSource>(teste);
                 }
                 else
-                {                   
+                {
                     MemberExpression NomePropriedadeEntidadeComplexa = null;
 
                     foreach (Tuple<string, object> resultadoPropriedadeComplexa in ObterNomeEValorPropriedadeComplexa(obj, item, nomeCampo))
@@ -74,7 +77,7 @@ namespace WhereDynamic.Extensions
                         }
 
                         NomePropriedade = NomePropriedadeEntidadeComplexa;
-                        ValorPropriedade = Expression.Constant(resultadoPropriedadeComplexa.Item2);                        
+                        ValorPropriedade = Expression.Constant(resultadoPropriedadeComplexa.Item2);
 
                         NomePropriedadeEntidadeComplexa = null;
                     }
@@ -83,7 +86,7 @@ namespace WhereDynamic.Extensions
                 expressao = ConstruirExpressao(expressao, NomePropriedade, ValorPropriedade);
             }
 
-            return Expression.Lambda<Func<TSource, bool>>(expressao, expressaoParametro).Compile();
+            return Expression.Lambda<Func<TSource, bool>>(expressao, expressaoParametro);
         }
 
         private static IEnumerable<Tuple<string, object>> ObterNomeEValorPropriedadeComplexa<TEntidade>(TEntidade entidade, PropertyInfo propriedade, string nomePropriedade)
@@ -119,7 +122,7 @@ namespace WhereDynamic.Extensions
 
             return Expression.And(expressao, expressaoTemp);
 
-        }        
+        }
 
         private static bool TryGetValueObjetoCompleto<TEntidade>(TEntidade entidade, PropertyInfo propriedade, out object objetoComplexo)
         {
@@ -142,7 +145,7 @@ namespace WhereDynamic.Extensions
             valorParameterExpression = (++valor).ToString();
 
             return expressaoParametro;
-        }       
+        }
 
         private static bool ObjectIsSimple(object obj)
         {
@@ -156,7 +159,7 @@ namespace WhereDynamic.Extensions
             {
                 // nullable type, check if the nested type is simple.
                 return ObjectIsSimple(typeInfo.GetGenericArguments()[0]);
-            }           
+            }
 
             return typeInfo.IsPrimitive
               || typeInfo.IsEnum
