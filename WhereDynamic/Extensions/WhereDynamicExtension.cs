@@ -45,7 +45,7 @@ namespace WhereDynamic.Extensions
 
             foreach (PropertyInfo item in propriedades)
             {
-                string nomeCampo = ((WhereDynamicAttribute)item.GetCustomAttribute(typeof(WhereDynamicAttribute), false)).NomeCampo;
+                string nomeCampo = ObterAtributoWhereDynamic(item).NomeCampo;
 
                 if (!TryGetValueObjetoCompleto(filtro, item, out object obj))
                     continue;
@@ -58,9 +58,10 @@ namespace WhereDynamic.Extensions
                 else if (ObjectIsList(obj))
                 {
                     
-                    var teste = ((IEnumerable)obj).ObterPrimeiroElemento();
-                    var tipo = teste.GetType();
-                    //Expression<Func<TSource, bool>> expressaoAny = ConstruirLambdaExpression<TSource>(teste);
+                    var elemento = ((IEnumerable)obj).ObterPrimeiroElemento();
+                    var objTSource = typeof(TSource).GetProperty(nomeCampo).PropertyType.GetProperties();
+
+                    Expression<Func<TSource, bool>> expressaoAny = ConstruirLambdaExpression<TSource, object>(elemento);
                 }
                 else
                 {
@@ -95,7 +96,7 @@ namespace WhereDynamic.Extensions
 
             foreach (PropertyInfo item in propriedadesEntidade)
             {
-                string nomeCampo = ((WhereDynamicAttribute)item.GetCustomAttribute(typeof(WhereDynamicAttribute), false)).NomeCampo;
+                string nomeCampo = ObterAtributoWhereDynamic(item).NomeCampo;
 
                 if (ObjectIsSimple(item.PropertyType))
                     yield return new Tuple<string, object>($"{nomePropriedade}.{nomeCampo}", item.GetValue(entidade, null));
@@ -147,6 +148,11 @@ namespace WhereDynamic.Extensions
             return expressaoParametro;
         }
 
+
+        private static WhereDynamicAttribute ObterAtributoWhereDynamic(PropertyInfo property)
+        {
+            return (WhereDynamicAttribute)property.GetCustomAttribute(typeof(WhereDynamicAttribute), false);
+        }
         private static bool ObjectIsSimple(object obj)
         {
             if (obj == null)
