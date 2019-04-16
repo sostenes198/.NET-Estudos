@@ -15,11 +15,11 @@ namespace WhereDynamic.Extensions
 
         public static IEnumerable<TSource> WhereDynamic<TSource, TFilter>(this IEnumerable<TSource> source, TFilter filtro)
         {
-            valorParameterExpression = "";
+            valorParameterExpression = "";            
 
             IEnumerable<PropertyInfo> propriedadesFiltro = ListarPropertiesInfo(filtro);
 
-            ParameterExpression expressaoParametro = ObterParameterExpression<TSource>();
+            ParameterExpression expressaoParametro = ObterParameterExpression(typeof(TSource));
 
             Func<TSource, bool> lambda = ConstruirLambdaExpression<TSource, TFilter>(filtro).Compile();
 
@@ -32,7 +32,7 @@ namespace WhereDynamic.Extensions
 
             IEnumerable<PropertyInfo> propriedadesFiltro = ListarPropertiesInfo(filtro);
 
-            ParameterExpression expressaoParametro = ObterParameterExpression<TSource>();
+            ParameterExpression expressaoParametro = ObterParameterExpression(typeof(TSource));
 
             return ConstruirFiltro<TFilter, TSource>(expressao, expressaoParametro, propriedadesFiltro, filtro);
         }
@@ -57,11 +57,18 @@ namespace WhereDynamic.Extensions
                 }
                 else if (ObjectIsList(obj))
                 {
-                    
-                    var elemento = ((IEnumerable)obj).ObterPrimeiroElemento();
-                    var objTSource = typeof(TSource).GetProperty(nomeCampo).PropertyType.GetProperties();
+                    Type typeTFilter = item.PropertyType.GetGenericArguments()[0];
+                    object valuesTSource = ((IEnumerable)obj).ObterPrimeiroElemento();
+                    Type typeTSource = typeof(TSource).GetProperty(nomeCampo).PropertyType.GetGenericArguments()[0];
 
-                    Expression<Func<TSource, bool>> expressaoAny = ConstruirLambdaExpression<TSource, object>(elemento);
+                    var predicateToAny = (Expression)typeof(WhereDynamicExtension)
+                        .GetMethod("ConstruirLambdaExpression", BindingFlags.NonPublic | BindingFlags.Static)
+                        .MakeGenericMethod(new Type[] { typeTSource, typeTFilter })
+                        .Invoke(null, new object[] { valuesTSource });
+
+                    NomePropriedade = Expression.Property(expressaoParametro, nomeCampo);
+
+                    expressao = ConstruirExpressaoAny(expressao, NomePropriedade, predicateToAny);
                 }
                 else
                 {
@@ -125,6 +132,21 @@ namespace WhereDynamic.Extensions
 
         }
 
+        private static BinaryExpression ConstruirExpressaoAny(BinaryExpression expressao, MemberExpression nomePropriedade, Expression valorPropriedade)
+        {
+            var y = typeof(IEnumerable).GetMethod("Any");
+            var x = Expression.Call(
+                        valorPropriedade,
+                        typeof(IEnumerable).GetMethod("Any")
+                    );
+                
+
+            BinaryExpression expressaoTemp = Expression.Equal(nomePropriedade, valorPropriedade);
+
+            return Expression.And(expressao, expressaoTemp);
+
+        }
+
         private static bool TryGetValueObjetoCompleto<TEntidade>(TEntidade entidade, PropertyInfo propriedade, out object objetoComplexo)
         {
             objetoComplexo = propriedade.GetValue(entidade, null);
@@ -137,9 +159,9 @@ namespace WhereDynamic.Extensions
             return filtro.GetType().GetProperties().Where(lnq => lnq.GetCustomAttributes(typeof(WhereDynamicAttribute), false).Any());
         }
 
-        private static ParameterExpression ObterParameterExpression<TSource>()
+        private static ParameterExpression ObterParameterExpression(Type type)
         {
-            ParameterExpression expressaoParametro = Expression.Parameter(typeof(TSource), $"lnq{valorParameterExpression}");
+            ParameterExpression expressaoParametro = Expression.Parameter(type, $"lnq{valorParameterExpression}");
 
             int.TryParse(valorParameterExpression, out int valor);
 
@@ -148,11 +170,11 @@ namespace WhereDynamic.Extensions
             return expressaoParametro;
         }
 
-
         private static WhereDynamicAttribute ObterAtributoWhereDynamic(PropertyInfo property)
         {
             return (WhereDynamicAttribute)property.GetCustomAttribute(typeof(WhereDynamicAttribute), false);
         }
+
         private static bool ObjectIsSimple(object obj)
         {
             if (obj == null)
