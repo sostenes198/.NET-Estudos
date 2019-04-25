@@ -49,7 +49,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Estudos-Arquitetura-Projeto
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WhereDynamic", "WhereDynamic\WhereDynamic.csproj", "{1A1B6F59-5828-4621-8A29-31658D84A6D5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WhereDynamic.Test", "WhereDynamic.Test\WhereDynamic.Test.csproj", "{A121A4B3-728F-4F96-9FD0-EA1BF520531E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WhereDynamic.Test", "WhereDynamic.Test\WhereDynamic.Test.csproj", "{A121A4B3-728F-4F96-9FD0-EA1BF520531E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Testes-FluenteValidation-FluentAssetion", "Testes-FluenteValidation-FluentAssetion", "{4C209965-3E6E-4DEE-BC32-36E791579FDB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

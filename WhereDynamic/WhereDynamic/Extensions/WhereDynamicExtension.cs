@@ -15,7 +15,7 @@ namespace WhereDynamic.Extensions
 
         public static IEnumerable<TSource> WhereDynamic<TSource, TFilter>(this IEnumerable<TSource> source, TFilter filtro)
         {
-            valorParameterExpression = "";            
+            valorParameterExpression = "";
 
             IEnumerable<PropertyInfo> propriedadesFiltro = ListarPropertiesInfo(filtro);
 
@@ -139,7 +139,7 @@ namespace WhereDynamic.Extensions
                         valorPropriedade,
                         typeof(IEnumerable).GetMethod("Any")
                     );
-                
+
 
             BinaryExpression expressaoTemp = Expression.Equal(nomePropriedade, valorPropriedade);
 
