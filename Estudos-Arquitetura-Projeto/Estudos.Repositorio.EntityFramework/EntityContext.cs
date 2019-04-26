@@ -43,29 +43,36 @@ namespace Estudos.Repositorio.EntityFrameworkCore
 
         public Task<T> InserirEntidade<T>(T entidade) where T : AEntidade
         {
-            Set<T>().Add(entidade);
-            SaveChanges();
-            return Task.Run(() => entidade);
+            return Task.Run(() =>
+            {
+                Set<T>().Add(entidade);
+                SaveChanges();
+                return entidade;
+            });
         }
 
         public Task<T> AtualizarEntidade<T>(T entidade) where T : AEntidade
         {
-            T entidadeBanco = this.Find(entidade);
-            Entry(entidadeBanco).CurrentValues.SetValues(entidade);
-            Entry(entidadeBanco).State = EntityState.Modified;
+            return Task.Run(() =>
+            {
+                T entidadeBanco = this.Find(entidade);
+                Entry(entidadeBanco).CurrentValues.SetValues(entidade);
+                Entry(entidadeBanco).State = EntityState.Modified;
 
-            SaveChanges();
+                SaveChanges();
 
-            return Task.Run(() => entidadeBanco);
+                return entidadeBanco;
+            });
         }
 
         public Task ExcluirEntidade<T>(T entidade) where T : AEntidade
         {
-            var entidadeBanco = this.Find(entidade);
-            Set<T>().Remove(entidadeBanco);
-            SaveChanges();
-
-            return Task.Run(() => { });
+            return Task.Run(() =>
+            {
+                var entidadeBanco = this.Find(entidade);
+                Set<T>().Remove(entidadeBanco);
+                SaveChanges();
+            });
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
