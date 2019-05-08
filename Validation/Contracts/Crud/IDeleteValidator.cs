@@ -1,7 +1,5 @@
 ﻿namespace Validation.Contracts.Crud
 {
-    public interface IDeleteValidator
-    {
-        IValidate Validate { get; set; }
-    }
+    public interface IDeleteValidator : IValidate
+    { }
 }
