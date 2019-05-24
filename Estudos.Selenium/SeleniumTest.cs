@@ -77,6 +77,9 @@ namespace Estudos.Selenium
 
         private void ObterIntervaloAlmoco(List<Periodo> periodos)
         {
+            if (periodos.Select(lnq => lnq.PeriodoFinal.Subtract(lnq.PeriodoInicial)).Aggregate(TimeSpan.Zero, (acc, nextObj) => acc.Add(nextObj)).CompareTo(new TimeSpan(6, 0, 0)) <= 0)
+                return;
+
             var meioDia = new TimeSpan(12, 0, 0);
 
             var periodoParteTardeMaisProximoMeioDia = periodos.Select(lnq => lnq.PeriodoInicial).Any(lnq => lnq.CompareTo(meioDia) >= 0)
@@ -100,26 +103,11 @@ namespace Estudos.Selenium
 
         private void ConstruiPeriodoAlmoco(List<Periodo> periodoAlmoco, int indice)
         {
-            var meioDia = new TimeSpan(12, 0, 0);
-            if (periodoAlmoco[indice].PeriodoFinal.Subtract(periodoAlmoco[indice].PeriodoInicial).CompareTo(new TimeSpan(6, 0, 0)) <= 0)
-                //&& periodoAlmoco.Select(lnq => lnq.PeriodoFinal.Subtract(lnq.PeriodoInicial)).Any(lnq => lnq.CompareTo(new TimeSpan(1,0,0)) >= 0))
-                return;
+            var meioDia = new TimeSpan(12, 0, 0);            
 
             var periodoParteTarde = new Periodo(periodoAlmoco[indice].PeriodoFinal.Subtract(periodoAlmoco[indice].PeriodoFinal.Subtract(periodoAlmoco[indice].PeriodoInicial).Divide(2)), periodoAlmoco[indice].PeriodoFinal);
             periodoAlmoco[indice].PeriodoFinal = periodoParteTarde.PeriodoInicial.Subtract(new TimeSpan(1, 0, 0));
             periodoAlmoco.Insert(indice + 1, periodoParteTarde);
-
-            //if (periodoAlmoco[indice].PeriodoInicial.CompareTo(meioDia) == -1 
-            //    && (meioDia.Subtract(periodoAlmoco[indice].PeriodoInicial).CompareTo(new TimeSpan(2, 0, 0)) >= 0))
-            //{
-            //    var periodoParteTarde = new Periodo(periodoAlmoco[indice].PeriodoFinal.Subtract(new TimeSpan(1, 0, 0)), periodoAlmoco[indice].PeriodoFinal);
-            //    periodoAlmoco[indice].PeriodoFinal = periodoParteTarde.PeriodoFinal.Subtract(new TimeSpan(2, 0, 0));
-            //    periodoAlmoco.Insert(indice + 1, periodoParteTarde);
-            //}
-            //else
-            //{
-
-            //}
         }
 
         private void DefinirPeriodoAlmoco(List<Periodo> periodos, int indiceParteManha, int indiceParteTarde)
@@ -133,16 +121,17 @@ namespace Estudos.Selenium
 
         public static IEnumerable<object[]> Cenarios_Intervalo_Periodo_Almoco =>
             new List<object[]>
-            {                
-                 new object[]{new List<Periodo> { new Periodo(new TimeSpan(8, 0, 0), new TimeSpan(17, 0, 0)) }, new List<Periodo> { new Periodo(new TimeSpan(8, 0, 0), new TimeSpan(11, 30, 0)), new Periodo(new TimeSpan(12, 30, 0), new TimeSpan(17, 0, 0)) } },
-                 //new object[]{new List<Periodo> { new Periodo(new TimeSpan(8, 0, 0), new TimeSpan(15, 0, 0)) }, new List<Periodo> { new Periodo(new TimeSpan(8, 0, 0), new TimeSpan(12, 0, 0)), new Periodo(new TimeSpan(13, 0, 0), new TimeSpan(15, 0, 0)) } },
-                 //new object[]{new List<Periodo> { new Periodo(new TimeSpan(11, 0, 0), new TimeSpan(20, 0, 0)) }, new List<Periodo> { new Periodo(new TimeSpan(11, 0, 0), new TimeSpan(13, 0, 0)), new Periodo(new TimeSpan(14, 0, 0), new TimeSpan(20, 0, 0)) } },
-                 //new object[]{new List<Periodo> { new Periodo(new TimeSpan(12, 0, 0), new TimeSpan(20, 0, 0)) }, new List<Periodo> { new Periodo(new TimeSpan(12, 0, 0), new TimeSpan(15, 0, 0)), new Periodo(new TimeSpan(16, 0, 0), new TimeSpan(20, 0, 0)) } },
-                 //new object[]{new List<Periodo> { new Periodo(new TimeSpan(11, 0, 0), new TimeSpan(20, 0, 0)) }, new List<Periodo> { new Periodo(new TimeSpan(11, 0, 0), new TimeSpan(14, 30, 0)), new Periodo(new TimeSpan(15, 30, 0), new TimeSpan(20, 0, 0)) } },
-                 //new object[]{new List<Periodo> { new Periodo(new TimeSpan(9, 0, 0), new TimeSpan(20, 0, 0)) }, new List<Periodo> { new Periodo(new TimeSpan(11, 0, 0), new TimeSpan(14, 30, 0)), new Periodo(new TimeSpan(15, 30, 0), new TimeSpan(20, 0, 0)) } },
-                 //new object[]{new List<Periodo> { new Periodo(new TimeSpan(8, 0, 0), new TimeSpan(12, 0, 0)) }, new List<Periodo> { new Periodo(new TimeSpan(8, 0, 0), new TimeSpan(12, 0, 0)) } },
-                 //new object[]{new List<Periodo> { new Periodo(new TimeSpan(12, 0, 0), new TimeSpan(17, 0, 0)) }, new List<Periodo> { new Periodo(new TimeSpan(12, 0, 0), new TimeSpan(17, 0, 0)) } },                 
-                 //new object[]{new List<Periodo> { new Periodo(new TimeSpan(5, 0, 0), new TimeSpan(12, 0, 0)) }, new List<Periodo> { new Periodo(new TimeSpan(5, 0, 0), new TimeSpan(10, 0, 0)), new Periodo(new TimeSpan(11,0,0), new TimeSpan(12,0,0)) } },
+            {
+                new object[]{new List<Periodo> { new Periodo(new TimeSpan(8, 0, 0), new TimeSpan(9, 0, 0)), new Periodo(new TimeSpan(9,15,0), new TimeSpan(13,0,0)), new Periodo(new TimeSpan(13,20,0), new TimeSpan(18,0,0)) }, new List<Periodo> { new Periodo(new TimeSpan(8, 0, 0), new TimeSpan(11, 30, 0)), new Periodo(new TimeSpan(12, 30, 0), new TimeSpan(17, 0, 0))} }
+                //new object[]{new List<Periodo> { new Periodo(new TimeSpan(8, 0, 0), new TimeSpan(17, 0, 0)) }, new List<Periodo> { new Periodo(new TimeSpan(8, 0, 0), new TimeSpan(11, 30, 0)), new Periodo(new TimeSpan(12, 30, 0), new TimeSpan(17, 0, 0)) } },
+                //new object[]{new List<Periodo> { new Periodo(new TimeSpan(8, 0, 0), new TimeSpan(15, 0, 0)) }, new List<Periodo> { new Periodo(new TimeSpan(8, 0, 0), new TimeSpan(10, 30, 0)), new Periodo(new TimeSpan(11, 30, 0), new TimeSpan(15, 0, 0)) } },
+                //new object[]{new List<Periodo> { new Periodo(new TimeSpan(11, 0, 0), new TimeSpan(20, 0, 0)) }, new List<Periodo> { new Periodo(new TimeSpan(11, 0, 0), new TimeSpan(14, 30, 0)), new Periodo(new TimeSpan(15, 30, 0), new TimeSpan(20, 0, 0)) } },
+                //new object[]{new List<Periodo> { new Periodo(new TimeSpan(12, 0, 0), new TimeSpan(20, 0, 0)) }, new List<Periodo> { new Periodo(new TimeSpan(12, 0, 0), new TimeSpan(15, 0, 0)), new Periodo(new TimeSpan(16, 0, 0), new TimeSpan(20, 0, 0)) } },
+                //new object[]{new List<Periodo> { new Periodo(new TimeSpan(11, 0, 0), new TimeSpan(20, 0, 0)) }, new List<Periodo> { new Periodo(new TimeSpan(11, 0, 0), new TimeSpan(14, 30, 0)), new Periodo(new TimeSpan(15, 30, 0), new TimeSpan(20, 0, 0)) } },
+                //new object[]{new List<Periodo> { new Periodo(new TimeSpan(9, 0, 0), new TimeSpan(20, 0, 0)) }, new List<Periodo> { new Periodo(new TimeSpan(9, 0, 0), new TimeSpan(13, 30, 0)), new Periodo(new TimeSpan(14, 30, 0), new TimeSpan(20, 0, 0)) } },
+                //new object[]{new List<Periodo> { new Periodo(new TimeSpan(8, 0, 0), new TimeSpan(12, 0, 0)) }, new List<Periodo> { new Periodo(new TimeSpan(8, 0, 0), new TimeSpan(12, 0, 0)) } },
+                //new object[]{new List<Periodo> { new Periodo(new TimeSpan(12, 0, 0), new TimeSpan(17, 0, 0)) }, new List<Periodo> { new Periodo(new TimeSpan(12, 0, 0), new TimeSpan(17, 0, 0)) } },
+                //new object[]{new List<Periodo> { new Periodo(new TimeSpan(5, 0, 0), new TimeSpan(12, 0, 0)) }, new List<Periodo> { new Periodo(new TimeSpan(5, 0, 0), new TimeSpan(7, 30, 0)), new Periodo(new TimeSpan(8,30,0), new TimeSpan(12,0,0)) } },
             };
     }
 }
