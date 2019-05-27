@@ -32,14 +32,16 @@ namespace Estudos.Selenium
 
                 //_driver.Navigate().GoToUrl("http://sqhoras:8085/timesheetColaborador.asp?date=5/22/2019");
                 _driver.Navigate().GoToUrl("http://www.squadra.com.br/sqhoras/timesheetColaborador.asp?date=5/22/2019");
-                _driver.FindElementByXPath("//td[@nomealocacao='28563-SOFTPLAN - SQUAD 1 - NÚCLEO BH .NET/ATUAÇÃO TIME 2019/ANALISTA DESENVOLVEDOR']").Click();
 
+                var periodosApropriados = _driver.FindElementsByXPath("(//td[@cor='#0000ff']/..)//td[@height='1']").Select(lnq => TimeSpan.Parse(lnq.Text)).ToList();
+                if(periodosApropriados.Any())
+                    throw new Exception();
 
-                var periodoApropriado = _driver.FindElementsByXPath("(//td[@cor='#0000ff']/..)//td[@height='1']").Select(lnq => TimeSpan.Parse(lnq.Text)).ToList();
+                _driver.FindElementByXPath("//td[@nomealocacao='28563-SOFTPLAN - SQUAD 1 - NÚCLEO BH .NET/ATUAÇÃO TIME 2019/ANALISTA DESENVOLVEDOR']").Click();                
 
-                var periodoAcessoAEmpresa = _driver.FindElementsByXPath("(//td[@cor='#000000']/..)//td[@height='1']").Select(lnq => TimeSpan.Parse(lnq.Text)).ToList();
+                var periodosAcessoAEmpresa = _driver.FindElementsByXPath("(//td[@cor='#000000']/..)//td[@height='1']").Select(lnq => TimeSpan.Parse(lnq.Text)).ToList();
 
-                if (periodoAcessoAEmpresa.Count % 2 != 0)
+                if (periodosAcessoAEmpresa.Count % 2 != 0)
                 {
                     _driver.ExecuteScript("alert('Sua régua está bugada amigão !!!')");
 
@@ -51,8 +53,9 @@ namespace Estudos.Selenium
 
                 var previsaoATrabalhar = TimeSpan.Parse(_driver.FindElementByXPath("//td/b/font[@color='RED'][@class='texto2']").Text.Split(" ")[0]);
 
-                var periodos = ListarPeriodos(periodoAcessoAEmpresa);
+                var periodos = ListarPeriodos(periodosAcessoAEmpresa);
                 ObterIntervaloAlmoco(periodos);
+                ObterPeriodoTrabalhado(periodos, previsaoATrabalhar);
 
 
 
@@ -109,6 +112,18 @@ namespace Estudos.Selenium
                 ConstruiPeriodoAlmoco(periodos, valorPeriodoTarde.indicePeriodo);
             else
                 DefinirPeriodoAlmoco(periodos, valorPeriodoManha.indicePeriodo, valorPeriodoTarde.indicePeriodo);
+        }
+
+        private void ObterPeriodoTrabalhado(List<Periodo> periodos, TimeSpan previsaoATrabalhar)
+        {
+            var periodoTrabalhado = periodos.Select(lnq => lnq.PeriodoFinal.Subtract(lnq.PeriodoInicial))
+                .Aggregate(new TimeSpan(0, 0, 0), (acc, periodo) => acc.Add(periodo));
+
+            //if(periodoTrabalhado.CompareTo(previsaoATrabalhar) == 1)
+            //{
+            //    periodoTrabalhado.Subtract()
+            //}
+
         }
 
         private void ConstruiPeriodoAlmoco(List<Periodo> periodoAlmoco, int indice)

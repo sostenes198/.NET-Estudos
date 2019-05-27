@@ -5,7 +5,7 @@
         protected Constantes()
         { }
 
-        public const string Login = "sostenes.goncalves";
-        public const string Senha = "539624eddas_";
+        public const string Login = "";
+        public const string Senha = "";
     }
 }
