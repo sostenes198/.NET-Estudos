@@ -1,11 +1,9 @@
 using FluentAssertions;
 using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
-using System.Threading.Tasks;
 using Xunit;
 
 namespace Estudos.Selenium
@@ -37,11 +35,11 @@ namespace Estudos.Selenium
                 if(periodosApropriados.Any())
                     throw new Exception();
 
-                _driver.FindElementByXPath("//td[@nomealocacao='28563-SOFTPLAN - SQUAD 1 - NÚCLEO BH .NET/ATUAÇÃO TIME 2019/ANALISTA DESENVOLVEDOR']").Click();                
+                _driver.FindElementByXPath("//td[@nomealocacao='28563-SOFTPLAN - SQUAD 1 - NÚCLEO BH .NET/ATUAÇÃO TIME 2019/ANALISTA DESENVOLVEDOR']").Click();
 
                 var periodosAcessoAEmpresa = _driver.FindElementsByXPath("(//td[@cor='#000000']/..)//td[@height='1']").Select(lnq => TimeSpan.Parse(lnq.Text)).ToList();
 
-                if (periodosAcessoAEmpresa.Count % 2 != 0)
+                if(periodosAcessoAEmpresa.Count % 2 != 0)
                 {
                     _driver.ExecuteScript("alert('Sua régua está bugada amigão !!!')");
 
@@ -64,7 +62,7 @@ namespace Estudos.Selenium
             catch(Exception ex)
             {
                 _driver.Quit();
-                true.Should().BeFalse(ex.ToString());                
+                true.Should().BeFalse(ex.ToString());
             }
         }
 
@@ -80,7 +78,7 @@ namespace Estudos.Selenium
         private List<Periodo> ListarPeriodos(List<TimeSpan> elementos)
         {
             var periodos = new List<Periodo>();
-            for (var i = 0; i < elementos.Count; i += 2)
+            for(var i = 0; i < elementos.Count; i += 2)
                 periodos.Add(new Periodo(elementos[i], elementos[i + 1]));
 
             return periodos;
@@ -88,7 +86,7 @@ namespace Estudos.Selenium
 
         private void ObterIntervaloAlmoco(List<Periodo> periodos)
         {
-            if (periodos.Select(lnq => lnq.PeriodoFinal.Subtract(lnq.PeriodoInicial)).Aggregate(TimeSpan.Zero, (acc, nextObj) => acc.Add(nextObj)).CompareTo(new TimeSpan(6, 0, 0)) <= 0)
+            if(periodos.Select(lnq => lnq.PeriodoFinal.Subtract(lnq.PeriodoInicial)).Aggregate(TimeSpan.Zero, (acc, nextObj) => acc.Add(nextObj)).CompareTo(new TimeSpan(6, 0, 0)) <= 0)
                 return;
 
             var meioDia = new TimeSpan(12, 0, 0);
@@ -128,7 +126,7 @@ namespace Estudos.Selenium
 
         private void ConstruiPeriodoAlmoco(List<Periodo> periodoAlmoco, int indice)
         {
-            var meioDia = new TimeSpan(12, 0, 0);            
+            var meioDia = new TimeSpan(12, 0, 0);
 
             var periodoParteTarde = new Periodo(periodoAlmoco[indice].PeriodoFinal.Subtract(periodoAlmoco[indice].PeriodoFinal.Subtract(periodoAlmoco[indice].PeriodoInicial).Divide(2)), periodoAlmoco[indice].PeriodoFinal);
             periodoAlmoco[indice].PeriodoFinal = periodoParteTarde.PeriodoInicial.Subtract(new TimeSpan(1, 0, 0));
@@ -139,7 +137,7 @@ namespace Estudos.Selenium
         {
             var umaHora = new TimeSpan(1, 0, 0);
 
-            if (periodos[indiceParteTarde].PeriodoInicial.Subtract(periodos[indiceParteManha].PeriodoFinal).CompareTo(umaHora) == -1)
+            if(periodos[indiceParteTarde].PeriodoInicial.Subtract(periodos[indiceParteManha].PeriodoFinal).CompareTo(umaHora) == -1)
                 periodos[indiceParteTarde].PeriodoInicial = periodos[indiceParteManha].PeriodoFinal.Add(umaHora);
 
         }
