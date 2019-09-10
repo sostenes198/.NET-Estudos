@@ -3,9 +3,9 @@ using System.Threading.Tasks;
 
 namespace AsyncAwait.IterarNumeros
 {
-    public class TesteIterarNumeroAsyncContiueWith
+    public class TesteIterNumeroAsyncSemCriarNovaTask
     {
-        public static void InterarNumero()
+        public static Task InterarNumero()
         {
             var task = IterarAsync();
             
@@ -15,7 +15,7 @@ namespace AsyncAwait.IterarNumeros
                 Console.WriteLine(x);
             }
 
-            task.ConfigureAwait(false);
+            return task;
         }
 
         private static Task IterarAsync()

@@ -1,0 +1,24 @@
+Thread Pool/Context Syncronization
+
+Async Await
+
+Melhoras práticas 
+
+Não utilize async e await quando não é necessário, principalemente quando for paralelizar threads para execução de CPU
+
+
+Use GetAwaiter().GetResult() ao invés de se utilizar .Result ou .Await()
+
+
+Quando a o retorno de seu método for a Task, retorno diretamente a Task 
+Removendo async
+Exceto dentro de blocos try/catch e blocos using
+
+
+Utilizae ConfigureAwait(false)
+Execeto quando é necessário obter o retorno da Task
+(SafeFireForgot).
+
+Utilie ValueTask quando possível
+
+Use e abuse de configure ContinueWith quando possível
