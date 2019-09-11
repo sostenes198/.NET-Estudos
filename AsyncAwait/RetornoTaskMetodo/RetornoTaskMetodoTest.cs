@@ -8,18 +8,11 @@ namespace AsyncAwait.RetornoTaskMetodo
     {
         public static async Task TestarRetornoTaskMetodo()
         {
-            Console.Write(await TesteObterResultadoMetodoTaskFormaIncorreta.ObterResultado());
-            Console.Write("\n\n\n");
-            Console.Write(await TesteObterResultadoMetodoTaskFormaCorreta.ObterResultado());
-            Console.Write("\n\n\n");
-            TesteObterResultadoMetodoTaskBlocoTryCatchIncorreto.ObterResultado();
-            Console.WriteLine("AWE");
-            Console.WriteLine("AWE");
-            Console.Write("\n");
-            TesteObterResultadoMetodoTaskBlocoTryCatchCorreto.ObterResultado();
-            Console.WriteLine("AWE");
-            Console.WriteLine("AWE");
-            await Task.Delay(1000);
+            var resultadoFormaIncorreta = await TesteObterResultadoMetodoTaskFormaIncorreta.ObterResultado();
+            Console.Write(resultadoFormaIncorreta);
+
+            var resultadoFormaCorreta = await TesteObterResultadoMetodoTaskFormaCorreta.ObterResultado();
+            Console.Write(resultadoFormaCorreta);
         }
     }
 }

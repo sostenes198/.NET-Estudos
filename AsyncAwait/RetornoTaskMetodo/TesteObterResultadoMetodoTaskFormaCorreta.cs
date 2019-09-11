@@ -6,34 +6,12 @@ namespace AsyncAwait.RetornoTaskMetodo
 {
     public class TesteObterResultadoMetodoTaskFormaCorreta
     {
-        public static Task<int> ObterResultado()
-        {
-            Console.WriteLine($"Thread Id forma correta: {Thread.CurrentThread.ManagedThreadId}");
-            Console.WriteLine($"Task Id forma correta: {Task.CurrentId}");
-            return ObterResultado1();
-        }
-        
-        private static Task<int> ObterResultado1()
-        {
-            Console.WriteLine($"Thread Id forma correta: {Thread.CurrentThread.ManagedThreadId}");
-            Console.WriteLine($"Task Id forma correta: {Task.CurrentId}");
-            return ObterResultado2();
-        }   
-        
-        private static Task<int> ObterResultado2()
-        {
-            Console.WriteLine($"Thread Id forma correta: {Thread.CurrentThread.ManagedThreadId}");
-            Console.WriteLine($"Task Id forma correta: {Task.CurrentId}");
-            return ObterResultado3();
-        }
-        
-        private static Task<int> ObterResultado3()
-        {
-            return Task.Run(() =>{
-                Console.WriteLine($"Thread Id forma correta: {Thread.CurrentThread.ManagedThreadId}");
-                Console.WriteLine($"Task Id forma correta: {Task.CurrentId}");
-                return 10;
-            });
-        }
+        public static Task<int> ObterResultado() => ObterResultado1();
+
+        private static Task<int> ObterResultado1() => ObterResultado2();
+
+        private static Task<int> ObterResultado2() => ObterResultado3();
+
+        private static Task<int> ObterResultado3() => Task.Run(() => 10);
     }
 }

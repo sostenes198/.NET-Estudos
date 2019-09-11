@@ -14,7 +14,7 @@ namespace AsyncAwait
     {
         static async Task Main(string[] args)
         {
-            await ContinueWithTest.TestarContinueWith();
+            await GetAwaitGetResultTest.TestarGetAwaiterGetResult();
         }
     }
 }

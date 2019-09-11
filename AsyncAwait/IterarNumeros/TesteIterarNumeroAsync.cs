@@ -6,7 +6,7 @@ namespace AsyncAwait.IterarNumeros
 {
     public class TesteIterarNumeroAsync
     {
-        public static async Task InterarNumero()
+        public static async Task InterarNumeroAsync()
         {
             var task = IterarAsync();
             

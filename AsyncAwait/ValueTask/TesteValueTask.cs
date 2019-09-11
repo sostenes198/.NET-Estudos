@@ -6,16 +6,6 @@ namespace AsyncAwait.ValueTask
     {
         public static ValueTask<int> ObterResultado()
         {
-            return ObterResultado1();
-        }
-
-        private static ValueTask<int> ObterResultado1()
-        {
-            return ObterResultado2();
-        }
-
-        private static ValueTask<int> ObterResultado2()
-        {
             return new ValueTask<int>(Task.Run(() => 10));
         }
     }
