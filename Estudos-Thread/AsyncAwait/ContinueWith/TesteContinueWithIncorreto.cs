@@ -9,10 +9,7 @@ namespace AsyncAwait.ContinueWith
             var result = await ObterResultado1();
             return result == 10;
         }
-        
-        public static Task<int> ObterResultado1()
-        {
-            return Task.Run(() => 9);
-        }
+
+        private static Task<int> ObterResultado1() => Task.Run(() => 9);
     }
 }

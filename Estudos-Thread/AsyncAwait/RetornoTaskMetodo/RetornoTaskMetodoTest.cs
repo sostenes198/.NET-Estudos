@@ -1,6 +1,5 @@
 using System;
 using System.Threading.Tasks;
-using AsyncAwait.GetAwaitGetResult;
 
 namespace AsyncAwait.RetornoTaskMetodo
 {

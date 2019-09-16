@@ -1,5 +1,3 @@
-using System;
-
 namespace AsyncAwait.ConfigureAwait
 {
     public class ConfigureAwaitTest

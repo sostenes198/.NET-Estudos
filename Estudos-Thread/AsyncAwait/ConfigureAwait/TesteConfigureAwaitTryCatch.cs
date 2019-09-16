@@ -5,10 +5,7 @@ namespace AsyncAwait.ConfigureAwait
 {
     public class TesteConfigureAwaitTryCatch
     {
-        public static void ObterResultado()
-        {
-            GerarResultadoAsync().ConfigureAwait(false);
-        }
+        public static void ObterResultado() => GerarResultadoAsync().ConfigureAwait(false);
 
         private static async Task GerarResultadoAsync()
         {
@@ -22,9 +19,6 @@ namespace AsyncAwait.ConfigureAwait
             }
         }
 
-        private static Task GerarResultadoAsync1()
-        {
-            return Task.Run(() => { throw new Exception("Mensagem de Erro"); });
-        }
+        private static Task GerarResultadoAsync1() => Task.Run(() => throw new Exception("Mensagem de Erro"));
     }
 }

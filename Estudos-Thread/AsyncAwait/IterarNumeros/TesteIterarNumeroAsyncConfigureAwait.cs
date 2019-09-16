@@ -1,27 +1,25 @@
 using System;
-using System.Threading;
 using System.Threading.Tasks;
 
 namespace AsyncAwait.IterarNumeros
 {
-    public class TesteIterarNumeroAsync
+    public class TesteIterarNumeroAsyncConfigureAwait
     {
-        public static async Task InterarNumeroAsync()
+        public static void InterarNumero()
         {
             var task = IterarAsync();
-            
+
             for (int i = 0; i < 10; i++)
             {
                 var x = i;
                 Console.WriteLine(x);
             }
 
-            await task;
+            task.ConfigureAwait(false);
         }
 
-        private static Task IterarAsync()
-        {
-            return Task.Run(() =>
+        private static Task IterarAsync() =>
+            Task.Run(() =>
             {
                 for (int i = 0; i < 10; i++)
                 {
@@ -29,6 +27,5 @@ namespace AsyncAwait.IterarNumeros
                     Console.WriteLine(x);
                 }
             });
-        }
     }
 }
