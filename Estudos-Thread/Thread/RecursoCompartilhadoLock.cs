@@ -2,7 +2,7 @@ using System;
 
 namespace Thread
 {
-    public static class RecursoCompartilhado
+    public static class RecursoCompartilhadoLock
     {
         static int Count = 0;
 
