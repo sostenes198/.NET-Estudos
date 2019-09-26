@@ -34,5 +34,19 @@ namespace Estudos.Blockchain.Models
             block.Hash = block.CalculateHash();
             Chain.Add(block);
         }
+
+        public bool IsValid()
+        {
+            for (var i = 1; i < Chain.Count; i++)
+            {
+                var currentBlock = Chain[i];
+                var previousBlock = Chain[i - 1];
+
+                if (currentBlock.Hash != currentBlock.CalculateHash()) return false;
+                if (currentBlock.PreviousHash != previousBlock.Hash) return false;
+            }
+
+            return true;
+        }
     }
 }

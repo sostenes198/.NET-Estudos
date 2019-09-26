@@ -14,6 +14,13 @@ namespace Estudos.Blockchain.Console
             phillyCoin.AddBlock(new Block(DateTime.Now, null, "{sender:Mahesh,receiver:Henry,amount:5}"));
 
             System.Console.WriteLine(JsonConvert.SerializeObject(phillyCoin, Formatting.Indented));
+            
+            System.Console.WriteLine($"Is Chain Valid: {phillyCoin.IsValid()}");  
+  
+            System.Console.WriteLine($"Update amount to 1000");  
+            phillyCoin.Chain[1].Content = "{sender:Henry,receiver:MaHesh,amount:1000}";  
+  
+            System.Console.WriteLine($"Is Chain Valid: {phillyCoin.IsValid()}");  
         }
     }
 }
