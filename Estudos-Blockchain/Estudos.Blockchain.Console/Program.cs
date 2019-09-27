@@ -1,6 +1,6 @@
 ﻿using System;
+using System.Text.Json;
 using Estudos.Blockchain.Models;
-using Newtonsoft.Json;
 
 namespace Estudos.Blockchain.Console
 {
@@ -8,19 +8,32 @@ namespace Estudos.Blockchain.Console
     {
         private static void Main(string[] args)
         {
-            var phillyCoin = new Models.Blockchain();
-            phillyCoin.AddBlock(new Block(DateTime.Now, null, "{sender:Henry,receiver:MaHesh,amount:10}"));
-            phillyCoin.AddBlock(new Block(DateTime.Now, null, "{sender:MaHesh,receiver:Henry,amount:5}"));
-            phillyCoin.AddBlock(new Block(DateTime.Now, null, "{sender:Mahesh,receiver:Henry,amount:5}"));
+            var startTime = DateTime.Now;
 
-            System.Console.WriteLine(JsonConvert.SerializeObject(phillyCoin, Formatting.Indented));
+            Models.Blockchain phillyCoin = new Models.Blockchain();
             
-            System.Console.WriteLine($"Is Chain Valid: {phillyCoin.IsValid()}");  
+            System.Console.WriteLine(JsonSerializer.Serialize(phillyCoin, new JsonSerializerOptions {WriteIndented = true}));
+            
+            phillyCoin.CreateTransaction(new Transaction("Henry", "MaHesh", 10));  
+            phillyCoin.ProcessPendingTransactions("Bill");  
+            System.Console.WriteLine(JsonSerializer.Serialize(phillyCoin, new JsonSerializerOptions {WriteIndented = true}));  
   
-            System.Console.WriteLine($"Update amount to 1000");  
-            phillyCoin.Chain[1].Content = "{sender:Henry,receiver:MaHesh,amount:1000}";  
+            phillyCoin.CreateTransaction(new Transaction("MaHesh", "Henry", 5));  
+            phillyCoin.CreateTransaction(new Transaction("MaHesh", "Henry", 5));  
+            phillyCoin.ProcessPendingTransactions("Bill");  
+            phillyCoin.ProcessPendingTransactions("Bill");  
+            phillyCoin.ProcessPendingTransactions("Bill");  
+            phillyCoin.ProcessPendingTransactions("Bill");  
+            phillyCoin.ProcessPendingTransactions("Bill");  
+            System.Console.WriteLine(JsonSerializer.Serialize(phillyCoin, new JsonSerializerOptions {WriteIndented = true}));
+            
+            System.Console.WriteLine("=========================");  
+            System.Console.WriteLine($"Henry' balance: {phillyCoin.GetBalance("Henry")}");  
+            System.Console.WriteLine($"MaHesh' balance: {phillyCoin.GetBalance("MaHesh")}");  
+            System.Console.WriteLine($"Bill' balance: {phillyCoin.GetBalance("Bill")}");  
   
-            System.Console.WriteLine($"Is Chain Valid: {phillyCoin.IsValid()}");  
+            System.Console.WriteLine("=========================");  
+            System.Console.WriteLine($"phillyCoin");  
         }
     }
 }
