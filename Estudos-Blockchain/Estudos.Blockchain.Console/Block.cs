@@ -1,10 +1,10 @@
+﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Security.Cryptography;
 using System.Text;
-using System.Text.Json;
 
-namespace Estudos.Blockchain.Models
+namespace BlockchainDemo
 {
     public class Block
     {
@@ -27,18 +27,19 @@ namespace Estudos.Blockchain.Models
         {
             SHA256 sha256 = SHA256.Create();
 
-            var inputBytes = Encoding.ASCII.GetBytes($"{TimeStamp}-{PreviousHash ?? ""}-{JsonSerializer.Serialize(Transactions)}-{Nonce}");
-            var outputBytes = sha256.ComputeHash(inputBytes);
+            byte[] inputBytes = Encoding.ASCII.GetBytes($"{TimeStamp}-{PreviousHash ?? ""}-{JsonConvert.SerializeObject(Transactions)}-{Nonce}");
+            byte[] outputBytes = sha256.ComputeHash(inputBytes);
+
             return Convert.ToBase64String(outputBytes);
         }
 
         public void Mine(int difficulty)
         {
             var leadingZeros = new string('0', difficulty);
-            while (Hash == null || Hash.Substring(0, difficulty) != leadingZeros)
+            while (this.Hash == null || this.Hash.Substring(0, difficulty) != leadingZeros)
             {
-                ++Nonce;
-                Hash = CalculateHash();
+                this.Nonce++;
+                this.Hash = this.CalculateHash();
             }
         }
     }
