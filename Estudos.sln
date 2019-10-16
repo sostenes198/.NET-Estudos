@@ -101,6 +101,16 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Estudos-Blockchain", "Estud
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Estudos.Blockchain.Console", "Estudos-Blockchain\Estudos.Blockchain.Console\Estudos.Blockchain.Console.csproj", "{920AF98E-25B2-4084-9BD5-55A7E442E776}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Estudos-IdentityServer", "Estudos-IdentityServer", "{A42B5F95-5742-4A66-A41C-AB8F77DD2BED}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Exemplo-1-SecuringApiUsingClientCredentials", "Exemplo-1-SecuringApiUsingClientCredentials", "{ED403A2E-9C92-4B2B-B3D6-75E18FF4CD4A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityServer", "Estudos-IdentityServer\Exemplo-1-SecuringApiUsingClientCredentials\IdentityServer\IdentityServer.csproj", "{72B52B26-681D-45B6-8012-22246D6E14BD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api", "Estudos-IdentityServer\Exemplo-1-SecuringApiUsingClientCredentials\Api\Api.csproj", "{BD317A36-5F06-4DC1-BC5A-0875EE20076D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client", "Estudos-IdentityServer\Exemplo-1-SecuringApiUsingClientCredentials\Client\Client.csproj", "{5FA5B74A-9EFC-4952-BA72-702F7145953B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -227,6 +237,18 @@ Global
 		{920AF98E-25B2-4084-9BD5-55A7E442E776}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{920AF98E-25B2-4084-9BD5-55A7E442E776}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{920AF98E-25B2-4084-9BD5-55A7E442E776}.Release|Any CPU.Build.0 = Release|Any CPU
+		{72B52B26-681D-45B6-8012-22246D6E14BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{72B52B26-681D-45B6-8012-22246D6E14BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{72B52B26-681D-45B6-8012-22246D6E14BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{72B52B26-681D-45B6-8012-22246D6E14BD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BD317A36-5F06-4DC1-BC5A-0875EE20076D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD317A36-5F06-4DC1-BC5A-0875EE20076D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD317A36-5F06-4DC1-BC5A-0875EE20076D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD317A36-5F06-4DC1-BC5A-0875EE20076D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5FA5B74A-9EFC-4952-BA72-702F7145953B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5FA5B74A-9EFC-4952-BA72-702F7145953B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5FA5B74A-9EFC-4952-BA72-702F7145953B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5FA5B74A-9EFC-4952-BA72-702F7145953B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -270,6 +292,10 @@ Global
 		{E673AAC4-669D-40FC-A86B-BE52041584DB} = {D838D1C6-FD57-4BAD-AF0A-ED2736F6156F}
 		{6BD7A65B-D288-4981-B6A4-2D3413CAFABE} = {D838D1C6-FD57-4BAD-AF0A-ED2736F6156F}
 		{920AF98E-25B2-4084-9BD5-55A7E442E776} = {9D7524B7-30F9-492C-B0B5-FFFBDF148675}
+		{ED403A2E-9C92-4B2B-B3D6-75E18FF4CD4A} = {A42B5F95-5742-4A66-A41C-AB8F77DD2BED}
+		{72B52B26-681D-45B6-8012-22246D6E14BD} = {ED403A2E-9C92-4B2B-B3D6-75E18FF4CD4A}
+		{BD317A36-5F06-4DC1-BC5A-0875EE20076D} = {ED403A2E-9C92-4B2B-B3D6-75E18FF4CD4A}
+		{5FA5B74A-9EFC-4952-BA72-702F7145953B} = {ED403A2E-9C92-4B2B-B3D6-75E18FF4CD4A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C17E424A-53EB-4327-89AB-D8A758AE8E67}
