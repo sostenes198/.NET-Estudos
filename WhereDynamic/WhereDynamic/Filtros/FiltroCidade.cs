@@ -5,14 +5,9 @@ namespace WhereDynamic.Filtros
 {
     public class FiltroCidade
     {
-        public FiltroCidade()
-        { }
+        [WhereDynamic(nameof(Cidade.Id))] public int Codigo { get; set; }
 
-        [WhereDynamic(nameof(Cidade.Id))]
-        public int Codigo { get; set; }
-
-        [WhereDynamic(nameof(Cidade.UF))]
-        public string UF { get; set; }
+        [WhereDynamic(nameof(Cidade.UF))] public string UF { get; set; }
 
         public string Bairro { get; set; }
 

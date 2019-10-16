@@ -2,9 +2,6 @@
 {
     public class CardapioDTO
     {
-        public CardapioDTO()
-        { }
-
         public int Codigo { get; set; }
 
         public string Titulo { get; set; }

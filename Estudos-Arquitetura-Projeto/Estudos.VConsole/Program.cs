@@ -5,26 +5,23 @@ using SimpleInjector.Lifestyles;
 
 namespace Estudos.VConsole
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main()
         {
-
             var container = IoCSimpleInjector.InjetarDependencias();
 
             using (AsyncScopedLifestyle.BeginScope(container))
             {
+                var repositorioGenerico = container.GetInstance<ICardapioCategoriaRepositorio>();
 
-                ICardapioCategoriaRepositorio repositorioGenerico = container.GetInstance<ICardapioCategoriaRepositorio>();
-
-                var entidade = new CardapioCategoria()
+                var entidade = new CardapioCategoria
                 {
                     Descricao = "asdasd"
                 };
 
                 repositorioGenerico.InserirEntidade(entidade);
             }
-
         }
     }
 }

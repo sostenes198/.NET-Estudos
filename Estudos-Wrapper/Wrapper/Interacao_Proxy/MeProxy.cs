@@ -2,15 +2,15 @@ using System;
 
 namespace Wrapper.Interacao_Proxy
 {
-    public class MeProxy: IInteractor
+    public class MeProxy : IInteractor
     {
-        private Me m_wrappedObject;
+        private readonly Me m_wrappedObject;
 
         public MeProxy(Me wrappedObject)
         {
             m_wrappedObject = wrappedObject;
         }
-        
+
         public void Percieve(string percievedThing)
         {
             Console.WriteLine("Perception by Proxy");
@@ -22,9 +22,10 @@ namespace Wrapper.Interacao_Proxy
             Console.WriteLine("Change by Proxy");
             m_wrappedObject.Change(ref perceivedThing);
         }
+
         public override string ToString()
         {
-            return "I'm an apparition.  The real me says:" + m_wrappedObject.ToString();
+            return "I'm an apparition.  The real me says:" + m_wrappedObject;
         }
     }
 }

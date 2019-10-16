@@ -4,7 +4,11 @@ namespace Thread
 {
     public static class RecursoCompartilhadoLock
     {
-        static int Count = 0;
+        private static int Count;
+
+        private static readonly object _lockObject = new object();
+
+        private static readonly object _lockObjectCount = new object();
 
         public static void DisplayMessageWithouLock()
         {
@@ -12,8 +16,6 @@ namespace Thread
             System.Threading.Thread.Sleep(1000);
             Console.WriteLine("world of dotnet!]");
         }
-
-        private static object _lockObject = new object();
 
         public static void DisplayMessageWithLock()
         {
@@ -24,29 +26,25 @@ namespace Thread
                 Console.WriteLine("world of dotnet!]");
             }
         }
-        
+
         public static void IncrementCountWithoutLock()
         {
-            for (int i = 1; i <= 50000; i++)
+            for (var i = 1; i <= 50000; i++)
             {
                 Count++;
                 Console.WriteLine(Count);
             }
         }
 
-        private static object _lockObjectCount = new object();
-
         public static void IncrementCountWithLock()
         {
-            for (int i = 1; i <= 50000; i++)
-            {
+            for (var i = 1; i <= 50000; i++)
                 //Only protecting the shared Count variable
                 lock (_lockObjectCount)
                 {
                     Count++;
                     Console.WriteLine(Count);
                 }
-            }
         }
     }
 }

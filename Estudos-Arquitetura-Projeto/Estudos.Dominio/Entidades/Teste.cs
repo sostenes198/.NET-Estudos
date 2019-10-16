@@ -5,6 +5,5 @@ namespace Estudos.Dominio.Entidades
     [IoC]
     public class Teste : AEntidade
     {
-        public Teste() { }
     }
 }

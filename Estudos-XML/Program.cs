@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Collections;
-using System.IO;
 using System.Xml;
 
 namespace Estudos.XML
 {
     public class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             CriarXml();
             CriarXmlComTag();
@@ -18,7 +17,7 @@ namespace Estudos.XML
         {
             try
             {
-                XmlTextWriter writer = new XmlTextWriter(@"C:\TMP\filmes.xml", null);
+                var writer = new XmlTextWriter(@"C:\TMP\filmes.xml", null);
 
                 //inicia o documento xml
                 writer.WriteStartDocument();
@@ -33,9 +32,8 @@ namespace Estudos.XML
                 //Escreve o XML para o arquivo e fecha o objeto escritor
                 writer.Close();
                 Console.WriteLine("Arquivo XML gerado com sucesso.");
-
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.ToString());
             }
@@ -45,7 +43,7 @@ namespace Estudos.XML
         {
             try
             {
-                XmlTextWriter writer = new XmlTextWriter(@"C:\TMP\filmes2.xml", null);
+                var writer = new XmlTextWriter(@"C:\TMP\filmes2.xml", null);
 
                 //inicia o documento xml
                 writer.WriteStartDocument();
@@ -71,7 +69,7 @@ namespace Estudos.XML
                 writer.Close();
                 Console.WriteLine("Arquivo XML gerado com sucesso.");
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
             }
@@ -79,34 +77,28 @@ namespace Estudos.XML
 
         private static void LerXml()
         {
-            XmlTextReader reader = new XmlTextReader(@"C:\TMP\catalogo-livros.xml");
+            var reader = new XmlTextReader(@"C:\TMP\catalogo-livros.xml");
 
-            ArrayList elementos = new ArrayList();
+            var elementos = new ArrayList();
 
-            while(reader.Read())
-            {
-                switch(reader.NodeType)
+            while (reader.Read())
+                switch (reader.NodeType)
                 {
                     case XmlNodeType.Element:
-                        if(reader.HasAttributes)
-                        {
-                            while(reader.MoveToNextAttribute())
+                        if (reader.HasAttributes)
+                            while (reader.MoveToNextAttribute())
                                 elementos.Add(reader.Value);
-                        }
                         break;
                     case XmlNodeType.Text:
                         //Incluir o texto do elemento no ArrayList
                         elementos.Add(reader.Value);
                         break;
                 }
-            }
 
             //foreach(var num in elementos)
             //{
             //    lstXML.Items.Add(num);
             //}
         }
-
-
     }
 }

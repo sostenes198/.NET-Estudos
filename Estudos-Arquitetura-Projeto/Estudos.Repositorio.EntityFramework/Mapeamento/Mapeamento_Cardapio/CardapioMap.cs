@@ -1,17 +1,15 @@
 ﻿using Estudos.Dominio.Entidades;
 using Estudos.Dominio.Entidades.Entidades_Cardapio;
-using Estudos.Repositorio.EntityFrameworkCore.Mapeamento;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System.Collections.Generic;
 
-namespace Estudos.Repositorio.EntityFrameworkCore.Maps.Mapeamento_Cardapio
+namespace Estudos.Repositorio.EntityFrameworkCore.Mapeamento.Mapeamento_Cardapio
 {
     public class CardapioMap : AMap, IEntityTypeConfiguration<Cardapio>
     {
         public void Configure(EntityTypeBuilder<Cardapio> builder)
         {
-            builder.HasKey(lnq => new { lnq.Codigo });
+            builder.HasKey(lnq => new {lnq.Codigo});
 
             builder.Property(lnq => lnq.Codigo)
                 .ValueGeneratedOnAdd();
@@ -31,8 +29,8 @@ namespace Estudos.Repositorio.EntityFrameworkCore.Maps.Mapeamento_Cardapio
             builder.Property(t => t.CodigoCardapioCategoria).HasColumnName($"CardCat_{nameof(Cardapio.Codigo)}");
 
             builder.HasOne(lnq => lnq.CardapioCategoria)
-                .WithMany(lnq => (IEnumerable<Cardapio>)lnq.Cardapios)
+                .WithMany(lnq => lnq.Cardapios)
                 .HasForeignKey(lnq => lnq.CodigoCardapioCategoria);
-        }       
+        }
     }
 }

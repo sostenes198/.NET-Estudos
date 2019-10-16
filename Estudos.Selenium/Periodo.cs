@@ -12,7 +12,6 @@ namespace Estudos.Selenium
 
         public Periodo()
         {
-
         }
 
         public TimeSpan PeriodoInicial { get; set; }

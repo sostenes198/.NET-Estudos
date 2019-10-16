@@ -4,12 +4,24 @@ namespace AsyncAwait.RetornoTaskMetodo
 {
     public class TesteObterResultadoMetodoTaskFormaCorreta
     {
-        public static Task<int> ObterResultado() => ObterResultado1();
+        public static Task<int> ObterResultado()
+        {
+            return ObterResultado1();
+        }
 
-        private static Task<int> ObterResultado1() => ObterResultado2();
+        private static Task<int> ObterResultado1()
+        {
+            return ObterResultado2();
+        }
 
-        private static Task<int> ObterResultado2() => ObterResultado3();
+        private static Task<int> ObterResultado2()
+        {
+            return ObterResultado3();
+        }
 
-        private static Task<int> ObterResultado3() => Task.Run(() => 10);
+        private static Task<int> ObterResultado3()
+        {
+            return Task.Run(() => 10);
+        }
     }
 }

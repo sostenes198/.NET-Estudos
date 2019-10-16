@@ -2,9 +2,10 @@
 using Estudos.Global.Atributos;
 using Estudos.Global.Enuns;
 
-namespace Estudos.Repositorio.EntityFrameworkCore.Repositorio_Cardapio
+namespace Estudos.Repositorio.EntityFrameworkCore.Repositorios.Repositorio_Cardapio
 {
     [IoC(LifeStyleIoCEnum.Transient)]
     public class CardapioCategoriaRepositorio : EntityContext, ICardapioCategoriaRepositorio
-    { }
+    {
+    }
 }

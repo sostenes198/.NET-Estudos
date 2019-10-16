@@ -1,6 +1,6 @@
-﻿using Estudos.Abstract.Servico.DTOs.DTO_Pedido;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using Estudos.Abstract.Servico.DTOs.DTO_Pedido;
 
 namespace Estudos.Abstract.Servico.Servico_Pedido
 {

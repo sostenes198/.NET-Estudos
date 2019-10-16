@@ -2,9 +2,6 @@
 {
     public class PedidoDTO
     {
-        public PedidoDTO()
-        { }
-
         public int Codigo { get; set; }
 
         public string Observacao { get; set; }
@@ -16,6 +13,5 @@
         public int CodigoCardapio { get; set; }
 
         public int CodigoPedidoCompleto { get; set; }
-
     }
 }

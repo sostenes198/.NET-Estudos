@@ -1,5 +1,5 @@
-﻿using Castle.MicroKernel.Registration;
-using System;
+﻿using System;
+using Castle.MicroKernel.Registration;
 
 namespace Estudos.Ioc.Ioc.Communs.Windsor
 {
@@ -8,8 +8,8 @@ namespace Estudos.Ioc.Ioc.Communs.Windsor
         public static ComponentRegistration<T> OverridesExistingRegistration<T>(this ComponentRegistration<T> componentRegistration) where T : class
         {
             return componentRegistration
-                                .Named(Guid.NewGuid().ToString())
-                                .IsDefault();
+                .Named(Guid.NewGuid().ToString())
+                .IsDefault();
         }
     }
 }

@@ -1,10 +1,7 @@
 ﻿using AutoMapper;
-using Estudos.Api.GraphQL.GraphQL_Schema.Schema_Cardapio;
 using Estudos.AutoMapper;
 using Estudos.IoC;
 using GraphiQl;
-using GraphQL;
-using GraphQL.Types;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -36,10 +33,7 @@ namespace Estudos.Api
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
+            if (env.IsDevelopment()) app.UseDeveloperExceptionPage();
 
             app.UseGraphiQl();
             app.UseMvc();

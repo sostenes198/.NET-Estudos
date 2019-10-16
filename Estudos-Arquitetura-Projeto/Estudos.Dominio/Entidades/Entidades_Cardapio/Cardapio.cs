@@ -5,8 +5,6 @@ namespace Estudos.Dominio.Entidades.Entidades_Cardapio
 {
     public class Cardapio : AEntidade
     {
-        public Cardapio() { }
-
         public string Titulo { get; set; }
 
         public string Descricao { get; set; }

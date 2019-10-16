@@ -1,8 +1,8 @@
-﻿using Estudos.Global.Atributos;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using Estudos.Global.Atributos;
 
 namespace Estudos.Global.Helpers
 {
@@ -16,7 +16,6 @@ namespace Estudos.Global.Helpers
             return Assembly.Load(nameSpace)
                 .GetTypes()
                 .Where(lnq => lnq.IsInterface && lnq.IsAbstract);
-
         }
 
         public static IEnumerable<Type> ObterEntidadeAssemblyImplementacao(string nameSpace)
@@ -26,7 +25,7 @@ namespace Estudos.Global.Helpers
 
             return Assembly.Load(nameSpace.Trim()).GetTypes()
                 .Where(lnq => lnq.IsClass && !lnq.IsAbstract
-                        && lnq.GetInterfaces().Any() && lnq.GetCustomAttributes(typeof(IoCAttribute), true).Any());
+                                          && lnq.GetInterfaces().Any() && lnq.GetCustomAttributes(typeof(IoCAttribute), true).Any());
         }
 
 
@@ -48,6 +47,5 @@ namespace Estudos.Global.Helpers
         //                && typeof(T).IsAssignableFrom(lnq) && lnq.GetInterfaces().Any()
         //                && lnq.GetCustomAttributes(typeof(IoCAttribute), true).Any());
         //}
-
     }
 }

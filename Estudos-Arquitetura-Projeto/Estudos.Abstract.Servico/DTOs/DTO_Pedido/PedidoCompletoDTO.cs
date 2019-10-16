@@ -1,13 +1,10 @@
-﻿using Estudos.Global.Enuns.Entidades;
-using System;
+﻿using System;
+using Estudos.Global.Enuns.Entidades;
 
 namespace Estudos.Abstract.Servico.DTOs.DTO_Pedido
 {
     public class PedidoCompletoDTO
     {
-        public PedidoCompletoDTO()
-        { }
-
         public int Codigo { get; set; }
 
         public int CodigoMesa { get; set; }
@@ -21,6 +18,5 @@ namespace Estudos.Abstract.Servico.DTOs.DTO_Pedido
         public TipoPagamentoEnum TipoPagamento { get; set; }
 
         public decimal? ValorTroco { get; set; }
-
     }
 }

@@ -12,7 +12,7 @@ namespace Estudos.Servico.Servico_Pedido
     [IoC]
     public class PedidoService : IPedidoService
     {
-        readonly IPedidoRepositorio _pedidoRepositorio;
+        private readonly IPedidoRepositorio _pedidoRepositorio;
 
         public PedidoService(IPedidoRepositorio pedidoRepositorio)
         {
@@ -21,35 +21,35 @@ namespace Estudos.Servico.Servico_Pedido
 
         public async Task<PedidoDTO> ObterPedidoPorChavePrimaria(PedidoDTO pedidoDTO)
         {
-            Pedido resultado = await _pedidoRepositorio.ObterEntidadePorChavePrimaria<Pedido>(pedidoDTO.Codigo);
+            var resultado = await _pedidoRepositorio.ObterEntidadePorChavePrimaria<Pedido>(pedidoDTO.Codigo);
 
             return resultado.Transformar<PedidoDTO>();
         }
 
         public async Task<IEnumerable<PedidoDTO>> ObterTodosPedidos()
         {
-            List<Pedido> resultado = await _pedidoRepositorio.ObterTodasEntidades<Pedido>();
+            var resultado = await _pedidoRepositorio.ObterTodasEntidades<Pedido>();
 
             return resultado.Transformar<List<PedidoDTO>>();
         }
 
         public async Task<PedidoDTO> SalvarPedido(PedidoDTO pedidoDTO)
         {
-            Pedido resultado = await _pedidoRepositorio.InserirEntidade<Pedido>(pedidoDTO.Transformar<Pedido>());
+            var resultado = await _pedidoRepositorio.InserirEntidade(pedidoDTO.Transformar<Pedido>());
 
             return resultado.Transformar<PedidoDTO>();
         }
 
         public async Task<PedidoDTO> AtualizarPedido(PedidoDTO pedidoDTO)
         {
-            Pedido resultado = await _pedidoRepositorio.AtualizarEntidade<Pedido>(pedidoDTO.Transformar<Pedido>());
+            var resultado = await _pedidoRepositorio.AtualizarEntidade(pedidoDTO.Transformar<Pedido>());
 
             return resultado.Transformar<PedidoDTO>();
         }
 
         public async Task ExlcuirPedido(PedidoDTO pedidoDTO)
         {
-            await _pedidoRepositorio.ExcluirEntidade<Pedido>(pedidoDTO.Transformar<Pedido>());
-        }       
+            await _pedidoRepositorio.ExcluirEntidade(pedidoDTO.Transformar<Pedido>());
+        }
     }
 }

@@ -2,11 +2,8 @@
 
 namespace Estudos.Dominio.Entidades.Entidades_Cardapio
 {
-
     public class CardapioCategoria : AEntidade
     {
-        public CardapioCategoria() { }
-
         public string Descricao { get; set; }
 
         public IEnumerable<Cardapio> Cardapios { get; set; }

@@ -7,8 +7,8 @@ namespace AsyncAwait.IterarNumeros
         public static void InterarNumero()
         {
             Iterar();
-            
-            for (int i = 0; i < 10; i++)
+
+            for (var i = 0; i < 10; i++)
             {
                 var x = i;
                 Console.WriteLine(x);
@@ -17,7 +17,7 @@ namespace AsyncAwait.IterarNumeros
 
         private static void Iterar()
         {
-            for (int i = 0; i < 10; i++)
+            for (var i = 0; i < 10; i++)
             {
                 var x = i;
                 Console.WriteLine(x);

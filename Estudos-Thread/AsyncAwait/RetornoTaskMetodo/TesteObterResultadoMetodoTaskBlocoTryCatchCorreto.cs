@@ -17,8 +17,14 @@ namespace AsyncAwait.RetornoTaskMetodo
             }
         }
 
-        private static Task<int> ObterResultado1() => Task.Run(ObterResultado2);
+        private static Task<int> ObterResultado1()
+        {
+            return Task.Run(ObterResultado2);
+        }
 
-        private static Task<int> ObterResultado2() => throw new Exception("Mensagem de Erro");
+        private static Task<int> ObterResultado2()
+        {
+            throw new Exception("Mensagem de Erro");
+        }
     }
 }

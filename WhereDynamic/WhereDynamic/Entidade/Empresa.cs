@@ -4,9 +4,6 @@ namespace WhereDynamic.Entidade
 {
     public class Empresa
     {
-        public Empresa()
-        { }
-
         public int Id { get; set; }
 
         public string NomeEmpresa { get; set; }

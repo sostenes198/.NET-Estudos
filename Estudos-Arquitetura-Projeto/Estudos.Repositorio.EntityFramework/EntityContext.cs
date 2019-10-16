@@ -1,4 +1,7 @@
-﻿using Estudos.Dominio.Entidades;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Estudos.Dominio.Entidades;
 using Estudos.Dominio.Entidades.Entidades_Cardapio;
 using Estudos.Dominio.Entidades.Entidades_Pedido;
 using Estudos.Global.Atributos;
@@ -6,22 +9,20 @@ using Estudos.Global.Enuns;
 using Estudos.Repositorio.EntityFrameworkCore.Base;
 using Estudos.Repositorio.EntityFrameworkCore.Extensoes;
 using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Estudos.Repositorio.EntityFrameworkCore
 {
     [LifeStyleAttribute(LifeStyleIoCEnum.Transient)]
-    public partial class EntityContext : DbContext, IContext
+    public class EntityContext : DbContext, IContext
     {
         public EntityContext()
-            : base()
-        { }
+        {
+        }
 
         protected EntityContext(DbContextOptions options)
             : base(options)
-        { }
+        {
+        }
 
         public DbSet<CardapioCategoria> CardapiosCategoria { get; set; }
 
@@ -55,7 +56,7 @@ namespace Estudos.Repositorio.EntityFrameworkCore
         {
             return Task.Run(() =>
             {
-                T entidadeBanco = this.Find(entidade);
+                var entidadeBanco = this.Find(entidade);
                 Entry(entidadeBanco).CurrentValues.SetValues(entidade);
                 Entry(entidadeBanco).State = EntityState.Modified;
 
@@ -85,10 +86,7 @@ namespace Estudos.Repositorio.EntityFrameworkCore
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            if (!optionsBuilder.IsConfigured)
-            {
-                optionsBuilder.UseSqlServer("Data Source=DESKTOP-QBS77K7\\SQLEXPRESS2017;Initial Catalog=Estudos;Integrated Security=False;User ID=sa;Password=123456");
-            }
+            if (!optionsBuilder.IsConfigured) optionsBuilder.UseSqlServer("Data Source=DESKTOP-QBS77K7\\SQLEXPRESS2017;Initial Catalog=Estudos;Integrated Security=False;User ID=sa;Password=123456");
 
             //base.OnConfiguring(optionsBuilder);
         }

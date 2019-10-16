@@ -5,11 +5,6 @@ namespace WhereDynamic.Filtros
 {
     public class FiltroEndereco
     {
-        public FiltroEndereco()
-        {
-
-        }
-
         //[WhereDynamic(nameof(Endereco.Id))]
         public int Codigo { get; set; }
 

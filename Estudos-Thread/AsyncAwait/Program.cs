@@ -3,9 +3,9 @@ using AsyncAwait.IterarNumeros;
 
 namespace AsyncAwait
 {
-    class Program
+    internal class Program
     {
-        static async Task Main(string[] args)
+        private static async Task Main(string[] args)
         {
             await IterarNumerosTeste.TesteITerarNumeros();
         }

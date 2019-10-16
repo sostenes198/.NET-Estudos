@@ -1,5 +1,5 @@
-﻿using Estudos.Ioc.Services.Abstractions.Services;
-using System;
+﻿using System;
+using Estudos.Ioc.Services.Abstractions.Services;
 
 namespace Estudos.Ioc.Services.Services
 {

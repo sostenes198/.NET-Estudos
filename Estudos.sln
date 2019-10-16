@@ -105,11 +105,29 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Estudos-IdentityServer", "E
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Exemplo-1-SecuringApiUsingClientCredentials", "Exemplo-1-SecuringApiUsingClientCredentials", "{ED403A2E-9C92-4B2B-B3D6-75E18FF4CD4A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityServer", "Estudos-IdentityServer\Exemplo-1-SecuringApiUsingClientCredentials\IdentityServer\IdentityServer.csproj", "{72B52B26-681D-45B6-8012-22246D6E14BD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exemplo1.IdentityServer", "Estudos-IdentityServer\Exemplo-1-SecuringApiUsingClientCredentials\Exemplo1.IdentityServer\Exemplo1.IdentityServer.csproj", "{72B52B26-681D-45B6-8012-22246D6E14BD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api", "Estudos-IdentityServer\Exemplo-1-SecuringApiUsingClientCredentials\Api\Api.csproj", "{BD317A36-5F06-4DC1-BC5A-0875EE20076D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exemplo1.Api", "Estudos-IdentityServer\Exemplo-1-SecuringApiUsingClientCredentials\Exemplo1.Api\Exemplo1.Api.csproj", "{BD317A36-5F06-4DC1-BC5A-0875EE20076D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client", "Estudos-IdentityServer\Exemplo-1-SecuringApiUsingClientCredentials\Client\Client.csproj", "{5FA5B74A-9EFC-4952-BA72-702F7145953B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exemplo1.Client", "Estudos-IdentityServer\Exemplo-1-SecuringApiUsingClientCredentials\Exemplo1.Client\Exemplo1.Client.csproj", "{5FA5B74A-9EFC-4952-BA72-702F7145953B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Exemplo-2-ResourceOwnerPasswords", "Exemplo-2-ResourceOwnerPasswords", "{49A86023-CD4C-424C-A7F3-7ED992CD6B76}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exemplo2.Client", "Estudos-IdentityServer\Exemplo-2-ResourceOwnerPasswords\Exemplo2.Client\Exemplo2.Client.csproj", "{F90672AF-C90B-49EE-8A36-47CD3F5E9ADA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exemplo2.IdentityServer", "Estudos-IdentityServer\Exemplo-2-ResourceOwnerPasswords\Exemplo2.IdentityServer\Exemplo2.IdentityServer.csproj", "{00B382F2-D8EF-479B-AEA5-FC211F6AE921}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exemplo2.Api", "Estudos-IdentityServer\Exemplo-2-ResourceOwnerPasswords\Exemplo2.Api\Exemplo2.Api.csproj", "{AC42ED36-284B-4590-B73D-BB5F2D6B327D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Exemplo-3-ImplicitFlowAuthentication", "Exemplo-3-ImplicitFlowAuthentication", "{46997FD8-8999-4B0C-AF41-039F290723DB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exemplo3.Client", "Estudos-IdentityServer\Exemplo-3-ImplicitFlowAuthentication\Exemplo3.Client\Exemplo3.Client.csproj", "{FAFDEA10-77CF-460A-9425-0F2D90831D51}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exemplo3.Api", "Estudos-IdentityServer\Exemplo-3-ImplicitFlowAuthentication\Exemplo3.Api\Exemplo3.Api.csproj", "{229F855F-575A-47F2-A6D3-1311662DE71A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exemplo3.IdentityServer", "Estudos-IdentityServer\Exemplo-3-ImplicitFlowAuthentication\Exemplo3.IdentityServer\Exemplo3.IdentityServer.csproj", "{93D72748-6216-49CA-B785-61C564F7C504}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exemplo3.ClientMVC", "Estudos-IdentityServer\Exemplo-3-ImplicitFlowAuthentication\Exemplo3.ClientMVC\Exemplo3.ClientMVC.csproj", "{3A3F283B-CE5B-48AA-98D5-C7D4B383CC51}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -249,6 +267,34 @@ Global
 		{5FA5B74A-9EFC-4952-BA72-702F7145953B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5FA5B74A-9EFC-4952-BA72-702F7145953B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5FA5B74A-9EFC-4952-BA72-702F7145953B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F90672AF-C90B-49EE-8A36-47CD3F5E9ADA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F90672AF-C90B-49EE-8A36-47CD3F5E9ADA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F90672AF-C90B-49EE-8A36-47CD3F5E9ADA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F90672AF-C90B-49EE-8A36-47CD3F5E9ADA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{00B382F2-D8EF-479B-AEA5-FC211F6AE921}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{00B382F2-D8EF-479B-AEA5-FC211F6AE921}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{00B382F2-D8EF-479B-AEA5-FC211F6AE921}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{00B382F2-D8EF-479B-AEA5-FC211F6AE921}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC42ED36-284B-4590-B73D-BB5F2D6B327D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC42ED36-284B-4590-B73D-BB5F2D6B327D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC42ED36-284B-4590-B73D-BB5F2D6B327D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC42ED36-284B-4590-B73D-BB5F2D6B327D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FAFDEA10-77CF-460A-9425-0F2D90831D51}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FAFDEA10-77CF-460A-9425-0F2D90831D51}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FAFDEA10-77CF-460A-9425-0F2D90831D51}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FAFDEA10-77CF-460A-9425-0F2D90831D51}.Release|Any CPU.Build.0 = Release|Any CPU
+		{229F855F-575A-47F2-A6D3-1311662DE71A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{229F855F-575A-47F2-A6D3-1311662DE71A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{229F855F-575A-47F2-A6D3-1311662DE71A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{229F855F-575A-47F2-A6D3-1311662DE71A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{93D72748-6216-49CA-B785-61C564F7C504}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{93D72748-6216-49CA-B785-61C564F7C504}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{93D72748-6216-49CA-B785-61C564F7C504}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{93D72748-6216-49CA-B785-61C564F7C504}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3A3F283B-CE5B-48AA-98D5-C7D4B383CC51}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A3F283B-CE5B-48AA-98D5-C7D4B383CC51}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A3F283B-CE5B-48AA-98D5-C7D4B383CC51}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A3F283B-CE5B-48AA-98D5-C7D4B383CC51}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -296,6 +342,15 @@ Global
 		{72B52B26-681D-45B6-8012-22246D6E14BD} = {ED403A2E-9C92-4B2B-B3D6-75E18FF4CD4A}
 		{BD317A36-5F06-4DC1-BC5A-0875EE20076D} = {ED403A2E-9C92-4B2B-B3D6-75E18FF4CD4A}
 		{5FA5B74A-9EFC-4952-BA72-702F7145953B} = {ED403A2E-9C92-4B2B-B3D6-75E18FF4CD4A}
+		{49A86023-CD4C-424C-A7F3-7ED992CD6B76} = {A42B5F95-5742-4A66-A41C-AB8F77DD2BED}
+		{F90672AF-C90B-49EE-8A36-47CD3F5E9ADA} = {49A86023-CD4C-424C-A7F3-7ED992CD6B76}
+		{00B382F2-D8EF-479B-AEA5-FC211F6AE921} = {49A86023-CD4C-424C-A7F3-7ED992CD6B76}
+		{AC42ED36-284B-4590-B73D-BB5F2D6B327D} = {49A86023-CD4C-424C-A7F3-7ED992CD6B76}
+		{46997FD8-8999-4B0C-AF41-039F290723DB} = {A42B5F95-5742-4A66-A41C-AB8F77DD2BED}
+		{FAFDEA10-77CF-460A-9425-0F2D90831D51} = {46997FD8-8999-4B0C-AF41-039F290723DB}
+		{229F855F-575A-47F2-A6D3-1311662DE71A} = {46997FD8-8999-4B0C-AF41-039F290723DB}
+		{93D72748-6216-49CA-B785-61C564F7C504} = {46997FD8-8999-4B0C-AF41-039F290723DB}
+		{3A3F283B-CE5B-48AA-98D5-C7D4B383CC51} = {46997FD8-8999-4B0C-AF41-039F290723DB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C17E424A-53EB-4327-89AB-D8A758AE8E67}

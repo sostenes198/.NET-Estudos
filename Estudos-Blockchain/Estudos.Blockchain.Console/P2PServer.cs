@@ -1,39 +1,37 @@
-﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
+using Newtonsoft.Json;
 using WebSocketSharp;
 using WebSocketSharp.Server;
 
-namespace BlockchainDemo
+namespace Estudos.Blockchain.Console
 {
-    public class P2PServer: WebSocketBehavior
+    public class P2PServer : WebSocketBehavior
     {
-        bool chainSynched = false;
-        WebSocketServer wss = null;
+        private bool chainSynched;
+        private WebSocketServer wss;
 
         public void Start()
         {
             wss = new WebSocketServer($"ws://127.0.0.1:{Program.Port}");
             wss.AddWebSocketService<P2PServer>("/Blockchain");
             wss.Start();
-            Console.WriteLine($"Started server at ws://127.0.0.1:{Program.Port}");
+            System.Console.WriteLine($"Started server at ws://127.0.0.1:{Program.Port}");
         }
 
         protected override void OnMessage(MessageEventArgs e)
         {
             if (e.Data == "Hi Server")
             {
-                Console.WriteLine(e.Data);
+                System.Console.WriteLine(e.Data);
                 Send("Hi Client");
             }
             else
             {
-                Blockchain newChain = JsonConvert.DeserializeObject<Blockchain>(e.Data);
+                var newChain = JsonConvert.DeserializeObject<Blockchain>(e.Data);
 
                 if (newChain.IsValid() && newChain.Chain.Count > Program.PhillyCoin.Chain.Count)
                 {
-                    List<Transaction> newTransactions = new List<Transaction>();
+                    var newTransactions = new List<Transaction>();
                     newTransactions.AddRange(newChain.PendingTransactions);
                     newTransactions.AddRange(Program.PhillyCoin.PendingTransactions);
 

@@ -5,12 +5,6 @@ namespace Wrapper.Proxy
 {
     public class SuperDude : IDude
     {
-        public string Name
-        {
-            get => $"Super {_dude.Name}";
-            set => _dude.Name = value;
-        }
-
         private readonly IDude _dude;
 
         public SuperDude(IDude dude)
@@ -18,9 +12,15 @@ namespace Wrapper.Proxy
             _dude = dude;
         }
 
+        public string Name
+        {
+            get => $"Super {_dude.Name}";
+            set => _dude.Name = value;
+        }
+
         public void GotShot(string typeOfGun)
         {
-            StringBuilder result = new StringBuilder();
+            var result = new StringBuilder();
             result.Append(Name).Append(" got shot by a ").Append(typeOfGun);
             result.Append(" gun but it bounced off!!  \nYou can't hurt ").Append(Name);
             result.Append("\n\n");
@@ -29,7 +29,7 @@ namespace Wrapper.Proxy
 
         public override string ToString()
         {
-            StringBuilder result = new StringBuilder();
+            var result = new StringBuilder();
             result.Append(Name).Append(" can't get hurt!");
             result.Append(" (").Append(Name).Append(" is a super-hero proxy, you know).\n");
             return result.ToString();

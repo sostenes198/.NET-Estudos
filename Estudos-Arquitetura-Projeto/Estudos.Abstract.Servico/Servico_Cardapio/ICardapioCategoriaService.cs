@@ -1,10 +1,10 @@
-﻿using Estudos.Abstract.Servico.DTOs.DTO_Cardapio;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using Estudos.Abstract.Servico.DTOs.DTO_Cardapio;
 
 namespace Estudos.Abstract.Servico.Servico_Cardapio
 {
-    public interface ICardapioCategoriaService: IBaseService
+    public interface ICardapioCategoriaService : IBaseService
     {
         Task<IEnumerable<CardapioCategoriaDTO>> ObterTodosCardapiosCategoria();
 

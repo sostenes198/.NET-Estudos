@@ -5,27 +5,21 @@ namespace Wrapper.Proxy
 {
     public class NormalDude : IDude
     {
-        private string m_Name = string.Empty;
+        private bool m_IsHurt;
 
-        private bool m_IsHurt = false;
-
-        public string Name
-        {
-            get { return m_Name; }
-            set { m_Name = value; }
-        }
+        public string Name { get; set; } = string.Empty;
 
         public void GotShot(string typeOfGun)
         {
             m_IsHurt = true;
 
-            Console.WriteLine(m_Name + " got shot by a " + typeOfGun + " gun.");
+            Console.WriteLine(Name + " got shot by a " + typeOfGun + " gun.");
         }
 
         public override string ToString()
         {
-            StringBuilder result = new StringBuilder();
-            result.Append(m_Name);
+            var result = new StringBuilder();
+            result.Append(Name);
             if (m_IsHurt)
                 result.Append(" is hurt");
             else

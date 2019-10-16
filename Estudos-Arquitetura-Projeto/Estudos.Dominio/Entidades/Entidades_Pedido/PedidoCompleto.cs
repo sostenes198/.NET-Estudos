@@ -8,9 +8,6 @@ namespace Estudos.Dominio.Entidades.Entidades_Pedido
     {
         public const int tamanhoStringMesa = 10;
 
-        public PedidoCompleto()
-        { }
-
         public int CodigoMesa { get; set; }
 
         public string NomeMesa { get; set; }

@@ -4,9 +4,9 @@ using Wrapper.Proxy;
 
 namespace Wrapper
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             //ProxyTeste();
             InteracaoProxyTeste();
@@ -30,8 +30,8 @@ namespace Wrapper
         {
             IDude Joe = new NormalDude();
             Joe.Name = "Average Joe";
-            Me Matt = new Me();
-            House JoesHouse = new House();
+            var Matt = new Me();
+            var JoesHouse = new House();
             JoesHouse.LookAtThing(Matt); // I'm looking at what's in JoesHouse
             Console.WriteLine(Matt.ToString());
             Console.WriteLine(JoesHouse.ToString());
@@ -40,7 +40,7 @@ namespace Wrapper
             Console.WriteLine(Matt.ToString());
             Console.WriteLine(JoesHouse.ToString());
             Console.WriteLine("\nJoe is upset -- his vase is a duck.\n----------------------------------\n\n");
-            MeProxy Apparition = new MeProxy(Matt);
+            var Apparition = new MeProxy(Matt);
             Matt.ChangeTo = "bag-o-money";
             JoesHouse.ChangeThing(Apparition);
             Console.WriteLine(Matt.ToString());

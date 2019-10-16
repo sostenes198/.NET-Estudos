@@ -6,5 +6,6 @@ namespace Estudos.Repositorio.EntityFrameworkCore.Repositorios.Repositorio_Pedid
 {
     [IoC(LifeStyleIoCEnum.Transient)]
     public class PedidoCompletoRepositorio : EntityContext, IPedidoCompletoRepositorio
-    { }
+    {
+    }
 }

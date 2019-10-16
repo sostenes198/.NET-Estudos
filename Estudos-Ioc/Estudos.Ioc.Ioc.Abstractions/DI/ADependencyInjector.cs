@@ -2,10 +2,6 @@
 {
     public abstract class ADependencyInjector
     {
-
-        public ADependencyInjector()
-        { }
-
         public abstract TClass Resolve<TClass>() where TClass : class;
 
         public abstract void RegisterDependencyTransient<TInterface, TClass>() where TInterface : class where TClass : TInterface;

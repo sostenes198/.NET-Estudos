@@ -11,12 +11,12 @@ namespace AsyncAwait.GetAwaitGetResult
             {
                 var resultado = GerarResultado().Result;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
             }
         }
-        
+
         private static async Task<bool> GerarResultado()
         {
             await LancarExecao();

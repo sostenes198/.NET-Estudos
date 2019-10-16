@@ -9,7 +9,7 @@ namespace Estudos.Api.GraphQL.Mutations.Mutation_Cardapio
 {
     [IoC(LifeStyleIoCEnum.Singleton)]
     public class CardapioCategoriaMutation : ObjectGraphType
-    {        
+    {
         public CardapioCategoriaMutation(ICardapioCategoriaService _cardapioCategoriaService)
         {
             Name = "CardapioCategoriaMutation";
@@ -17,11 +17,11 @@ namespace Estudos.Api.GraphQL.Mutations.Mutation_Cardapio
             Field<CardapioCategoriaType>(
                 "criarCardapioCategoria",
                 arguments: new QueryArguments(
-                    new QueryArgument<NonNullGraphType<CardapioCategoriaType>> { Name = "cardapioCategoria" }
+                    new QueryArgument<NonNullGraphType<CardapioCategoriaType>> {Name = "cardapioCategoria"}
                 ),
                 resolve: context =>
                 {
-                    CardapioCategoriaDTO cardapioCategoriaDTO = context.GetArgument<CardapioCategoriaDTO>("cardapioCategoria");
+                    var cardapioCategoriaDTO = context.GetArgument<CardapioCategoriaDTO>("cardapioCategoria");
 
                     return _cardapioCategoriaService.SalvarCardapioCategoria(cardapioCategoriaDTO);
                 }

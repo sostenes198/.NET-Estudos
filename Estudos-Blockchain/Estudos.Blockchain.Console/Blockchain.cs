@@ -1,20 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
-namespace BlockchainDemo
+namespace Estudos.Blockchain.Console
 {
     public class Blockchain
     {
         public IList<Transaction> PendingTransactions = new List<Transaction>();
-        public IList<Block> Chain { set;  get; }
-        public int Difficulty { set; get; } = 2;
         public int Reward = 1; //1 cryptocurrency
 
-        public Blockchain()
-        {
-            
-        }
+        public IList<Block> Chain { set; get; }
+        public int Difficulty { set; get; } = 2;
 
 
         public void InitializeChain()
@@ -25,7 +20,7 @@ namespace BlockchainDemo
 
         public Block CreateGenesisBlock()
         {
-            Block block = new Block(DateTime.Now, null, PendingTransactions);
+            var block = new Block(DateTime.Now, null, PendingTransactions);
             block.Mine(Difficulty);
             PendingTransactions = new List<Transaction>();
             return block;
@@ -35,7 +30,7 @@ namespace BlockchainDemo
         {
             Chain.Add(CreateGenesisBlock());
         }
-        
+
         public Block GetLatestBlock()
         {
             return Chain[Chain.Count - 1];
@@ -45,9 +40,10 @@ namespace BlockchainDemo
         {
             PendingTransactions.Add(transaction);
         }
+
         public void ProcessPendingTransactions(string minerAddress)
         {
-            Block block = new Block(DateTime.Now, GetLatestBlock().Hash, PendingTransactions);
+            var block = new Block(DateTime.Now, GetLatestBlock().Hash, PendingTransactions);
             AddBlock(block);
 
             PendingTransactions = new List<Transaction>();
@@ -56,54 +52,41 @@ namespace BlockchainDemo
 
         public void AddBlock(Block block)
         {
-            Block latestBlock = GetLatestBlock();
+            var latestBlock = GetLatestBlock();
             block.Index = latestBlock.Index + 1;
             block.PreviousHash = latestBlock.Hash;
             //block.Hash = block.CalculateHash();
-            block.Mine(this.Difficulty);
+            block.Mine(Difficulty);
             Chain.Add(block);
         }
 
         public bool IsValid()
         {
-            for (int i = 1; i < Chain.Count; i++)
+            for (var i = 1; i < Chain.Count; i++)
             {
-                Block currentBlock = Chain[i];
-                Block previousBlock = Chain[i - 1];
+                var currentBlock = Chain[i];
+                var previousBlock = Chain[i - 1];
 
-                if (currentBlock.Hash != currentBlock.CalculateHash())
-                {
-                    return false;
-                }
+                if (currentBlock.Hash != currentBlock.CalculateHash()) return false;
 
-                if (currentBlock.PreviousHash != previousBlock.Hash)
-                {
-                    return false;
-                }
+                if (currentBlock.PreviousHash != previousBlock.Hash) return false;
             }
+
             return true;
         }
 
         public int GetBalance(string address)
         {
-            int balance = 0;
+            var balance = 0;
 
-            for (int i = 0; i < Chain.Count; i++)
+            for (var i = 0; i < Chain.Count; i++)
+            for (var j = 0; j < Chain[i].Transactions.Count; j++)
             {
-                for (int j = 0; j < Chain[i].Transactions.Count; j++)
-                {
-                    var transaction = Chain[i].Transactions[j];
+                var transaction = Chain[i].Transactions[j];
 
-                    if (transaction.FromAddress == address)
-                    {
-                        balance -= transaction.Amount;
-                    }
+                if (transaction.FromAddress == address) balance -= transaction.Amount;
 
-                    if (transaction.ToAddress == address)
-                    {
-                        balance += transaction.Amount;
-                    }
-                }
+                if (transaction.ToAddress == address) balance += transaction.Amount;
             }
 
             return balance;

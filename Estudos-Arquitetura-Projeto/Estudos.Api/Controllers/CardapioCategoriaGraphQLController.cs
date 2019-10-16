@@ -1,10 +1,9 @@
-﻿using Estudos.Abstract.Servico.Servico_Cardapio;
+﻿using System;
+using System.Threading.Tasks;
 using Estudos.Api.GraphQL.Queries;
 using GraphQL;
 using GraphQL.Types;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Threading.Tasks;
 
 namespace Estudos.Api.Controllers
 {
@@ -12,14 +11,12 @@ namespace Estudos.Api.Controllers
     [ApiController]
     public class CardapioCategoriaGraphQLController : ControllerBase
     {
-        readonly ICardapioCategoriaService _service;
-        readonly IDocumentExecuter _documentExecuter;
-        readonly ISchema _schema;
+        private readonly IDocumentExecuter _documentExecuter;
+        private readonly ISchema _schema;
 
-        public CardapioCategoriaGraphQLController(ICardapioCategoriaService service, IDocumentExecuter documentExecuter,
+        public CardapioCategoriaGraphQLController(IDocumentExecuter documentExecuter,
             ISchema schema)
         {
-            _service = service;
             _documentExecuter = documentExecuter;
             _schema = schema;
         }
@@ -27,7 +24,7 @@ namespace Estudos.Api.Controllers
         [HttpPost]
         public async Task<ActionResult> Post([FromBody] GraphQLQuery query)
         {
-            if (query == null) { throw new ArgumentNullException(nameof(query)); }
+            if (query == null) throw new ArgumentNullException(nameof(query));
             var inputs = query.Variables.ToInputs();
             var executionOptions = new ExecutionOptions
             {
@@ -39,10 +36,7 @@ namespace Estudos.Api.Controllers
 
             var result = await _documentExecuter.ExecuteAsync(executionOptions).ConfigureAwait(false);
 
-            if (result.Errors?.Count > 0)
-            {
-                return BadRequest(result);
-            }
+            if (result.Errors?.Count > 0) return BadRequest(result);
 
             return Ok(result);
         }

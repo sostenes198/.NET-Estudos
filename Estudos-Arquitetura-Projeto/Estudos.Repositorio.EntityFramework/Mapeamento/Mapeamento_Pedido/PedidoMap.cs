@@ -3,7 +3,6 @@ using Estudos.Dominio.Entidades.Entidades_Cardapio;
 using Estudos.Dominio.Entidades.Entidades_Pedido;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System.Collections.Generic;
 
 namespace Estudos.Repositorio.EntityFrameworkCore.Mapeamento.Mapeamento_Pedido
 {
@@ -28,13 +27,12 @@ namespace Estudos.Repositorio.EntityFrameworkCore.Mapeamento.Mapeamento_Pedido
             builder.Property(t => t.CodigoPedidoCompleto).HasColumnName($"PedComp_{nameof(PedidoCompleto.Codigo)}");
 
             builder.HasOne(lnq => lnq.Cardapio)
-                .WithMany(lnq => (IEnumerable<Pedido>) lnq.Pedidos)
+                .WithMany(lnq => lnq.Pedidos)
                 .HasForeignKey(lnq => lnq.CodigoCardapio);
 
             builder.HasOne(lnq => lnq.PedidoCompleto)
-                .WithMany(lnq => (IEnumerable<Pedido>)lnq.Pedidos)
+                .WithMany(lnq => lnq.Pedidos)
                 .HasForeignKey(lnq => lnq.CodigoPedidoCompleto);
-
         }
     }
 }

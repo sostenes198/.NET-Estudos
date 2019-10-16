@@ -1,19 +1,20 @@
-﻿using Estudos.Global.Enuns;
-using System;
+﻿using System;
+using Estudos.Global.Enuns;
 
 namespace Estudos.Global.Atributos
 {
     public class LifeStyleAttribute : Attribute
     {
-        public LifeStyleIoCEnum LifeStyleIoCEnum { get; private set; }
-
         public LifeStyleAttribute()
             : this(LifeStyleIoCEnum.Transient)
-        { }
+        {
+        }
 
         public LifeStyleAttribute(LifeStyleIoCEnum lifeStyleIoCEnum)
         {
             LifeStyleIoCEnum = lifeStyleIoCEnum;
         }
+
+        public LifeStyleIoCEnum LifeStyleIoCEnum { get; }
     }
 }

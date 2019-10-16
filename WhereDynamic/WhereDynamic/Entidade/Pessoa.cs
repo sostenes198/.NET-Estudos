@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using WhereDynamic.Enum;
 
 namespace WhereDynamic.Entidade
@@ -16,7 +14,7 @@ namespace WhereDynamic.Entidade
         public string Nome { get; set; }
         public int Idade { get; set; }
         public DateTime DataNascimento { get; set; }
-        public Sexo Sexo{ get; set; }
+        public Sexo Sexo { get; set; }
 
         public Endereco Endereco { get; set; }
     }

@@ -1,10 +1,10 @@
-﻿using Estudos.Dominio.Entidades;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using Estudos.Dominio.Entidades;
 
 namespace Estudos.Abstract.Repositorio
 {
-    public interface IRepositorio        
+    public interface IRepositorio
     {
         Task<T> ObterEntidadePorChavePrimaria<T>(params object[] list) where T : AEntidade;
 
@@ -15,5 +15,5 @@ namespace Estudos.Abstract.Repositorio
         Task<T> AtualizarEntidade<T>(T entidade) where T : AEntidade;
 
         Task ExcluirEntidade<T>(T entidade) where T : AEntidade;
-    } 
+    }
 }

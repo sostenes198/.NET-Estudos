@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Linq;
 
 namespace WhereDynamic.Extensions
 {
@@ -7,9 +6,8 @@ namespace WhereDynamic.Extensions
     {
         public static object ObterPrimeiroElemento(this IEnumerable ts)
         {
-
             object resultado = null;
-            foreach (object item in ts)
+            foreach (var item in ts)
             {
                 resultado = item;
                 break;

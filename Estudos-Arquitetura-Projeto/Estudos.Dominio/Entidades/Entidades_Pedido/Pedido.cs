@@ -4,9 +4,6 @@ namespace Estudos.Dominio.Entidades.Entidades_Pedido
 {
     public class Pedido : AEntidade
     {
-        public Pedido()
-        {}
-
         public string Observacao { get; set; }
 
         public int Quantidade { get; set; }

@@ -24,11 +24,11 @@ namespace Estudos.Api.GraphQL.Queries.Query_Cardapio
             Field<CardapioCategoriaType>(
                 "cardapioCategoriaPorCodigo",
                 arguments: new QueryArguments(
-                    new QueryArgument<NonNullGraphType<IntGraphType>>() { Name = "codigo" }
+                    new QueryArgument<NonNullGraphType<IntGraphType>> {Name = "codigo"}
                 ),
                 resolve: contexto =>
                 {
-                    CardapioCategoriaDTO cardapioCategoriaDTO = new CardapioCategoriaDTO()
+                    var cardapioCategoriaDTO = new CardapioCategoriaDTO
                     {
                         Codigo = contexto.GetArgument<int>("codigo")
                     };
@@ -38,7 +38,6 @@ namespace Estudos.Api.GraphQL.Queries.Query_Cardapio
                     return cardapioCategorias;
                 }
             );
-
         }
     }
 }

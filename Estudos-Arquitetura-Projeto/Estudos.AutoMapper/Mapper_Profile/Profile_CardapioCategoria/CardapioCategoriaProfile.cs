@@ -1,8 +1,8 @@
-﻿using AutoMapper;
+﻿using System.Collections.Generic;
+using AutoMapper;
 using Estudos.Abstract.Servico.DTOs.DTO_Cardapio;
 using Estudos.AutoMapper.Base;
 using Estudos.Dominio.Entidades.Entidades_Cardapio;
-using System.Collections.Generic;
 
 namespace Estudos.AutoMapper.Mapper_Profile.Profile_CardapioCategoria
 {

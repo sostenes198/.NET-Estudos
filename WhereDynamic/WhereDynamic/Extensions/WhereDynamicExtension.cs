@@ -10,18 +10,17 @@ namespace WhereDynamic.Extensions
 {
     public static class WhereDynamicExtension
     {
-
         private static string valorParameterExpression = "";
 
         public static IEnumerable<TSource> WhereDynamic<TSource, TFilter>(this IEnumerable<TSource> source, TFilter filtro)
         {
             valorParameterExpression = "";
 
-            IEnumerable<PropertyInfo> propriedadesFiltro = ListarPropertiesInfo(filtro);
+            var propriedadesFiltro = ListarPropertiesInfo(filtro);
 
-            ParameterExpression expressaoParametro = ObterParameterExpression(typeof(TSource));
+            var expressaoParametro = ObterParameterExpression(typeof(TSource));
 
-            Func<TSource, bool> lambda = ConstruirLambdaExpression<TSource, TFilter>(filtro).Compile();
+            var lambda = ConstruirLambdaExpression<TSource, TFilter>(filtro).Compile();
 
             return source.Where(lambda);
         }
@@ -30,9 +29,9 @@ namespace WhereDynamic.Extensions
         {
             BinaryExpression expressao = null;
 
-            IEnumerable<PropertyInfo> propriedadesFiltro = ListarPropertiesInfo(filtro);
+            var propriedadesFiltro = ListarPropertiesInfo(filtro);
 
-            ParameterExpression expressaoParametro = ObterParameterExpression(typeof(TSource));
+            var expressaoParametro = ObterParameterExpression(typeof(TSource));
 
             return ConstruirFiltro<TFilter, TSource>(expressao, expressaoParametro, propriedadesFiltro, filtro);
         }
@@ -43,11 +42,11 @@ namespace WhereDynamic.Extensions
             MemberExpression NomePropriedade = null;
             ConstantExpression ValorPropriedade = null;
 
-            foreach (PropertyInfo item in propriedades)
+            foreach (var item in propriedades)
             {
-                string nomeCampo = ObterAtributoWhereDynamic(item).NomeCampo;
+                var nomeCampo = ObterAtributoWhereDynamic(item).NomeCampo;
 
-                if (!TryGetValueObjetoCompleto(filtro, item, out object obj))
+                if (!TryGetValueObjetoCompleto(filtro, item, out var obj))
                     continue;
 
                 if (ObjectIsSimple(obj))
@@ -57,14 +56,14 @@ namespace WhereDynamic.Extensions
                 }
                 else if (ObjectIsList(obj))
                 {
-                    Type typeTFilter = item.PropertyType.GetGenericArguments()[0];
-                    object valuesTSource = ((IEnumerable)obj).ObterPrimeiroElemento();
-                    Type typeTSource = typeof(TSource).GetProperty(nomeCampo).PropertyType.GetGenericArguments()[0];
+                    var typeTFilter = item.PropertyType.GetGenericArguments()[0];
+                    var valuesTSource = ((IEnumerable) obj).ObterPrimeiroElemento();
+                    var typeTSource = typeof(TSource).GetProperty(nomeCampo).PropertyType.GetGenericArguments()[0];
 
-                    var predicateToAny = (Expression)typeof(WhereDynamicExtension)
+                    var predicateToAny = (Expression) typeof(WhereDynamicExtension)
                         .GetMethod("ConstruirLambdaExpression", BindingFlags.NonPublic | BindingFlags.Static)
-                        .MakeGenericMethod(new Type[] { typeTSource, typeTFilter })
-                        .Invoke(null, new object[] { valuesTSource });
+                        .MakeGenericMethod(typeTSource, typeTFilter)
+                        .Invoke(null, new[] {valuesTSource});
 
                     NomePropriedade = Expression.Property(expressaoParametro, nomeCampo);
 
@@ -74,15 +73,13 @@ namespace WhereDynamic.Extensions
                 {
                     MemberExpression NomePropriedadeEntidadeComplexa = null;
 
-                    foreach (Tuple<string, object> resultadoPropriedadeComplexa in ObterNomeEValorPropriedadeComplexa(obj, item, nomeCampo))
+                    foreach (var resultadoPropriedadeComplexa in ObterNomeEValorPropriedadeComplexa(obj, item, nomeCampo))
                     {
-                        foreach (string itemPropriedadeCompelxa in resultadoPropriedadeComplexa.Item1.Split('.'))
-                        {
+                        foreach (var itemPropriedadeCompelxa in resultadoPropriedadeComplexa.Item1.Split('.'))
                             if (NomePropriedadeEntidadeComplexa == null)
                                 NomePropriedadeEntidadeComplexa = Expression.PropertyOrField(expressaoParametro, itemPropriedadeCompelxa);
                             else
                                 NomePropriedadeEntidadeComplexa = Expression.PropertyOrField(NomePropriedadeEntidadeComplexa, itemPropriedadeCompelxa);
-                        }
 
                         NomePropriedade = NomePropriedadeEntidadeComplexa;
                         ValorPropriedade = Expression.Constant(resultadoPropriedadeComplexa.Item2);
@@ -99,24 +96,23 @@ namespace WhereDynamic.Extensions
 
         private static IEnumerable<Tuple<string, object>> ObterNomeEValorPropriedadeComplexa<TEntidade>(TEntidade entidade, PropertyInfo propriedade, string nomePropriedade)
         {
-            IEnumerable<PropertyInfo> propriedadesEntidade = ListarPropertiesInfo(entidade);
+            var propriedadesEntidade = ListarPropertiesInfo(entidade);
 
-            foreach (PropertyInfo item in propriedadesEntidade)
+            foreach (var item in propriedadesEntidade)
             {
-                string nomeCampo = ObterAtributoWhereDynamic(item).NomeCampo;
+                var nomeCampo = ObterAtributoWhereDynamic(item).NomeCampo;
 
                 if (ObjectIsSimple(item.PropertyType))
+                {
                     yield return new Tuple<string, object>($"{nomePropriedade}.{nomeCampo}", item.GetValue(entidade, null));
+                }
 
                 else
                 {
-                    if (!TryGetValueObjetoCompleto(entidade, item, out object objetoComplexo))
+                    if (!TryGetValueObjetoCompleto(entidade, item, out var objetoComplexo))
                         continue;
 
-                    foreach (Tuple<string, object> resultado in ObterNomeEValorPropriedadeComplexa(objetoComplexo, item, $"{nomePropriedade}.{nomeCampo}"))
-                    {
-                        yield return resultado;
-                    }
+                    foreach (var resultado in ObterNomeEValorPropriedadeComplexa(objetoComplexo, item, $"{nomePropriedade}.{nomeCampo}")) yield return resultado;
                 }
             }
         }
@@ -126,25 +122,23 @@ namespace WhereDynamic.Extensions
             if (expressao == null)
                 return Expression.Equal(nomePropriedade, valorPropriedade);
 
-            BinaryExpression expressaoTemp = Expression.Equal(nomePropriedade, valorPropriedade);
+            var expressaoTemp = Expression.Equal(nomePropriedade, valorPropriedade);
 
             return Expression.And(expressao, expressaoTemp);
-
         }
 
         private static BinaryExpression ConstruirExpressaoAny(BinaryExpression expressao, MemberExpression nomePropriedade, Expression valorPropriedade)
         {
             var y = typeof(IEnumerable).GetMethod("Any");
             var x = Expression.Call(
-                        valorPropriedade,
-                        typeof(IEnumerable).GetMethod("Any")
-                    );
+                valorPropriedade,
+                typeof(IEnumerable).GetMethod("Any")
+            );
 
 
-            BinaryExpression expressaoTemp = Expression.Equal(nomePropriedade, valorPropriedade);
+            var expressaoTemp = Expression.Equal(nomePropriedade, valorPropriedade);
 
             return Expression.And(expressao, expressaoTemp);
-
         }
 
         private static bool TryGetValueObjetoCompleto<TEntidade>(TEntidade entidade, PropertyInfo propriedade, out object objetoComplexo)
@@ -161,9 +155,9 @@ namespace WhereDynamic.Extensions
 
         private static ParameterExpression ObterParameterExpression(Type type)
         {
-            ParameterExpression expressaoParametro = Expression.Parameter(type, $"lnq{valorParameterExpression}");
+            var expressaoParametro = Expression.Parameter(type, $"lnq{valorParameterExpression}");
 
-            int.TryParse(valorParameterExpression, out int valor);
+            int.TryParse(valorParameterExpression, out var valor);
 
             valorParameterExpression = (++valor).ToString();
 
@@ -172,7 +166,7 @@ namespace WhereDynamic.Extensions
 
         private static WhereDynamicAttribute ObterAtributoWhereDynamic(PropertyInfo property)
         {
-            return (WhereDynamicAttribute)property.GetCustomAttribute(typeof(WhereDynamicAttribute), false);
+            return (WhereDynamicAttribute) property.GetCustomAttribute(typeof(WhereDynamicAttribute), false);
         }
 
         private static bool ObjectIsSimple(object obj)
@@ -180,23 +174,21 @@ namespace WhereDynamic.Extensions
             if (obj == null)
                 return false;
 
-            Type type = obj.GetType();
+            var type = obj.GetType();
 
-            TypeInfo typeInfo = type.GetTypeInfo();
+            var typeInfo = type.GetTypeInfo();
             if (typeInfo.IsGenericType && typeInfo.GetGenericTypeDefinition() == typeof(Nullable<>))
-            {
                 // nullable type, check if the nested type is simple.
                 return ObjectIsSimple(typeInfo.GetGenericArguments()[0]);
-            }
 
             return typeInfo.IsPrimitive
-              || typeInfo.IsEnum
-              || typeInfo.Equals(typeof(string))
-              || typeInfo.Equals(typeof(decimal))
-              || typeInfo.Equals(typeof(short))
-              || typeInfo.Equals(typeof(int))
-              || typeInfo.Equals(typeof(long))
-              || typeInfo.Equals(typeof(int));
+                   || typeInfo.IsEnum
+                   || typeInfo.Equals(typeof(string))
+                   || typeInfo.Equals(typeof(decimal))
+                   || typeInfo.Equals(typeof(short))
+                   || typeInfo.Equals(typeof(int))
+                   || typeInfo.Equals(typeof(long))
+                   || typeInfo.Equals(typeof(int));
         }
 
         private static bool ObjectIsList(object obj)
@@ -206,10 +198,7 @@ namespace WhereDynamic.Extensions
 
         private static object GetDefault(Type type)
         {
-            if (type.IsValueType)
-            {
-                return Activator.CreateInstance(type);
-            }
+            if (type.IsValueType) return Activator.CreateInstance(type);
             return null;
         }
     }

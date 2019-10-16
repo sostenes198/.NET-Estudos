@@ -14,7 +14,7 @@ namespace AsyncAwait.IterarNumeros
             var tempoAsyncContinueAwait = TesteIterarASyncConfigureAwait();
             Console.WriteLine($"Tempo para processar 20 numeros sync                          : {tempoSync}");
             Console.WriteLine($"Tempo para processar 20 numeros async                         : {tempoAsync}");
-            Console.WriteLine($"Tempo para processar 20 numeros async sem criar duas tasks    : {temporAsyncSemEsperarRetorno}");            
+            Console.WriteLine($"Tempo para processar 20 numeros async sem criar duas tasks    : {temporAsyncSemEsperarRetorno}");
             Console.WriteLine($"Tempo para processar 20 numeros async configuere await false  : {tempoAsyncContinueAwait}");
         }
 
@@ -26,7 +26,7 @@ namespace AsyncAwait.IterarNumeros
             stopwatch.Stop();
             return stopwatch.Elapsed;
         }
-        
+
         private static async Task<TimeSpan> TesteIterarAsyncSemCriarNovaTaskAsync()
         {
             var stopwatch = new Stopwatch();
@@ -35,7 +35,7 @@ namespace AsyncAwait.IterarNumeros
             stopwatch.Stop();
             return stopwatch.Elapsed;
         }
-        
+
         private static TimeSpan TesteIterarSync()
         {
             var stopwatch = new Stopwatch();
@@ -44,7 +44,7 @@ namespace AsyncAwait.IterarNumeros
             stopwatch.Stop();
             return stopwatch.Elapsed;
         }
-        
+
         private static TimeSpan TesteIterarASyncConfigureAwait()
         {
             var stopwatch = new Stopwatch();

@@ -1,17 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using WhereDynamic.Entidade;
-using WhereDynamic.Enum;
-using WhereDynamic.Extensions;
-using WhereDynamic.Filtros;
-
-namespace WhereDynamic
+﻿namespace WhereDynamic
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
-          
-        }       
+        }
     }
 }

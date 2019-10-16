@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Estudos.Repositorio.EntityFrameworkCore.Base
 {
-    public interface IContext: IRepositorio
+    public interface IContext : IRepositorio
     {
         DbSet<CardapioCategoria> CardapiosCategoria { get; set; }
 

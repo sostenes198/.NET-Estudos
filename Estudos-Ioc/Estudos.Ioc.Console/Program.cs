@@ -2,18 +2,17 @@
 using Estudos.Ioc.Ioc.Abstractions.DI;
 using Estudos.Ioc.Ioc.DI.Windsor;
 using Estudos.Ioc.Services.Abstractions.Services;
-using System;
 
 namespace Estudos.Ioc.Console
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main()
         {
             var container = Bootstrapper.AddIoc();
             container.RegisterDepedencySingleton<ADependencyInjector, WindsorDependencyInjector>();
 
-            var x = container.Resolve<ITemplate>();
+            container.Resolve<ITemplate>();
         }
     }
 }

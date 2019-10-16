@@ -9,7 +9,7 @@ namespace AsyncAwait.IterarNumeros
         {
             var task = IterarAsync();
 
-            for (int i = 0; i < 10; i++)
+            for (var i = 0; i < 10; i++)
             {
                 var x = i;
                 Console.WriteLine(x);
@@ -18,14 +18,16 @@ namespace AsyncAwait.IterarNumeros
             await task;
         }
 
-        private static Task IterarAsync() =>
-            Task.Run(() =>
+        private static Task IterarAsync()
+        {
+            return Task.Run(() =>
             {
-                for (int i = 0; i < 10; i++)
+                for (var i = 0; i < 10; i++)
                 {
                     var x = i;
                     Console.WriteLine(x);
                 }
             });
+        }
     }
 }

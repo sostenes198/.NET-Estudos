@@ -2,9 +2,6 @@
 {
     public class Cidade
     {
-        public Cidade()
-        { }
-
         public int Id { get; set; }
         public string UF { get; set; }
         public string Bairro { get; set; }

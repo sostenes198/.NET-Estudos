@@ -2,9 +2,9 @@
 
 namespace Thread
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
 //            System.Threading.Thread t1 = new System.Threading.Thread(RecursoCompartilhadoLock.IncrementCountWithoutLock);
 //            System.Threading.Thread t2 = new System.Threading.Thread(RecursoCompartilhadoLock.IncrementCountWithoutLock);
@@ -14,17 +14,14 @@ namespace Thread
 //            t3.Start();
 //            Console.Read();
 
-            System.Threading.Thread[] Threads = new System.Threading.Thread [3];
-            for (int i = 0; i < 3; i++)
+            var Threads = new System.Threading.Thread [3];
+            for (var i = 0; i < 3; i++)
             {
                 Threads[i] = new System.Threading.Thread(RecursoCompartilhadoMonitor.PrintNumbersWithTrue);
                 Threads[i].Name = "Child Thread " + i;
             }
 
-            foreach (System.Threading.Thread t in Threads)
-            {
-                t.Start();
-            }
+            foreach (var t in Threads) t.Start();
 
             Console.ReadLine();
         }

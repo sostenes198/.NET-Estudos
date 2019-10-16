@@ -10,10 +10,6 @@ namespace Estudos.Ioc.Ioc.DI.Windsor
     {
         public readonly WindsorContainer Container = ContainerDependencyInjector<WindsorContainer>.Container;
 
-        public WindsorDependencyInjector()
-        {
-        }
-
         public override TClass Resolve<TClass>()
         {
             return Container.Resolve<TClass>();

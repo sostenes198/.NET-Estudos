@@ -1,17 +1,16 @@
 ﻿using Newtonsoft.Json;
-using System;
 
-namespace BlockchainDemo
+namespace Estudos.Blockchain.Console
 {
-    class Program
+    internal class Program
     {
-        public static int Port = 0;
-        public static P2PServer Server = null;
+        public static int Port;
+        public static P2PServer Server;
         public static P2PClient Client = new P2PClient();
         public static Blockchain PhillyCoin = new Blockchain();
         public static string name = "Unknown";
 
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             PhillyCoin.InitializeChain();
 
@@ -25,46 +24,43 @@ namespace BlockchainDemo
                 Server = new P2PServer();
                 Server.Start();
             }
-            if (name != "Unkown")
-            {
-                Console.WriteLine($"Current user is {name}");
-            }
 
-            Console.WriteLine("=========================");
-            Console.WriteLine("1. Connect to a server");
-            Console.WriteLine("2. Add a transaction");
-            Console.WriteLine("3. Display Blockchain");
-            Console.WriteLine("4. Exit");
-            Console.WriteLine("=========================");
+            if (name != "Unkown") System.Console.WriteLine($"Current user is {name}");
 
-            int selection = 0;
+            System.Console.WriteLine("=========================");
+            System.Console.WriteLine("1. Connect to a server");
+            System.Console.WriteLine("2. Add a transaction");
+            System.Console.WriteLine("3. Display Blockchain");
+            System.Console.WriteLine("4. Exit");
+            System.Console.WriteLine("=========================");
+
+            var selection = 0;
             while (selection != 4)
             {
                 switch (selection)
                 {
                     case 1:
-                        Console.WriteLine("Please enter the server URL");
-                        string serverURL = Console.ReadLine();
+                        System.Console.WriteLine("Please enter the server URL");
+                        var serverURL = System.Console.ReadLine();
                         Client.Connect($"{serverURL}/Blockchain");
                         break;
                     case 2:
-                        Console.WriteLine("Please enter the receiver name");
-                        string receiverName = Console.ReadLine();
-                        Console.WriteLine("Please enter the amount");
-                        string amount = Console.ReadLine();
+                        System.Console.WriteLine("Please enter the receiver name");
+                        var receiverName = System.Console.ReadLine();
+                        System.Console.WriteLine("Please enter the amount");
+                        var amount = System.Console.ReadLine();
                         PhillyCoin.CreateTransaction(new Transaction(name, receiverName, int.Parse(amount)));
                         PhillyCoin.ProcessPendingTransactions(name);
                         Client.Broadcast(JsonConvert.SerializeObject(PhillyCoin));
                         break;
                     case 3:
-                        Console.WriteLine("Blockchain");
-                        Console.WriteLine(JsonConvert.SerializeObject(PhillyCoin, Formatting.Indented));
+                        System.Console.WriteLine("Blockchain");
+                        System.Console.WriteLine(JsonConvert.SerializeObject(PhillyCoin, Formatting.Indented));
                         break;
-
                 }
 
-                Console.WriteLine("Please select an action");
-                string action = Console.ReadLine();
+                System.Console.WriteLine("Please select an action");
+                var action = System.Console.ReadLine();
                 selection = int.Parse(action);
             }
 

@@ -6,11 +6,6 @@ namespace WhereDynamic.Filtros
 {
     public class FiltroEmpresa
     {
-        public FiltroEmpresa()
-        {
-
-        }
-
         //[WhereDynamic(nameof(Empresa.Id))]
         public int Codigo { get; set; }
 

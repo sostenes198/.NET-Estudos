@@ -6,8 +6,8 @@
 
         IUpdateValidator UpdateValidator { get; set; }
 
-        IDeleteValidator DeleteValidator{ get; set; }
+        IDeleteValidator DeleteValidator { get; set; }
 
-        ICustomValidator CustomValidato{ get; set; }
+        ICustomValidator CustomValidato { get; set; }
     }
 }
