@@ -1,5 +1,7 @@
+using System;
 using Estudos.AspnetIdentity.Context;
 using Estudos.AspnetIdentity.Models;
+using Estudos.AspNetIdentityJwt.Domain;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
@@ -26,35 +28,38 @@ namespace Estudos.AspnetIdentity
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
-            var connection = @"Data Source=SQNOT317\SQLEXPRESS2017;Initial Catalog=EstudosIdentity;user id=sa;password=539624eddas_;MultipleActiveResultSets=true";
+            var connection = @"Data Source=SQNOT317\SQLEXPRESS2017;Initial Catalog=EstudosIdentity;user id=sa;password=Abc123456_;MultipleActiveResultSets=true";
             var migrationAssembly = typeof(Startup).Assembly.GetName().Name;
-            services.AddDbContext<MyUserDbContext>(opt => 
+            services.AddDbContext<MyUserDbContext>(opt =>
                 opt.UseSqlServer(connection, sql => sql.MigrationsAssembly(migrationAssembly)));
 
-            services.AddIdentityCore<MyUser>(opt => { });
-            services.AddScoped<IUserStore<MyUser>, UserOnlyStore<MyUser, MyUserDbContext>>();
+            services.AddIdentity<MyUser, IdentityRole>(opt => 
+                { 
+                    opt.SignIn.RequireConfirmedEmail = true;
+                    opt.Lockout.MaxFailedAccessAttempts = 3;
+                    opt.Lockout.AllowedForNewUsers = true;
+                })
+                .AddEntityFrameworkStores<MyUserDbContext>()
+                .AddRoleValidator<RoleValidator<Role>>()
+                .AddRoleManager<RoleManager<Role>>()
+                .AddSignInManager<SignInManager<User>>()
+                .AddDefaultTokenProviders();
 
-            services.AddAuthentication("cookies")
-                .AddCookie("cookies");
+            services.AddScoped<IUserClaimsPrincipalFactory<MyUser>, MyUserClaimsPrincipalFactory>();
+
+            services.Configure<DataProtectionTokenProviderOptions>(options => options.TokenLifespan = TimeSpan.FromHours(3));
+
+            services.ConfigureApplicationCookie(options => options.LoginPath = "/home");
+
+//            services.AddAuthentication("cookies")
+//                .AddCookie("cookies");
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
-            else
-            {
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-                app.UseHsts();
-            }
-
             app.UseAuthentication();
-            app.UseHttpsRedirection();
             app.UseMvc();
-
         }
     }
 }

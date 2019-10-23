@@ -129,13 +129,12 @@ namespace WhereDynamic.Extensions
 
         private static BinaryExpression ConstruirExpressaoAny(BinaryExpression expressao, MemberExpression nomePropriedade, Expression valorPropriedade)
         {
-            var y = typeof(IEnumerable).GetMethod("Any");
-            var x = Expression.Call(
-                valorPropriedade,
-                typeof(IEnumerable).GetMethod("Any")
-            );
-
-
+            
+//            var x = Expression.Call(
+//                valorPropriedade,
+//                typeof(IEnumerable).GetMethod("Any")
+//            );
+            
             var expressaoTemp = Expression.Equal(nomePropriedade, valorPropriedade);
 
             return Expression.And(expressao, expressaoTemp);

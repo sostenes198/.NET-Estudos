@@ -38,6 +38,8 @@ namespace Estudos.AspnetIdentity.Migrations
 
                     b.Property<DateTimeOffset?>("LockoutEnd");
 
+                    b.Property<string>("Member");
+
                     b.Property<string>("NomeCompleto");
 
                     b.Property<string>("NormalizedEmail")

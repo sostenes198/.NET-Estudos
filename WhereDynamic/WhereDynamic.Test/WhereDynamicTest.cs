@@ -42,7 +42,6 @@ namespace WhereDynamic.Test
         {
             var empresas = ConstruirEmpresas();
 
-
             var resultado = empresas.WhereDynamic(filtro);
 
             Assert.Equal(valorEsperado, resultado.Count());

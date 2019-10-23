@@ -20,4 +20,8 @@
         <PackageReference Include="Microsoft.Extensions.Identity.Core" Version="2.2.0" />
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\AspNetIdentityJwt\Estudos.AspNetIdentityJwt.Domain\Estudos.AspNetIdentityJwt.Domain.csproj" />
+    </ItemGroup>
+
 </Project>
