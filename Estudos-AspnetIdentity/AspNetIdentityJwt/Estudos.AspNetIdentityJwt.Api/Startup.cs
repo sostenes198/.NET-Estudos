@@ -2,10 +2,12 @@
 using Estudos.AspNetIdentityJwt.Domain;
 using Estudos.AspNetIdentityJwt.Repository;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -30,7 +32,7 @@ namespace Estudos.AspNetIdentityJwt.Api
             services.AddDbContext<IdentityContext>(opt =>
                 opt.UseSqlServer(connection, sql => sql.MigrationsAssembly(migrationAssembly)));
 
-            services.AddIdentity<User, Role>(options =>
+            services.AddIdentityCore<User>(options =>
                 {
                     options.SignIn.RequireConfirmedEmail = false;
 
@@ -43,6 +45,7 @@ namespace Estudos.AspNetIdentityJwt.Api
                     options.Lockout.MaxFailedAccessAttempts = 3;
                     options.Lockout.AllowedForNewUsers = true;
                 })
+                .AddRoles<Role>()
                 .AddEntityFrameworkStores<IdentityContext>()
                 .AddRoleValidator<RoleValidator<Role>>()
                 .AddRoleManager<RoleManager<Role>>()
@@ -54,12 +57,19 @@ namespace Estudos.AspNetIdentityJwt.Api
                 {
                     ValidateIssuerSigningKey = true,
                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(Configuration.GetSection("AppSettings:Token").Value)),
-                    ValidateIssuer = true,
-                    ValidateAudience = true
+                    ValidateIssuer = false,
+                    ValidateAudience = false
                 });
             
             services
-                .AddMvc()
+                .AddMvc(opt =>
+                {
+                    var policy = new AuthorizationPolicyBuilder()
+                        .RequireAuthenticatedUser()
+                        .Build();
+
+                    opt.Filters.Add(new AuthorizeFilter(policy));
+                })
                 .SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
                 .AddJsonOptions(opt => opt.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
 
@@ -79,6 +89,7 @@ namespace Estudos.AspNetIdentityJwt.Api
                 app.UseHsts();
             }
 
+            app.UseAuthentication();
             app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 
             app.UseHttpsRedirection();

@@ -1,13 +1,12 @@
 using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
-using AutoMapper;
 using Estudos.AspNetIdentityJwt.Api.Dto;
 using Estudos.AspNetIdentityJwt.Domain;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -23,21 +22,30 @@ namespace Estudos.AspNetIdentityJwt.Api.Controllers
         private readonly IConfiguration _configuration;
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
-        private readonly IMapper _mapper;
 
         public UserController(IConfiguration configuration, UserManager<User> userManager,
-            SignInManager<User> signInManager, IMapper mapper)
+            SignInManager<User> signInManager)
         {
             _configuration = configuration;
             _userManager = userManager;
             _signInManager = signInManager;
-            _mapper = mapper;
+        }
+
+        [HttpGet]
+        [AllowAnonymous]
+        public IActionResult User()
+        {
+            return Ok(new UserDto());
         }
 
         [HttpPost("login")]
+        [AllowAnonymous]
         public async Task<IActionResult> Login(UserLoginDto model)
         {
             var user = await _userManager.FindByNameAsync(model.UserName);
+
+            if (user == null)
+                return Unauthorized();
 
             var result = await _signInManager.CheckPasswordSignInAsync(user, model.Password, false);
 
@@ -45,16 +53,16 @@ namespace Estudos.AspNetIdentityJwt.Api.Controllers
             {
                 var appUser = await _userManager.Users.FirstOrDefaultAsync(lnq => lnq.NormalizedUserName == user.UserName.ToUpper());
 
-                return Ok(new
-                {
-                    token = GenerateJwtToken(appUser),
-                });
+                var token = await GenerateJwtToken(appUser);
+
+                return Ok(token);
             }
 
             return Unauthorized();
         }
 
         [HttpPost("register")]
+        [AllowAnonymous]
         public async Task<IActionResult> Post(UserDto model)
         {
             var user = await _userManager.FindByNameAsync(model.UserName);
@@ -67,7 +75,7 @@ namespace Estudos.AspNetIdentityJwt.Api.Controllers
                     Email = model.Email
                 };
 
-                var result = await _userManager.CreateAsync(user);
+                var result = await _userManager.CreateAsync(user, model.Password);
 
                 if (result.Succeeded)
                 {
@@ -76,7 +84,7 @@ namespace Estudos.AspNetIdentityJwt.Api.Controllers
                     //var confirmationEmail
                 }
 
-                return Ok();
+                return Ok("Cadastrado com sucesso");
             }
 
             return Unauthorized();
@@ -105,10 +113,10 @@ namespace Estudos.AspNetIdentityJwt.Api.Controllers
                 Subject = new ClaimsIdentity(claims),
                 Expires = DateTime.Now.AddDays(1),
                 SigningCredentials = cred,
-                NotBefore = DateTime.Now,
-                IssuedAt = DateTime.Now,
-                Issuer = "SOSO",
-                Audience = "API RECURSO",
+                //NotBefore = DateTime.Now,
+                //IssuedAt = DateTime.Now,
+                //Issuer = "SOSO",
+                //Audience = "API RECURSO",
             };
 
             var tokenHandler = new JwtSecurityTokenHandler();
