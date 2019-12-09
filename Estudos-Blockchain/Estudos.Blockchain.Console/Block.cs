@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Security.Cryptography;
 using System.Text;
 using Newtonsoft.Json;
@@ -35,12 +36,16 @@ namespace Estudos.Blockchain.Console
 
         public void Mine(int difficulty)
         {
+            var tempo = new Stopwatch();
+            tempo.Start();
             var leadingZeros = new string('0', difficulty);
             while (Hash == null || Hash.Substring(0, difficulty) != leadingZeros)
             {
                 Nonce++;
                 Hash = CalculateHash();
             }
+            tempo.Stop();
+            System.Console.WriteLine(tempo.Elapsed);
         }
     }
 }

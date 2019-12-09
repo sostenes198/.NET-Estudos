@@ -22,20 +22,20 @@ namespace Estudos.Blockchain.Console
                     else
                     {
                         var newChain = JsonConvert.DeserializeObject<Blockchain>(e.Data);
-                        if (newChain.IsValid() && newChain.Chain.Count > Program.PhillyCoin.Chain.Count)
+                        if (newChain.IsValid() && newChain.Chain.Count > Program.ChainCoin.Chain.Count)
                         {
                             var newTransactions = new List<Transaction>();
                             newTransactions.AddRange(newChain.PendingTransactions);
-                            newTransactions.AddRange(Program.PhillyCoin.PendingTransactions);
+                            newTransactions.AddRange(Program.ChainCoin.PendingTransactions);
 
                             newChain.PendingTransactions = newTransactions;
-                            Program.PhillyCoin = newChain;
+                            Program.ChainCoin = newChain;
                         }
                     }
                 };
                 ws.Connect();
                 ws.Send("Hi Server");
-                ws.Send(JsonConvert.SerializeObject(Program.PhillyCoin));
+                ws.Send(JsonConvert.SerializeObject(Program.ChainCoin));
                 wsDict.Add(url, ws);
             }
         }

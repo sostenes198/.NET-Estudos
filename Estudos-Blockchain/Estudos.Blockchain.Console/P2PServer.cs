@@ -12,7 +12,7 @@ namespace Estudos.Blockchain.Console
 
         public void Start()
         {
-            wss = new WebSocketServer($"ws://127.0.0.1:{Program.Port}");
+            wss = new WebSocketServer($"ws://172.28.26.88:{Program.Port}");
             wss.AddWebSocketService<P2PServer>("/Blockchain");
             wss.Start();
             System.Console.WriteLine($"Started server at ws://127.0.0.1:{Program.Port}");
@@ -29,19 +29,19 @@ namespace Estudos.Blockchain.Console
             {
                 var newChain = JsonConvert.DeserializeObject<Blockchain>(e.Data);
 
-                if (newChain.IsValid() && newChain.Chain.Count > Program.PhillyCoin.Chain.Count)
+                if (newChain.IsValid() && newChain.Chain.Count > Program.ChainCoin.Chain.Count)
                 {
                     var newTransactions = new List<Transaction>();
                     newTransactions.AddRange(newChain.PendingTransactions);
-                    newTransactions.AddRange(Program.PhillyCoin.PendingTransactions);
+                    newTransactions.AddRange(Program.ChainCoin.PendingTransactions);
 
                     newChain.PendingTransactions = newTransactions;
-                    Program.PhillyCoin = newChain;
+                    Program.ChainCoin = newChain;
                 }
 
                 if (!chainSynched)
                 {
-                    Send(JsonConvert.SerializeObject(Program.PhillyCoin));
+                    Send(JsonConvert.SerializeObject(Program.ChainCoin));
                     chainSynched = true;
                 }
             }

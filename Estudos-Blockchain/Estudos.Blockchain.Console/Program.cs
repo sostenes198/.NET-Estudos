@@ -7,12 +7,12 @@ namespace Estudos.Blockchain.Console
         public static int Port;
         public static P2PServer Server;
         public static P2PClient Client = new P2PClient();
-        public static Blockchain PhillyCoin = new Blockchain();
+        public static Blockchain ChainCoin = new Blockchain();
         public static string name = "Unknown";
 
         private static void Main(string[] args)
         {
-            PhillyCoin.InitializeChain();
+            ChainCoin.InitializeChain();
 
             if (args.Length >= 1)
                 Port = int.Parse(args[0]);
@@ -49,13 +49,13 @@ namespace Estudos.Blockchain.Console
                         var receiverName = System.Console.ReadLine();
                         System.Console.WriteLine("Please enter the amount");
                         var amount = System.Console.ReadLine();
-                        PhillyCoin.CreateTransaction(new Transaction(name, receiverName, int.Parse(amount)));
-                        PhillyCoin.ProcessPendingTransactions(name);
-                        Client.Broadcast(JsonConvert.SerializeObject(PhillyCoin));
+                        ChainCoin.CreateTransaction(new Transaction(name, receiverName, int.Parse(amount)));
+                        ChainCoin.ProcessPendingTransactions(name);
+                        Client.Broadcast(JsonConvert.SerializeObject(ChainCoin));
                         break;
                     case 3:
                         System.Console.WriteLine("Blockchain");
-                        System.Console.WriteLine(JsonConvert.SerializeObject(PhillyCoin, Formatting.Indented));
+                        System.Console.WriteLine(JsonConvert.SerializeObject(ChainCoin, Formatting.Indented));
                         break;
                 }
 

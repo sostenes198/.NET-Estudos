@@ -6,10 +6,15 @@ namespace Testes
     {
         static void Main(string[] args)
         {
-            var stringTeste = new string('*', 1000000000);
-            Console.WriteLine(TestesMetodosStrings.TesteStringIsNullOrEmpty(stringTeste));
-            Console.WriteLine(TestesMetodosStrings.IsNullOrWhiteSpace(stringTeste));
-            Console.WriteLine(TestesMetodosStrings.SmartStringIsNullOrEmpty(stringTeste));
+            try
+            {
+                Console.WriteLine("Hello World!");
+                RegisterWindows.Register();
+            }
+            catch (Exception ex)
+            {
+                
+            }
         }
     }
 }
