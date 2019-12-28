@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 
 namespace Testes
 {
@@ -9,7 +10,17 @@ namespace Testes
             try
             {
                 Console.WriteLine("Hello World!");
-                RegisterWindows.Register();
+                Process process = new Process();
+                process.StartInfo = new ProcessStartInfo
+                {
+                    WindowStyle = ProcessWindowStyle.Hidden,
+                    FileName = "cmd.exe",
+                    Arguments = "reg ADD HKLM\\SOFTWARE\\asd",
+                    //UseShellExecute = true,
+                    //Verb = "runas"
+                };
+                process.Start();
+                //ComandosCmd.ExecutarComandosCMD();
             }
             catch (Exception ex)
             {

@@ -129,6 +129,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Estudos.Checklist.Configura
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Testes", "Z-Testes\Testes\Testes.csproj", "{5845E0BE-C8A4-4676-9B10-087AEBC551E5}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Estudos-Indices-Intervalos", "Estudos-Indices-Intervalos", "{5FB59A58-69F9-428F-9843-D398275A9934}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Estudos.IndicesIntervalos", "Estudos-Indices-Intervaloes\Estudos.IndicesIntervalos\Estudos.IndicesIntervalos.csproj", "{5C99B7CC-36CC-4813-9165-2F28F6A91B2E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -291,6 +295,10 @@ Global
 		{5845E0BE-C8A4-4676-9B10-087AEBC551E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5845E0BE-C8A4-4676-9B10-087AEBC551E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5845E0BE-C8A4-4676-9B10-087AEBC551E5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5C99B7CC-36CC-4813-9165-2F28F6A91B2E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C99B7CC-36CC-4813-9165-2F28F6A91B2E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C99B7CC-36CC-4813-9165-2F28F6A91B2E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C99B7CC-36CC-4813-9165-2F28F6A91B2E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -344,6 +352,7 @@ Global
 		{44A16C6A-6906-401C-911A-FFB70542DF40} = {3EFFE721-042F-4988-9C43-646EA9160871}
 		{83260C7F-A6DE-4621-B25F-31896940B7BB} = {3EFFE721-042F-4988-9C43-646EA9160871}
 		{5845E0BE-C8A4-4676-9B10-087AEBC551E5} = {57E55D5C-41DC-41DE-A9AD-B9C81A9725A2}
+		{5C99B7CC-36CC-4813-9165-2F28F6A91B2E} = {5FB59A58-69F9-428F-9843-D398275A9934}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C17E424A-53EB-4327-89AB-D8A758AE8E67}

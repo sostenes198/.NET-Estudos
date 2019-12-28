@@ -14,7 +14,8 @@ namespace Testes
                 FileName = "cmd.exe", 
                 RedirectStandardInput = true,
                 RedirectStandardOutput = true,
-                UseShellExecute = false
+                UseShellExecute = false,
+                Verb = "runas"
             };
             process.StartInfo = startInfo;
             process.Start();
