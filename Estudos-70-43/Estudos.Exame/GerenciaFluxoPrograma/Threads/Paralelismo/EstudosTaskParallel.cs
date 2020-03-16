@@ -3,7 +3,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Estudos.Exame.Async.Paralelismo
+namespace Estudos.Exame.GerenciaFluxoPrograma.Threads.Paralelismo
 {
     public class EstudosTaskParallel
     {

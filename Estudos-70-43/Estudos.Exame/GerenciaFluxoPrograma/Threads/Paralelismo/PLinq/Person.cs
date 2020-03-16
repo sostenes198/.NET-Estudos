@@ -1,4 +1,4 @@
-namespace Estudos.Exame.Async.Paralelismo.PLink
+namespace Estudos.Exame.GerenciaFluxoPrograma.Threads.Paralelismo.PLinq
 {
     public class Person
     {

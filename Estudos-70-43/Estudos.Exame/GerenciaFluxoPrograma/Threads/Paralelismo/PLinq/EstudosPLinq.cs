@@ -1,8 +1,7 @@
 using System;
 using System.Linq;
-using Estudos.Exame.Async.Paralelismo.PLink;
 
-namespace Estudos.Exame.Async.Paralelismo.PLinq
+namespace Estudos.Exame.GerenciaFluxoPrograma.Threads.Paralelismo.PLinq
 {
     public class EstudosPLinq
     {

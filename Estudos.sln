@@ -141,6 +141,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Estudos-70-43", "Estudos-70
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Estudos.Exame", "Estudos-70-43\Estudos.Exame\Estudos.Exame.csproj", "{43CD5D9F-3C8D-494D-8B96-D53CBA60D439}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Estudos-Mediator", "Estudos-Mediator", "{133B2EF2-C6A2-4CDF-8899-FC05767E643F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EstudosMediator", "Estudos-Mediator\EstudosMediator\EstudosMediator.csproj", "{8432A81E-68E5-406B-913A-09E882068CE9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -315,6 +319,10 @@ Global
 		{43CD5D9F-3C8D-494D-8B96-D53CBA60D439}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{43CD5D9F-3C8D-494D-8B96-D53CBA60D439}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{43CD5D9F-3C8D-494D-8B96-D53CBA60D439}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8432A81E-68E5-406B-913A-09E882068CE9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8432A81E-68E5-406B-913A-09E882068CE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8432A81E-68E5-406B-913A-09E882068CE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8432A81E-68E5-406B-913A-09E882068CE9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -371,6 +379,7 @@ Global
 		{5C99B7CC-36CC-4813-9165-2F28F6A91B2E} = {5FB59A58-69F9-428F-9843-D398275A9934}
 		{C4CAA084-F397-4FE1-80F8-7C6D8FEE1CC5} = {CB401BD9-ED5B-4E2F-8751-69B047E9FAAE}
 		{43CD5D9F-3C8D-494D-8B96-D53CBA60D439} = {F44D547D-8781-4211-9ABB-EB1D7290B2A2}
+		{8432A81E-68E5-406B-913A-09E882068CE9} = {133B2EF2-C6A2-4CDF-8899-FC05767E643F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C17E424A-53EB-4327-89AB-D8A758AE8E67}
