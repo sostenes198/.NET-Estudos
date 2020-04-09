@@ -22,17 +22,20 @@ namespace EstudosMediator.PipelineBehavior
             _validators = validators;
         }
 
-        public Task<TResponse> Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate<TResponse> next)
+        public async Task<TResponse> Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate<TResponse> next)
         {
-            var failures = _validators
-                .Select(lnq => lnq.Validate(request))
-                .SelectMany(lnq => lnq.Errors)
+            var tsk = _validators
+                .Select(async lnq => await lnq.ValidateAsync(request, cancellationToken));
+
+            var failures = await Task.WhenAll(tsk);
+
+            var result = failures.SelectMany(lnq => lnq.Errors)
                 .Where(lnq => lnq != default)
                 .ToList();
-
-            return failures.Any()
-                ? Errors(failures)
-                : next();
+            
+            return await (result.Any()
+                ? Errors(result)
+                : next());
         }
 
         private Task<TResponse> Errors(IList<ValidationFailure> failures)

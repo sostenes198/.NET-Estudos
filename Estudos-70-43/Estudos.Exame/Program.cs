@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading;
-using Estudos.Exame.GerenciaFluxoPrograma.Threads.Collections;
+using System.Threading.Tasks;
+using Estudos.Exame.GerenciaFluxoPrograma.Threads.CancelandoTasks;
 using Estudos.Exame.GerenciaFluxoPrograma.Threads.SincronizacaoDeRecursos;
 
 namespace Estudos.Exame
@@ -10,8 +11,10 @@ namespace Estudos.Exame
         static void Main(string[] args)
         {
             Thread.CurrentThread.Name = "Main Method";
-            RecursoSincrono.RecursoSincronoTeste();
-            SincronizacaoRecursosLock.SincronizarRecursosTeste();
+
+
+            CancelationTokenLancandoExcecaoEstudo.CancelationTokenDanger();
+            
             Console.WriteLine("Digite qualquer coisa pra sair");
             Console.ReadKey();
         }

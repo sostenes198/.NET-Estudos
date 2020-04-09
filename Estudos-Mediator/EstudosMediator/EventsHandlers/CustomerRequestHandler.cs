@@ -5,6 +5,7 @@ using EstudosMediator.Core;
 using EstudosMediator.Entity.Customer;
 using EstudosMediator.Infra;
 using EstudosMediator.Notifications;
+using EstudosMediator.Validators;
 using MediatR;
 
 namespace EstudosMediator.EventsHandlers
@@ -16,11 +17,13 @@ namespace EstudosMediator.EventsHandlers
     {
         private readonly IMediator _mediator;
         private readonly ICustomerRepository _customerRepository;
+        private readonly NotificationContext _context;
 
-        public CustomerRequestHandler(IMediator mediator, ICustomerRepository customerRepository)
+        public CustomerRequestHandler(IMediator mediator, ICustomerRepository customerRepository, NotificationContext context)
         {
             _mediator = mediator;
             _customerRepository = customerRepository;
+            _context = context;
         }
         
         public async Task<string> Handle(CustomerCreateCommand request, CancellationToken cancellationToken)

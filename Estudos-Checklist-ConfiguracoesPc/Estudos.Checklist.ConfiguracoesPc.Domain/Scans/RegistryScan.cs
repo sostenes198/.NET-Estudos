@@ -35,7 +35,7 @@ namespace Estudos.Checklist.ConfiguracoesPc.Domain.Scans
         {
             try
             {
-                Microsoft.Win32.Registry.LocalMachine.OpenSubKey(registryKey).Close();
+                //Microsoft.Win32.Registry.LocalMachine.OpenSubKey(registryKey).Close();
                 return true;
             }
             catch (NullReferenceException)
@@ -48,7 +48,7 @@ namespace Estudos.Checklist.ConfiguracoesPc.Domain.Scans
         {
             try
             {
-                Microsoft.Win32.Registry.LocalMachine.OpenSubKey(registryKey).Close();
+                // Microsoft.Win32.Registry.LocalMachine.OpenSubKey(registryKey).Close();
                 return true;
             }
             catch (SecurityException)
@@ -61,7 +61,7 @@ namespace Estudos.Checklist.ConfiguracoesPc.Domain.Scans
         {
             try
             {
-                Microsoft.Win32.Registry.LocalMachine.OpenSubKey(registryKey, true).Close();
+                // Microsoft.Win32.Registry.LocalMachine.OpenSubKey(registryKey, true).Close();
                 return true;
             }
             catch (SecurityException)
