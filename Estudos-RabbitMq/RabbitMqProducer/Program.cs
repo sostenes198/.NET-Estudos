@@ -1,3 +1,4 @@
+using RabbitMqProducer.Capitulo_1_Introducao;
 using RabbitMqProducer.Capitulo_2_Worke_Queues;
 using RabbitMqProducer.Capitulo_3_Publish_Subscribe;
 using RabbitMqProducer.Capitulo_4_Routing;
@@ -10,7 +11,7 @@ namespace RabbitMqProducer
     {
         static void Main(string[] args)
         {
-           RPCServer.Call();
+            Send.SendMessage();
         }
     }
 }
