@@ -8,7 +8,13 @@ namespace RabbitMqProducer.Capitulo_2_Worke_Queues
     {
         public static void SendMessage()
         {
-            var factory = new ConnectionFactory {HostName = "localhost"};
+            var factory = new ConnectionFactory
+            {
+                HostName = "54.237.160.146",
+                Password = "guest",
+                UserName = "guest",
+                Port = 5672
+            };
             using var connection = factory.CreateConnection();
             using var channel = connection.CreateModel();
             channel.QueueDeclare(

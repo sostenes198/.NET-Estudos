@@ -34,7 +34,7 @@ namespace RabbitMqConsumer.Capitulo_2_Worke_Queues
                 Console.WriteLine(" [x] Done");
 
                 //channle.BasicAck(ea.DeliveryTag, false);
-                ((EventingBasicConsumer) sender).Model.BasicAck(ea.DeliveryTag, false);
+                ((EventingBasicConsumer) sender)?.Model.BasicAck(ea.DeliveryTag, false);
             };
             channle.BasicConsume(
                 "task_queue",

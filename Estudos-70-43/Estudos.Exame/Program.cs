@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Threading;
 using System.Threading.Tasks;
-using Estudos.Exame.GerenciaFluxoPrograma.Threads.CancelandoTasks;
-using Estudos.Exame.GerenciaFluxoPrograma.Threads.SincronizacaoDeRecursos;
+using Estudos.Exame.Capitulo1.CreateAndImplementEventsAndCallbacks.Delegates;
+using Estudos.Exame.Capitulo1.CreateAndImplementEventsAndCallbacks.Delegates.Action;
+using Estudos.Exame.Capitulo1.ImplementProgramFlow;
 
 namespace Estudos.Exame
 {
@@ -10,13 +11,8 @@ namespace Estudos.Exame
     {
         static void Main(string[] args)
         {
-            Thread.CurrentThread.Name = "Main Method";
-
-
-            CancelationTokenLancandoExcecaoEstudo.CancelationTokenDanger();
-            
-            Console.WriteLine("Digite qualquer coisa pra sair");
-            Console.ReadKey();
+            ClosureStudy.Run();
+            Console.WriteLine($"Value of localInt {ClosureStudy.getLocalInt()}");
         }
     }
 }
