@@ -185,6 +185,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Estudos.RemoteConfiguration
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Estudos.RemoteConfigurationProvider.Tests", "Estudos-RemoteJsonFile\Estudos.RemoteConfigurationProvider.Tests\Estudos.RemoteConfigurationProvider.Tests.csproj", "{5EA62CA5-BBC2-4F0D-AD9B-D81A1CE3EDFE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Estudos.RemoteJsonFile.WebApi", "Estudos-RemoteJsonFile\Estudos.RemoteJsonFile.WebApi\Estudos.RemoteJsonFile.WebApi.csproj", "{17021DA1-A6C6-481A-B0A5-E742A1E4E4C2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -403,6 +405,10 @@ Global
 		{5EA62CA5-BBC2-4F0D-AD9B-D81A1CE3EDFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5EA62CA5-BBC2-4F0D-AD9B-D81A1CE3EDFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5EA62CA5-BBC2-4F0D-AD9B-D81A1CE3EDFE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{17021DA1-A6C6-481A-B0A5-E742A1E4E4C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{17021DA1-A6C6-481A-B0A5-E742A1E4E4C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{17021DA1-A6C6-481A-B0A5-E742A1E4E4C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{17021DA1-A6C6-481A-B0A5-E742A1E4E4C2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -471,6 +477,7 @@ Global
 		{0B25CE0D-9BA6-4C4B-BD72-63C11DD42C9F} = {2BFFEAA4-8758-41FB-8906-C95D7AFA9984}
 		{4265D273-62A1-4BE6-8DF5-A3E3F216AE4C} = {A926F7AF-A1BD-421B-92DC-1A58243A0C5E}
 		{5EA62CA5-BBC2-4F0D-AD9B-D81A1CE3EDFE} = {A926F7AF-A1BD-421B-92DC-1A58243A0C5E}
+		{17021DA1-A6C6-481A-B0A5-E742A1E4E4C2} = {A926F7AF-A1BD-421B-92DC-1A58243A0C5E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C17E424A-53EB-4327-89AB-D8A758AE8E67}

@@ -6,9 +6,9 @@ namespace Estudos.RemoteConfigurationProvider.Tests
     {
         public ConfigurationTestDefault()
             : base(
-                new RemoteFileInfoDefault("https://gitlab.com/sostenes198/remote-appssetings-public/-/raw/master/master.json"), 
-                new RemoteFileInfoDefault("https://gitlab.com/sostenes198/remote-appssetings-public/-/raw/master/master-notfound.json"),
-                new RemoteFileInfoDefault("https://gitlab.com/sostenes198/remote-appssetings-public/-/raw/master/master-notfound.json", false),
+                new RemoteFileInfoDefault("https://gitlab.com/sostenes198/remote-appssetings-public/-/raw/master/master.json", true, true), 
+                new RemoteFileInfoDefault("https://gitlab.com/sostenes198/remote-appssetings-public/-/raw/master/master-notfound.json", true, true),
+                new RemoteFileInfoDefault("https://gitlab.com/sostenes198/remote-appssetings-public/-/raw/master/master-notfound.json", false, true),
                 "Public")
         {
         }

@@ -6,8 +6,8 @@ namespace Estudos.RemoteConfigurationProvider.Configurations.RemoteFile
 {
     public class RemoteFileInfoDefault : RemoteFileInfo
     {
-        public RemoteFileInfoDefault(string path, bool optional = true, HttpClientHandler httpClientHandler = default)
-            : base(path, optional, httpClientHandler)
+        public RemoteFileInfoDefault(string path, bool optional = true, bool reload = false, int reloadTimeMinutes = 1, HttpClientHandler httpClientHandler = default)
+            : base(path, optional, reload, reloadTimeMinutes, httpClientHandler)
         {
         }
 

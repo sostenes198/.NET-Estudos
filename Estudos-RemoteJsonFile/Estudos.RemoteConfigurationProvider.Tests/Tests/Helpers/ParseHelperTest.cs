@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
@@ -8,7 +7,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Xunit;
 
-namespace Estudos.RemoteConfigurationProvider.Tests.Helpers
+namespace Estudos.RemoteConfigurationProvider.Tests.Tests.Helpers
 {
     public class ParseHelperTest
     {
