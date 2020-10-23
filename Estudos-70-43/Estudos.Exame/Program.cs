@@ -8,13 +8,19 @@ using Estudos.Exame.Capitulo2.Attributes;
 using Estudos.Exame.Capitulo2.ConvertTypes;
 using Estudos.Exame.Capitulo2.CreatAndUseTypes;
 using Estudos.Exame.Capitulo2.Enumerator;
+using Estudos.Exame.Capitulo2.EvaluateRegularExpressionToValidateInput;
+using Estudos.Exame.Capitulo2.FormatString;
 using Estudos.Exame.Capitulo2.GenerateCodeAtRunTime;
 using Estudos.Exame.Capitulo2.GenerateCodeAtRunTime.ExpressionTree;
 using Estudos.Exame.Capitulo2.ManageTheObjectLifeCycle;
 using Estudos.Exame.Capitulo2.ManipulateStringByUsingThe_StringBuilderStringWriterAndStringReader;
+using Estudos.Exame.Capitulo2.StringComparasionAndCultures;
 using Estudos.Exame.Capitulo2.SystemReflection;
 using Estudos.Exame.Capitulo2.SystemReflection.FindComponentssInAssemblies;
 using Estudos.Exame.Capitulo2.UseExpandoObject;
+using Estudos.Exame.Capitulo3.Data_Integrity_By_Hashing_Data;
+using Estudos.Exame.Capitulo3.ImplementingPublicAndPrivateKeyManagement;
+using Estudos.Exame.Capitulo3.SymmetricAndAsymmetricEncryption;
 
 namespace Estudos.Exame
 {
@@ -22,7 +28,8 @@ namespace Estudos.Exame
     {
         static void Main(string[] args)
         {
-            StringReaderStudy.Test();
+            Console.WriteLine();
+            CheckSum.Test();
         }
     }
 }
