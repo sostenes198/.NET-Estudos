@@ -187,6 +187,18 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Estudos.RemoteConfiguration
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Estudos.RemoteJsonFile.WebApi", "Estudos-RemoteJsonFile\Estudos.RemoteJsonFile.WebApi\Estudos.RemoteJsonFile.WebApi.csproj", "{17021DA1-A6C6-481A-B0A5-E742A1E4E4C2}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Estudos-Options", "Estudos-Options", "{B7EED284-668E-4596-A1BA-C6F80D9B1116}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Estudos.Options", "Estudos-Options\Estudos.Options\Estudos.Options.csproj", "{3021254A-58ED-4044-819E-EDEC417092BD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Estudos-Programacao-Orienta-A-Aspectos", "Estudos-Programacao-Orienta-A-Aspectos", "{F4A892B3-37BF-4057-8C99-0B3DC2A4EC4B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DynamicProxy", "DynamicProxy", "{321747EE-85E5-4E84-857A-DDFBFE45D211}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Estudos.DynamicProxy", "Estudos-Programacao-Orienta-A-Aspectos\DynamicProxy\Estudos.DynamicProxy\Estudos.DynamicProxy.csproj", "{30B7BDE0-7398-4671-A382-E7146B7911DD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Estudos.DynamicProxy.Test", "Estudos-Programacao-Orienta-A-Aspectos\DynamicProxy\Estudos.DynamicProxy.Test\Estudos.DynamicProxy.Test.csproj", "{1EB74448-B910-420F-B40C-1D5991C9F3D4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -409,6 +421,18 @@ Global
 		{17021DA1-A6C6-481A-B0A5-E742A1E4E4C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{17021DA1-A6C6-481A-B0A5-E742A1E4E4C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{17021DA1-A6C6-481A-B0A5-E742A1E4E4C2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3021254A-58ED-4044-819E-EDEC417092BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3021254A-58ED-4044-819E-EDEC417092BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3021254A-58ED-4044-819E-EDEC417092BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3021254A-58ED-4044-819E-EDEC417092BD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{30B7BDE0-7398-4671-A382-E7146B7911DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{30B7BDE0-7398-4671-A382-E7146B7911DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{30B7BDE0-7398-4671-A382-E7146B7911DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{30B7BDE0-7398-4671-A382-E7146B7911DD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1EB74448-B910-420F-B40C-1D5991C9F3D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1EB74448-B910-420F-B40C-1D5991C9F3D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1EB74448-B910-420F-B40C-1D5991C9F3D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1EB74448-B910-420F-B40C-1D5991C9F3D4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -478,6 +502,10 @@ Global
 		{4265D273-62A1-4BE6-8DF5-A3E3F216AE4C} = {A926F7AF-A1BD-421B-92DC-1A58243A0C5E}
 		{5EA62CA5-BBC2-4F0D-AD9B-D81A1CE3EDFE} = {A926F7AF-A1BD-421B-92DC-1A58243A0C5E}
 		{17021DA1-A6C6-481A-B0A5-E742A1E4E4C2} = {A926F7AF-A1BD-421B-92DC-1A58243A0C5E}
+		{3021254A-58ED-4044-819E-EDEC417092BD} = {B7EED284-668E-4596-A1BA-C6F80D9B1116}
+		{321747EE-85E5-4E84-857A-DDFBFE45D211} = {F4A892B3-37BF-4057-8C99-0B3DC2A4EC4B}
+		{30B7BDE0-7398-4671-A382-E7146B7911DD} = {321747EE-85E5-4E84-857A-DDFBFE45D211}
+		{1EB74448-B910-420F-B40C-1D5991C9F3D4} = {321747EE-85E5-4E84-857A-DDFBFE45D211}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C17E424A-53EB-4327-89AB-D8A758AE8E67}

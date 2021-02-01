@@ -1,34 +1,17 @@
-﻿using System;
-using System.ComponentModel;
+﻿using Microsoft.Extensions.DependencyInjection;
+using ZTestes.Testes.Cliente;
 
 namespace ZTestes.Testes  
-{  
-    public enum EnumTipoClasse
-    {       
-        PrincipalExecucao = 'K',
-        PrincipalRecurso = 'L'
-    }
-    
-    public static class EnumTipoClasseConverter
-    {
-
-        public static T GetEnumValue<T>(this string value) where T : struct, Enum, IConvertible
-        {
-            return (T) Enum.ToObject(GetEnumType<T>(), value[0]) ;
-        }
-        private static Type GetEnumType<T>() where T : struct, IConvertible
-        {
-            var enumType = typeof(T);
-            if (!enumType.IsEnum)
-                throw new InvalidEnumArgumentException("EnumerationTypeError");
-            return enumType;
-        }
-    }
+{
     class Program  
     {  
-        static void Main(string[] args)  
-        {  
-            Console.WriteLine("K"[0]);
+        static void Main(string[] args)
+        {
+            var container = BootStraper.CreateServiceProvider();
+            var service = container.GetRequiredService<IClienteService>();
+            service.Salvar(new Cliente.Cliente{Id = 1, Nome = "Teste"});
+            service.Listar();
+            service.Obter(1);
         }  
     }
 }  

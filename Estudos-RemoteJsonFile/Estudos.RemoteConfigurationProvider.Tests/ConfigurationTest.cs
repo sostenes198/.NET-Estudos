@@ -32,7 +32,7 @@ namespace Estudos.RemoteConfigurationProvider.Tests
                 .AddRemoteJsonFile(_remoteFileInfo)
                 .Build();
             
-            configuration.GetSection("RESULT:REMOTE_APPSETTINGS").Get<string>().Should().Be(_resultRemotAppsettings);
+                configuration.GetSection("RESULT:REMOTE_APPSETTINGS").Get<string>().Should().Be(_resultRemotAppsettings);
             configuration.GetSection("RESULT:COMPLEX:ITEM1").Get<int>().Should().Be(1);
             configuration.GetSection("RESULT:COMPLEX:ITEM2").Get<string>().Should().Be("ITEM2");
             configuration.GetSection("RESULT:COMPLEX:ITEM3").Get<int[]>().Should().BeEquivalentTo(new[] {1, 2, 3});
