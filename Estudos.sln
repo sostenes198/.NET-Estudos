@@ -199,6 +199,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Estudos.DynamicProxy", "Est
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Estudos.DynamicProxy.Test", "Estudos-Programacao-Orienta-A-Aspectos\DynamicProxy\Estudos.DynamicProxy.Test\Estudos.DynamicProxy.Test.csproj", "{1EB74448-B910-420F-B40C-1D5991C9F3D4}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Estudos-AzureFunctions", "Estudos-AzureFunctions", "{32B275BD-1755-44DD-86D0-B5B382604FDA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Estudos.AzureFunctions", "Estudos-AzureFunctions\Estudos.AzureFunctions\Estudos.AzureFunctions.csproj", "{8EF42DDC-76B4-4FCF-8606-FD4955AFD2DA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -433,6 +437,10 @@ Global
 		{1EB74448-B910-420F-B40C-1D5991C9F3D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1EB74448-B910-420F-B40C-1D5991C9F3D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1EB74448-B910-420F-B40C-1D5991C9F3D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8EF42DDC-76B4-4FCF-8606-FD4955AFD2DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8EF42DDC-76B4-4FCF-8606-FD4955AFD2DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8EF42DDC-76B4-4FCF-8606-FD4955AFD2DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8EF42DDC-76B4-4FCF-8606-FD4955AFD2DA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -506,6 +514,7 @@ Global
 		{321747EE-85E5-4E84-857A-DDFBFE45D211} = {F4A892B3-37BF-4057-8C99-0B3DC2A4EC4B}
 		{30B7BDE0-7398-4671-A382-E7146B7911DD} = {321747EE-85E5-4E84-857A-DDFBFE45D211}
 		{1EB74448-B910-420F-B40C-1D5991C9F3D4} = {321747EE-85E5-4E84-857A-DDFBFE45D211}
+		{8EF42DDC-76B4-4FCF-8606-FD4955AFD2DA} = {32B275BD-1755-44DD-86D0-B5B382604FDA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C17E424A-53EB-4327-89AB-D8A758AE8E67}

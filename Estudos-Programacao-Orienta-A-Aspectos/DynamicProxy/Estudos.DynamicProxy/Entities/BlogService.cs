@@ -1,15 +1,14 @@
 using System;
 using Estudos.DynamicProxy.Contracts;
 using Estudos.DynamicProxy.Interceptors.Base;
-using Estudos.DynamicProxy.Interceptors.Log;
 using Estudos.DynamicProxy.Interceptors.LogA;
-using Estudos.DynamicProxy.Interceptors.LogB;
+using Estudos.DynamicProxy.Interceptors.LogC;
 
 namespace Estudos.DynamicProxy.Entities
 {
     public class BlogService : IBlogService
     {
-        [LogInterceptor]
+        [Interceptor(typeof(LogCInterceptor))]
         public Blog Get(int id)
         {
             return new Blog
