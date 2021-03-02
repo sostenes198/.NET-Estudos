@@ -28,3 +28,4 @@ docker rmi $id_imagem
 docker rm $id_container
 docker save -o <path for generated tar file> <image name>
 docker load -i <path to image tar file>
+docker exec -it <id container> /bin/sh (Entra no container por linha de comando)
