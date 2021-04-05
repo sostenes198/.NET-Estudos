@@ -19,11 +19,17 @@ ENTRYPOINT ["dotnet", "Poc.TestesIntegradosJep.dll"]
 REMOVER Imagens None
 docker image rm $(docker image ls -f 'dangling=true' -q)
 
-
+s
 COMANDO DOCKER
 
 Builda a imagem definindo um nome
-docker build -t aspnetapp . 
+docker build -t aspnetapp .
+
+
+docker image build -t functionestudossosoapp -f devops/Dockerfile  --no-cache . 
+(Exemplo de como buildar uma com o arquivo Dockerfile dentro de uma subpasta)
+(OBS: Deve-se builder da raiz do projeto que é aonde o dockerengine ira visualizar o sistema de arquivos)
+
 
 Exemplo para criar um container expondo a porta 80 do container na porta 8080 local
 docker run -d -p 8080:80 --name myapp aspnetapp

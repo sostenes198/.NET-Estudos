@@ -41,7 +41,7 @@ namespace Estudos.AzureFunctions
             string functionName,
             ILogger log)
         {
-            // Function input comes from the request content.
+            // Function input comes from the request content.   
             object eventData = req.Method == HttpMethod.Post ? req.Content.ReadAsAsync<object>().GetAwaiter().GetResult() : new object();
             string instanceId = await starter.StartNewAsync(functionName, eventData);
 
