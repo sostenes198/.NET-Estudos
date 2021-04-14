@@ -1,0 +1,12 @@
+Cenário de testes 3 - Código do extrator de ordem de compra
+Na próxima aula sobre "Ordem de compra" será utilizado um código para o extrator. Na aula será demonstrado passo-a-passo, mas deixo aqui uma imagem do código para melhor aproveitamento (clique com botão direito em cima da imagem e depois em visualizar imagem para mostrar em tela cheia)
+
+
+
+Nome de Referência: codigoOrdem
+
+Expressão Regular: controller=(.+?)&id_cart=(.+?)&id_module=(.+?)&id_order=(.+?)&key=(.+?)
+
+Modelo: $4$
+
+Número para combinação: 1
