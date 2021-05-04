@@ -33,7 +33,8 @@ namespace Estudos.Redis.Controllers
                 new DistributedCacheEntryOptions {AbsoluteExpirationRelativeToNow = TimeSpan.FromMinutes(2)});
             return new OkResult();
         }
-        
+
+
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {

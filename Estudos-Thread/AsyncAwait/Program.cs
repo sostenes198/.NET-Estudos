@@ -7,7 +7,7 @@ namespace AsyncAwait
     {
         private static async Task Main(string[] args)
         {
-            await IterarNumerosTeste.TesteITerarNumeros();
+            await RetornoTaskMetodo.TesteObterResultadoMetodoTaskBlocoTryCatchIncorreto.ObterResultado();
         }
     }
 }

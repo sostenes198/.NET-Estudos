@@ -5,21 +5,22 @@ namespace AsyncAwait.RetornoTaskMetodo
 {
     public class TesteObterResultadoMetodoTaskBlocoTryCatchIncorreto
     {
-        public static void ObterResultado()
+        public static Task ObterResultado()
         {
             try
             {
-                ObterResultado1();
+                return ObterResultado1();
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
+                return Task.CompletedTask;
             }
         }
 
-        private static void ObterResultado1()
+        private static Task ObterResultado1()
         {
-            Task.Run(ObterResultado2);
+            return Task.Run(ObterResultado2);
         }
 
         private static Task<int> ObterResultado2()
