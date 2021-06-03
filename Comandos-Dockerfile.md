@@ -48,3 +48,9 @@ docker load -i <path to image tar file>
 
 Entra no bash do container informado
 docker exec -it <id container> /bin/sh (Entra no container por linha de comando)
+
+Entrar no bash do container com usuário root
+docker exec -it --user=root <id_container> /bin/sh
+
+Quando a imagem linux é alphine usar comandos
+apk update e apk add
