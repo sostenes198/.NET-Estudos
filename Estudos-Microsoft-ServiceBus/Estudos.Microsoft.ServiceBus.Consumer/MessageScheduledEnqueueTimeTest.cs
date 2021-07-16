@@ -6,8 +6,9 @@ namespace Estudos.Microsoft.ServiceBus.Consumer
 {
     public class MessageScheduledEnqueueTimeTest
     {
-        static string connectionString = "Endpoint=sb://estudos-soso.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=HDFQfZPpUAelamHitQeZ0c+e2FG2O7arW49QfLwxHtM=";
-        static string queueName = "teste-queue";
+        static string connectionString = "Endpoint=sb://xpi-sdk-dsv-std.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=ZI9kfkj6SUDjdIEDRYlJa2tXLlRclujEo9U/QidVInE=";
+        static string topicName = "corporate-security-fingerprint";
+        static string subscriptionName = "corporate-security-fingerprint-send-post-event";
         
         private static async Task MessageHandler(ProcessMessageEventArgs args)
         {
@@ -30,7 +31,7 @@ namespace Estudos.Microsoft.ServiceBus.Consumer
             await using (ServiceBusClient client = new ServiceBusClient(connectionString))
             {
                 // create a processor that we can use to process the messages
-                ServiceBusProcessor processor = client.CreateProcessor(queueName, new ServiceBusProcessorOptions());
+                ServiceBusProcessor processor = client.CreateProcessor(topicName, subscriptionName, new ServiceBusProcessorOptions());
 
                 // add handler to process messages
                 processor.ProcessMessageAsync += MessageHandler;

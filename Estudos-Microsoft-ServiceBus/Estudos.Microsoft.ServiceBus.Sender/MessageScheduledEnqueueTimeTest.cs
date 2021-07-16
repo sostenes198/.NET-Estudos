@@ -9,8 +9,8 @@ namespace Estudos.Microsoft.ServiceBus.Sender
 {
     public class MessageScheduledEnqueueTimeTest
     {
-        static string connectionString = "Endpoint=sb://estudos-soso.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=HDFQfZPpUAelamHitQeZ0c+e2FG2O7arW49QfLwxHtM=";
-        static string queueName = "teste-queue";
+        static string connectionString = "Endpoint=sb://xpi-sdk-dsv-std.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=ZI9kfkj6SUDjdIEDRYlJa2tXLlRclujEo9U/QidVInE=";
+        static string queueName = "corporate-security-fingerprint";
 
         public static async Task SendMessageAsync()
         {
@@ -27,7 +27,7 @@ namespace Estudos.Microsoft.ServiceBus.Sender
                     ContentType = MediaTypeNames.Application.Json,
                     MessageId = Guid.NewGuid().ToString(),
                     Body = new BinaryData(Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(messageTest))),
-                    ScheduledEnqueueTime = DateTimeOffset.Now.AddSeconds(10)
+                    ScheduledEnqueueTime = DateTimeOffset.Now.AddSeconds(-10)
                 };
                 
                 await sender.SendMessageAsync(serviceMessage);
