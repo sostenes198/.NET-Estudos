@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\DocumentManager.Core\DocumentManager.Core.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Elsa" Version="2.10.2.2" />
+      <PackageReference Include="Elsa.Activities.Email" Version="2.10.2.2" />
+      <PackageReference Include="Elsa.Activities.Http" Version="2.10.2.2" />
+      <PackageReference Include="Elsa.Persistence.EntityFramework.Core" Version="2.10.2.2" />
+      <PackageReference Include="Elsa.Server.Hangfire" Version="2.10.2.2" />
+      <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="2.2.0" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.14" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Update="Workflows\hello-world.json">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+    </ItemGroup>
+
+</Project>

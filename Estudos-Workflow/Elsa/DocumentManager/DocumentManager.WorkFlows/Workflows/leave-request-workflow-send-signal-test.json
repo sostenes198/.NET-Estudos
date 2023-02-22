@@ -1,0 +1,70 @@
+{
+  "$id": "1",
+  "definitionId": "8789e4d35dee4c85b1b212ceba06e43b",
+  "versionId": "34a3b65388bc4a9fb199ea354a73c7e4",
+  "name": "LeaveRequestWorkflowSendSignalTest",
+  "displayName": "Leave Request Workflow Send Signal Test",
+  "version": 2,
+  "variables": {
+    "$id": "2",
+    "data": {}
+  },
+  "customAttributes": {
+    "$id": "3",
+    "data": {}
+  },
+  "isSingleton": false,
+  "persistenceBehavior": "WorkflowBurst",
+  "deleteCompletedInstances": false,
+  "isPublished": true,
+  "isLatest": true,
+  "createdAt": "2023-02-22T10:59:00.2129841Z",
+  "activities": [
+    {
+      "$id": "4",
+      "activityId": "143a11f9-7931-4816-b556-9d2d7c181d9e",
+      "type": "SendSignal",
+      "displayName": "Send Signal",
+      "persistWorkflow": false,
+      "loadWorkflowContext": false,
+      "saveWorkflowContext": false,
+      "properties": [
+        {
+          "$id": "5",
+          "name": "Signal",
+          "expressions": {
+            "$id": "6",
+            "Literal": "Approve"
+          }
+        },
+        {
+          "$id": "7",
+          "name": "CorrelationId",
+          "expressions": {
+            "$id": "8"
+          }
+        },
+        {
+          "$id": "9",
+          "name": "Input",
+          "expressions": {
+            "$id": "10"
+          }
+        },
+        {
+          "$id": "11",
+          "name": "SendMode",
+          "expressions": {
+            "$id": "12",
+            "Literal": "Asynchronously"
+          }
+        }
+      ],
+      "propertyStorageProviders": {
+        "$id": "13"
+      }
+    }
+  ],
+  "connections": [],
+  "id": "34a3b65388bc4a9fb199ea354a73c7e4"
+}

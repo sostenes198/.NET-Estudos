@@ -1,0 +1,201 @@
+{
+  "$id": "1",
+  "definitionId": "ff476850b6504b7a80b9934d4f2e33ca",
+  "versionId": "60c13ab8e5c74b8591ef30efaeb40fac",
+  "name": "ChangeRequestWorkFlow",
+  "displayName": "Change Request WorkFlow",
+  "description": "A simple workflow that compress the document,send its as an email atacchment and marks the document as Archivied",
+  "version": 2,
+  "variables": {
+    "$id": "2",
+    "data": {}
+  },
+  "customAttributes": {
+    "$id": "3",
+    "data": {}
+  },
+  "isSingleton": false,
+  "persistenceBehavior": "WorkflowBurst",
+  "deleteCompletedInstances": false,
+  "isPublished": false,
+  "isLatest": true,
+  "tag": "ChangeRequest",
+  "createdAt": "2023-02-20T14:53:00.5078998Z",
+  "activities": [
+    {
+      "$id": "4",
+      "activityId": "f05c3173-855e-4914-ae94-fbdff9837735",
+      "type": "GetDocument",
+      "name": "GetDocument1",
+      "displayName": "Get Document",
+      "persistWorkflow": false,
+      "loadWorkflowContext": false,
+      "saveWorkflowContext": false,
+      "properties": [
+        {
+          "$id": "5",
+          "name": "DocumentId",
+          "syntax": "JavaScript",
+          "expressions": {
+            "$id": "6",
+            "JavaScript": "correlationId"
+          }
+        }
+      ],
+      "propertyStorageProviders": {
+        "$id": "7"
+      }
+    },
+    {
+      "$id": "8",
+      "activityId": "b5ccf731-628e-427a-8acf-4b8dca9973ce",
+      "type": "ZipFile",
+      "name": "ZipFile1",
+      "displayName": "Zip File",
+      "persistWorkflow": false,
+      "loadWorkflowContext": false,
+      "saveWorkflowContext": false,
+      "properties": [
+        {
+          "$id": "9",
+          "name": "Stream",
+          "syntax": "JavaScript",
+          "expressions": {
+            "$id": "10",
+            "Literal": "activities.GetDocument1.Output().FileStream",
+            "JavaScript": "activities.GetDocument1.Output().FileStream"
+          }
+        },
+        {
+          "$id": "11",
+          "name": "FileName",
+          "syntax": "JavaScript",
+          "expressions": {
+            "$id": "12",
+            "Literal": "activities.GetDocument1.Output().Document.FileName",
+            "JavaScript": "activities.GetDocument1.Output().Document.FileName"
+          }
+        }
+      ],
+      "propertyStorageProviders": {
+        "$id": "13"
+      }
+    },
+    {
+      "$id": "14",
+      "activityId": "32255740-8c22-46aa-b1de-dedac24c64b4",
+      "type": "SendEmail",
+      "name": "SendEmail1",
+      "displayName": "Send Email",
+      "persistWorkflow": false,
+      "loadWorkflowContext": false,
+      "saveWorkflowContext": false,
+      "properties": [
+        {
+          "$id": "15",
+          "name": "From",
+          "expressions": {
+            "$id": "16",
+            "Literal": "sostenes198br@hotmail.com"
+          }
+        },
+        {
+          "$id": "17",
+          "name": "To",
+          "expressions": {
+            "$id": "18",
+            "Json": "[\"policy@acme.com\"]"
+          }
+        },
+        {
+          "$id": "19",
+          "name": "Subject",
+          "expressions": {
+            "$id": "20",
+            "Literal": "Please review this change request"
+          }
+        },
+        {
+          "$id": "21",
+          "name": "Attachments",
+          "syntax": "JavaScript",
+          "expressions": {
+            "$id": "22",
+            "Literal": "",
+            "JavaScript": "const fileName = `${activities.GetDocument1.Output().Document.FileName}.zip`;\r\nconst zipStream = activities.ZipFile1.Output();\r\nconst contentType = contentTypeFromFileName(fileName);\r\nconst attachment = new EmailAttachment(zipStream, fileName, contentType);\r\nreturn attachment;"
+          }
+        },
+        {
+          "$id": "23",
+          "name": "Body",
+          "expressions": {
+            "$id": "24",
+            "Literal": "Please review attached change request."
+          }
+        },
+        {
+          "$id": "25",
+          "name": "Cc",
+          "expressions": {
+            "$id": "26"
+          }
+        },
+        {
+          "$id": "27",
+          "name": "Bcc",
+          "expressions": {
+            "$id": "28"
+          }
+        }
+      ],
+      "propertyStorageProviders": {
+        "$id": "29"
+      }
+    },
+    {
+      "$id": "30",
+      "activityId": "38f59d8f-cae5-49cf-87f6-6db52c7f98f8",
+      "type": "ArchiveDocument",
+      "name": "ArchiveDocument1",
+      "displayName": "Archive Document",
+      "persistWorkflow": false,
+      "loadWorkflowContext": false,
+      "saveWorkflowContext": false,
+      "properties": [
+        {
+          "$id": "31",
+          "name": "Document",
+          "syntax": "JavaScript",
+          "expressions": {
+            "$id": "32",
+            "JavaScript": "activities.GetDocument1.Output().Document"
+          }
+        }
+      ],
+      "propertyStorageProviders": {
+        "$id": "33"
+      }
+    }
+  ],
+  "connections": [
+    {
+      "$id": "34",
+      "sourceActivityId": "f05c3173-855e-4914-ae94-fbdff9837735",
+      "targetActivityId": "b5ccf731-628e-427a-8acf-4b8dca9973ce",
+      "outcome": "Done"
+    },
+    {
+      "$id": "35",
+      "sourceActivityId": "b5ccf731-628e-427a-8acf-4b8dca9973ce",
+      "targetActivityId": "32255740-8c22-46aa-b1de-dedac24c64b4",
+      "outcome": "Done"
+    },
+    {
+      "$id": "36",
+      "sourceActivityId": "32255740-8c22-46aa-b1de-dedac24c64b4",
+      "targetActivityId": "38f59d8f-cae5-49cf-87f6-6db52c7f98f8",
+      "outcome": "Done"
+    }
+  ],
+  "id": "60c13ab8e5c74b8591ef30efaeb40fac"
+}

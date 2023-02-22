@@ -1,0 +1,253 @@
+{
+  "$id": "1",
+  "definitionId": "58a38494bd6d456ea1743e67b30cb2fc",
+  "versionId": "bfeb01b02d8641a890b78a549f4df70b",
+  "name": "Test",
+  "displayName": "Test",
+  "description": "Testando",
+  "version": 18,
+  "variables": {
+    "$id": "2",
+    "data": {}
+  },
+  "customAttributes": {
+    "$id": "3",
+    "data": {}
+  },
+  "isSingleton": false,
+  "persistenceBehavior": "WorkflowBurst",
+  "deleteCompletedInstances": false,
+  "isPublished": true,
+  "isLatest": true,
+  "createdAt": "2023-02-20T14:23:20.723902Z",
+  "activities": [
+    {
+      "$id": "4",
+      "activityId": "4e438f41-3795-46fd-97d8-3a39b54b4609",
+      "type": "GetDocument",
+      "name": "GetDocument1",
+      "displayName": "Get Document",
+      "persistWorkflow": false,
+      "loadWorkflowContext": false,
+      "saveWorkflowContext": false,
+      "properties": [
+        {
+          "$id": "5",
+          "name": "DocumentId",
+          "syntax": "JavaScript",
+          "expressions": {
+            "$id": "6",
+            "JavaScript": "correlationId"
+          }
+        }
+      ],
+      "propertyStorageProviders": {
+        "$id": "7"
+      }
+    },
+    {
+      "$id": "8",
+      "activityId": "e11e9dd6-343b-4727-a41a-0a2d5b9adf12",
+      "type": "WriteHttpResponse",
+      "name": "WriteHttpResponse",
+      "displayName": "HTTP Response",
+      "persistWorkflow": false,
+      "loadWorkflowContext": false,
+      "saveWorkflowContext": false,
+      "properties": [
+        {
+          "$id": "9",
+          "name": "Content",
+          "syntax": "JavaScript",
+          "expressions": {
+            "$id": "10",
+            "Liquid": "The document's file name is {{ Activities.GetDocument1.Output.Document.FileName }} and the document's status is {{ Activities.GetDocument1.Output.Document.Status }}",
+            "JavaScript": "activities.ZipFile1.Output()",
+            "Literal": "input"
+          }
+        },
+        {
+          "$id": "11",
+          "name": "ContentType",
+          "syntax": "Literal",
+          "expressions": {
+            "$id": "12",
+            "Literal": "application/zip"
+          }
+        },
+        {
+          "$id": "13",
+          "name": "StatusCode",
+          "expressions": {
+            "$id": "14",
+            "Literal": "OK"
+          }
+        },
+        {
+          "$id": "15",
+          "name": "CharSet",
+          "expressions": {
+            "$id": "16",
+            "Literal": "utf-8"
+          }
+        },
+        {
+          "$id": "17",
+          "name": "ResponseHeaders",
+          "expressions": {
+            "$id": "18",
+            "Literal": "{ \\\"Content-Disposition\\\": \\\"attachment; filename=download.zip\\\" }",
+            "Json": "{ \"Content-Disposition\": \"attachment; filename=download.zip\" }"
+          }
+        }
+      ],
+      "propertyStorageProviders": {
+        "$id": "19",
+        "Content": "Transient"
+      }
+    },
+    {
+      "$id": "20",
+      "activityId": "24158dd6-6727-47f3-917b-b37717d1e449",
+      "type": "ArchiveDocument",
+      "name": "ArchiveDocument1",
+      "displayName": "Archive Document",
+      "persistWorkflow": false,
+      "loadWorkflowContext": false,
+      "saveWorkflowContext": false,
+      "properties": [
+        {
+          "$id": "21",
+          "name": "Document",
+          "syntax": "JavaScript",
+          "expressions": {
+            "$id": "22",
+            "Literal": "input.Document",
+            "JavaScript": "input.Document"
+          }
+        }
+      ],
+      "propertyStorageProviders": {
+        "$id": "23"
+      }
+    },
+    {
+      "$id": "24",
+      "activityId": "0a6fbf73-9fef-483b-86c9-303fb267ee4b",
+      "type": "ZipFile",
+      "name": "ZipFile1",
+      "displayName": "Zip File",
+      "persistWorkflow": false,
+      "loadWorkflowContext": false,
+      "saveWorkflowContext": false,
+      "properties": [
+        {
+          "$id": "25",
+          "name": "Stream",
+          "syntax": "JavaScript",
+          "expressions": {
+            "$id": "26",
+            "Literal": "activities.GetDocument1.Output().FileStream",
+            "JavaScript": "activities.GetDocument1.Output().FileStream"
+          }
+        },
+        {
+          "$id": "27",
+          "name": "FileName",
+          "syntax": "JavaScript",
+          "expressions": {
+            "$id": "28",
+            "Literal": "activities.GetDocument1.Output().FileStream",
+            "JavaScript": "activities.GetDocument1.Output().Document.FileName"
+          }
+        }
+      ],
+      "propertyStorageProviders": {
+        "$id": "29"
+      }
+    },
+    {
+      "$id": "30",
+      "activityId": "8e4fd629-8a3b-4134-964a-01738af7e7c6",
+      "type": "UpdateBlockchain",
+      "name": "UpdateBlockchain",
+      "displayName": "Update Blockchain",
+      "persistWorkflow": false,
+      "loadWorkflowContext": false,
+      "saveWorkflowContext": false,
+      "properties": [
+        {
+          "$id": "31",
+          "name": "File",
+          "syntax": "JavaScript",
+          "expressions": {
+            "$id": "32",
+            "Literal": "input",
+            "JavaScript": "input"
+          }
+        }
+      ],
+      "propertyStorageProviders": {
+        "$id": "33"
+      }
+    },
+    {
+      "$id": "34",
+      "activityId": "4966bdf7-0b24-4e85-9631-506d7612ad41",
+      "type": "WriteLine",
+      "name": "WriteLine1",
+      "displayName": "Write Line",
+      "persistWorkflow": false,
+      "loadWorkflowContext": false,
+      "saveWorkflowContext": false,
+      "properties": [
+        {
+          "$id": "35",
+          "name": "Text",
+          "syntax": "Liquid",
+          "expressions": {
+            "$id": "36",
+            "Literal": "File signature: {{ Input }}",
+            "Liquid": "File signature: {{ Input }}"
+          }
+        }
+      ],
+      "propertyStorageProviders": {
+        "$id": "37"
+      }
+    }
+  ],
+  "connections": [
+    {
+      "$id": "38",
+      "sourceActivityId": "4e438f41-3795-46fd-97d8-3a39b54b4609",
+      "targetActivityId": "24158dd6-6727-47f3-917b-b37717d1e449",
+      "outcome": "Done"
+    },
+    {
+      "$id": "39",
+      "sourceActivityId": "24158dd6-6727-47f3-917b-b37717d1e449",
+      "targetActivityId": "0a6fbf73-9fef-483b-86c9-303fb267ee4b",
+      "outcome": "Done"
+    },
+    {
+      "$id": "40",
+      "sourceActivityId": "0a6fbf73-9fef-483b-86c9-303fb267ee4b",
+      "targetActivityId": "8e4fd629-8a3b-4134-964a-01738af7e7c6",
+      "outcome": "Done"
+    },
+    {
+      "$id": "41",
+      "sourceActivityId": "8e4fd629-8a3b-4134-964a-01738af7e7c6",
+      "targetActivityId": "4966bdf7-0b24-4e85-9631-506d7612ad41",
+      "outcome": "Done"
+    },
+    {
+      "$id": "42",
+      "sourceActivityId": "4966bdf7-0b24-4e85-9631-506d7612ad41",
+      "targetActivityId": "e11e9dd6-343b-4727-a41a-0a2d5b9adf12",
+      "outcome": "Done"
+    }
+  ],
+  "id": "bfeb01b02d8641a890b78a549f4df70b"
+}
