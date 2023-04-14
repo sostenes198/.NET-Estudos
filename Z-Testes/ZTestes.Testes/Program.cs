@@ -1,59 +1,16 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
+using System.Text.RegularExpressions;
+
 Console.WriteLine("Hello, World!");
 
-var acaoAnimal = new AcaoAnimal();
-var animal = new Animal();
-var cachorro = new Cachorro();
-var gato = new Gato();
-var papagio = new Papagaio();
+var result = Regex.Match("AppGlobal/4.47.37 iPhone12,5 iOS/16.1.1 CFNetwork/1399 Darwin/22.1.0",
+                           "AppGlobal/(?<AppVersion>[\\S]+)", RegexOptions.Singleline);
 
-acaoAnimal.Falar(animal);
-acaoAnimal.Falar(cachorro);
-acaoAnimal.Falar(gato);
-acaoAnimal.Falar(papagio);
+var result1 = Regex.Match("AppGlobal/4.47.37 iPhone12,5 iOS/16.1.1 CFNetwork/1399 Darwin/22.1.0",
+                         "AppGlobal/(?<AppVersion>[\\S]+\\s)(?<Platform>\\S+\\s)\\w+/{1}(?<VersionDevice>\\S+\\s)", RegexOptions.Singleline);
 
-public class AcaoAnimal
-{
-    public void Falar(Animal animal)
-    {
-        animal.Falar();
-    }
-}
+var result2 = Regex.Matches("AppGlobal/4.47.37 i Phone12,5 iOS/16.1.1 CFNetwork/1399 Darwin/22.1.0",
+                          "AppGlobal/(?<AppVersion>[\\S]+\\s)|(?<Platform>\\S+\\s)\\w+/{1}(?<VersionDevice>\\S+\\s)", RegexOptions.Singleline);
 
-public class Animal
-{
-    public virtual void Falar()
-    {
-        Console.WriteLine("Falando genéricamente.");
-    }
-}
-
-public class Cachorro : Animal
-{
-    public override void Falar()
-    {
-        Console.WriteLine("AU AU");
-    }
-}
-
-public class Gato : Animal
-{
-    public override void Falar()
-    {
-        Console.WriteLine("Miauuuuu");
-    }
-}
-
-public class Papagaio : Animal
-{
-    public override void Falar()
-    {
-        Console.WriteLine("BORA BIL!!!!!");
-    }
-}
-
-public class Golfinho : Animal
-{
-    
-}
+var x =10;
