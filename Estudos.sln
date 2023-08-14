@@ -401,6 +401,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Estudos-ExpressionThree", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Estudos.ExpressionThree", "Estudos-ExpressionThree\Estudos.ExpressionThree\Estudos.ExpressionThree.csproj", "{1EA978CC-6C10-4618-906F-9C90901D934F}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Estudos-Mutation-Tests", "Estudos-Mutation-Tests", "{09D51179-E7D9-4135-81B7-8F600B4A690A}"
+	ProjectSection(SolutionItems) = preProject
+		Estudos-Mutation-Tests\run-mutation-tests.sh = Estudos-Mutation-Tests\run-mutation-tests.sh
+		Estudos-Mutation-Tests\stryker-config.json = Estudos-Mutation-Tests\stryker-config.json
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

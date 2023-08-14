@@ -1,0 +1,28 @@
+{
+  "stryker-config": {
+    "solution": "../../*.sln",
+    "test-projects": ["UnitTests.csproj"],
+    "target-framework": "net5.0",
+    "language-version": "Csharp9",
+    "mutation-level": "Standard",
+    "verbosity": "info",
+    "additional-timeout": 5000,
+    "thresholds": {
+      "high": 60,
+      "low": 55,
+      "break": 50
+    },
+    "ignore-mutations": [],
+    "ignore-methods": [
+      "*.ConfigureAwait"
+    ],
+    "mutate": [
+    ],
+    "coverage-analysis": "perTest",
+    "disable-bail": false,
+    "disable-mix-mutants": false,
+    "reporters": [
+      "html"
+    ]
+  }
+}
