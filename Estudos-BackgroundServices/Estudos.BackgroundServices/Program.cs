@@ -1,6 +1,4 @@
-using Estudos.BackgroundServices.BackgroundServices;
 using Estudos.BackgroundServices.BackgroundServices.BackgroundTasks;
-using Estudos.BackgroundServices.BackgroundServices.ServiceWithScope;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 

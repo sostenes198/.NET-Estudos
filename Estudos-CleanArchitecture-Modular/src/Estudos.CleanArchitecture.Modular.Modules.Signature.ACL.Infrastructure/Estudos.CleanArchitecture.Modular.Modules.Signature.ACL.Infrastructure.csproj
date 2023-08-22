@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Estudos.CleanArchitecture.Modular.Modules.Signature.ACL.Application\Estudos.CleanArchitecture.Modular.Modules.Signature.ACL.Application.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <InternalsVisibleTo Include="Estudos.CleanArchitecture.Modular.CrossCutting.IOC"/>
+    </ItemGroup>
+
+</Project>

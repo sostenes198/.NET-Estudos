@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Linq;
 using System.Threading.Tasks.Dataflow;
-using EstudosPipelinePattern.Main.BlockingCollection.Extensions;
-using EstudosPipelinePattern.Main.BlockingCollection.PipelinesBuilders;
 using EstudosPipelinePattern.Main.TplDataFlow.PipelineBuilders;
 
 namespace EstudosPipelinePattern.Main

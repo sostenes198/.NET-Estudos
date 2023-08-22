@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using DocumentManager.Core.Models;
 using DocumentManager.Core.Services;
 using Microsoft.AspNetCore.Mvc;

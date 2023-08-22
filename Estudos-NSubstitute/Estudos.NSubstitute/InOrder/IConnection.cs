@@ -1,5 +1,3 @@
-using Microsoft.VisualBasic;
-
 namespace Estudos.NSubstitute.InOrder
 {
     public interface IConnection

@@ -12,7 +12,7 @@ namespace Estudos.SSE.Tests.Unit.SSE.ClientsStorages
     public class DistributedCacheClientSseStorageTest
     {
         private const int MaxTimeCacheInMinutes = 10;
-        private const string ApplicationName = "UnitTests";
+        private const string ApplicationName = "Estudos.CleanArchitecture.Modular.UnitTests";
         private const string ClientId = "ClientId-10";
 
         private readonly Mock<IDistributedCache> _cacheMock;

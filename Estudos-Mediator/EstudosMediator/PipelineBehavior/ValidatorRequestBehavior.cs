@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using EstudosMediator.Core;
 using EstudosMediator.Validators;
 using FluentValidation;
 using FluentValidation.Results;

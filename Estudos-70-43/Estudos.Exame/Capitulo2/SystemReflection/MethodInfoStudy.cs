@@ -1,5 +1,4 @@
 using System;
-using System.Diagnostics;
 using System.Reflection;
 
 namespace Estudos.Exame.Capitulo2.SystemReflection

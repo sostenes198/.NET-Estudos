@@ -1,6 +1,4 @@
-﻿using System.IO;
-using System.IO.Compression;
-using System.Threading.Tasks;
+﻿using System.IO.Compression;
 using Elsa.ActivityResults;
 using Elsa.Attributes;
 using Elsa.Expressions;

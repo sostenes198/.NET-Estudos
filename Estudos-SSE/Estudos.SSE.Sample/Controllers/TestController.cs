@@ -1,5 +1,3 @@
-using Estudos.SSE.Core.Events;
-using Estudos.SSE.Core.Service.Contracts;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Estudos.SSE.Sample.Controllers;

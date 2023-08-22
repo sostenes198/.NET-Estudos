@@ -1,7 +1,6 @@
 using Estudos.Hangfire._2Server;
 using Estudos.Hangfire._2Server.Services;
 using Hangfire;
-using Hangfire.Common;
 using Hangfire.SqlServer;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 

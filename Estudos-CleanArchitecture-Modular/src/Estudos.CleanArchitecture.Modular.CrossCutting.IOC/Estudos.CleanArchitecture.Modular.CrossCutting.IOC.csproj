@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Estudos.CleanArchitecture.Modular.Commons.Application\Estudos.CleanArchitecture.Modular.Commons.Application.csproj" />
+      <ProjectReference Include="..\Estudos.CleanArchitecture.Modular.Commons.Domain\Estudos.CleanArchitecture.Modular.Commons.Domain.csproj" />
+      <ProjectReference Include="..\Estudos.CleanArchitecture.Modular.Commons.Events.Internal\Estudos.CleanArchitecture.Modular.Commons.Events.Internal.csproj" />
+      <ProjectReference Include="..\Estudos.CleanArchitecture.Modular.Commons.Events\Estudos.CleanArchitecture.Modular.Commons.Events.csproj" />
+      <ProjectReference Include="..\Estudos.CleanArchitecture.Modular.Commons.Infrastructure\Estudos.CleanArchitecture.Modular.Commons.Infrastructure.csproj" />
+      <ProjectReference Include="..\Estudos.CleanArchitecture.Modular.Modules.Signature.ACL.Application\Estudos.CleanArchitecture.Modular.Modules.Signature.ACL.Application.csproj" />
+      <ProjectReference Include="..\Estudos.CleanArchitecture.Modular.Modules.Signature.ACL.Domain\Estudos.CleanArchitecture.Modular.Modules.Signature.ACL.Domain.csproj" />
+      <ProjectReference Include="..\Estudos.CleanArchitecture.Modular.Modules.Signature.ACL.Infrastructure\Estudos.CleanArchitecture.Modular.Modules.Signature.ACL.Infrastructure.csproj" />
+      <ProjectReference Include="..\Estudos.CleanArchitecture.Modular.Modules.Signature.ACL.IntegratedEvents\Estudos.CleanArchitecture.Modular.Modules.Signature.ACL.IntegratedEvents.csproj" />
+      <ProjectReference Include="..\Estudos.CleanArchitecture.Modular.Modules.Signature.Application\Estudos.CleanArchitecture.Modular.Modules.Signature.Application.csproj" />
+      <ProjectReference Include="..\Estudos.CleanArchitecture.Modular.Modules.Signature.Domain\Estudos.CleanArchitecture.Modular.Modules.Signature.Domain.csproj" />
+      <ProjectReference Include="..\Estudos.CleanArchitecture.Modular.Modules.Signature.Infrastructure\Estudos.CleanArchitecture.Modular.Modules.Signature.Infrastructure.csproj" />
+      <ProjectReference Include="..\Estudos.CleanArchitecture.Modular.Modules.Signature.IntegratedEvents\Estudos.CleanArchitecture.Modular.Modules.Signature.IntegratedEvents.csproj" />
+    </ItemGroup>
+
+</Project>

@@ -1,7 +1,6 @@
 using System.Threading;
 using System.Threading.Tasks;
 using EstudosMediator.Commands.Customer;
-using EstudosMediator.Core;
 using EstudosMediator.Entity.Customer;
 using EstudosMediator.Infra;
 using EstudosMediator.Notifications;

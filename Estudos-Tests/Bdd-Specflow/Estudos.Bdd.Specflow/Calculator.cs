@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Estudos.Bdd.Specflow
+﻿namespace Estudos.Bdd.Specflow
 {
     public class Calculator
     {

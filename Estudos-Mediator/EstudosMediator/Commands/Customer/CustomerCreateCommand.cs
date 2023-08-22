@@ -1,4 +1,3 @@
-using EstudosMediator.Core;
 using MediatR;
 
 namespace EstudosMediator.Commands.Customer

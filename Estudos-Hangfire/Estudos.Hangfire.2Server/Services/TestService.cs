@@ -1,6 +1,4 @@
-﻿using Hangfire;
-
-namespace Estudos.Hangfire._2Server.Services;
+﻿namespace Estudos.Hangfire._2Server.Services;
 
 public class TestService : ITestService
 {

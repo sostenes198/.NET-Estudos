@@ -1,6 +1,5 @@
 using System;
 using System.Linq;
-using System.Net.Sockets;
 using System.Threading.Tasks.Dataflow;
 
 namespace EstudosPipelinePattern.Main.TplDataFlow.PipelineBuilders

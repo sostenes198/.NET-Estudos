@@ -1,6 +1,4 @@
-﻿using Estudos.SSE.Core.Events;
-using Estudos.SSE.Core.Service.Contracts;
-using StackExchange.Redis;
+﻿using StackExchange.Redis;
 
 namespace Estudos.SSE.Sample;
 

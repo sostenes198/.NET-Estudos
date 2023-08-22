@@ -1,4 +1,3 @@
-using Estudos.SSE.Core.Bootstrapper;
 using Estudos.SSE.Sample;
 using Microsoft.Extensions.Caching.Distributed;
 using Microsoft.Extensions.Caching.Redis;

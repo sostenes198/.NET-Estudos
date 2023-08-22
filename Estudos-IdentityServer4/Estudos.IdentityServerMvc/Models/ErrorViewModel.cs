@@ -1,5 +1,3 @@
-using System;
-
 namespace Estudos.IdentityServerMvc.Models
 {
     public class ErrorViewModel
