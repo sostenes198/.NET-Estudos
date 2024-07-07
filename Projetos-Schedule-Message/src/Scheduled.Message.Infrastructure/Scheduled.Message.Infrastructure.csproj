@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Scheduled.Message.Application\Scheduled.Message.Application.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Flurl" Version="4.0.0" />
+      <PackageReference Include="Flurl.Http" Version="4.0.2" />
+      <PackageReference Include="Hangfire.AspNetCore" Version="1.8.14" />
+      <PackageReference Include="Hangfire.Core" Version="1.8.14" />
+      <PackageReference Include="Hangfire.Mongo" Version="1.10.7" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Domain\" />
+    </ItemGroup>
+
+</Project>

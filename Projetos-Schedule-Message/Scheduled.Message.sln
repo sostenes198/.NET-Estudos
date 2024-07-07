@@ -1,0 +1,92 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "environment", "environment", "{B6A1706B-D373-48AB-813A-CB94EFDB4CEF}"
+	ProjectSection(SolutionItems) = preProject
+		docker-compose.yaml = docker-compose.yaml
+		.gitignore = .gitignore
+		.dockerignore = .dockerignore
+		Dockerfile = Dockerfile
+		Nuget.Config = Nuget.Config
+		bitbucket-pipelines.yml = bitbucket-pipelines.yml
+		package.json = package.json
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{73610B7E-E121-47B7-9D32-0106A4225DB7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{B94C3FDD-2908-40D5-9387-9CD45F52E78C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scheduled.Message.Api", "src\Scheduled.Message.Api\Scheduled.Message.Api.csproj", "{54ACE3B9-EDFD-42D9-A309-F1E095DC4026}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scheduled.Message.Application", "src\Scheduled.Message.Application\Scheduled.Message.Application.csproj", "{83C93796-88A0-43EC-AE81-70F6F4BD6841}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scheduled.Message.Domain", "src\Scheduled.Message.Domain\Scheduled.Message.Domain.csproj", "{2A31D6FC-F497-4A8B-B3E8-496FBBDFEFD6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scheduled.Message.Infrastructure", "src\Scheduled.Message.Infrastructure\Scheduled.Message.Infrastructure.csproj", "{FF6470E2-5CC1-426B-B166-49F1677787B8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scheduled.Message.Tests.Unit", "tests\Scheduled.Message.Tests.Unit\Scheduled.Message.Tests.Unit.csproj", "{6632784F-A2B7-4B23-B133-6075752B7157}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scheduled.Message.Tests.Integration", "tests\Scheduled.Message.Tests.Integration\Scheduled.Message.Tests.Integration.csproj", "{941FE82F-20E9-46C6-A04B-3E450DA8137D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scheduled.Message.Tests.Base", "tests\Scheduled.Message.Tests.Base\Scheduled.Message.Tests.Base.csproj", "{1BB8D7CF-37C3-4C98-A3C5-0A53BC12B08E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "terraform", "terraform", "{ED8A68E1-314E-4F5D-A127-0A8589ABAE1E}"
+	ProjectSection(SolutionItems) = preProject
+		terraform\backend.tf = terraform\backend.tf
+		terraform\environment.tf = terraform\environment.tf
+		terraform\main.tf = terraform\main.tf
+		terraform\variables.tf = terraform\variables.tf
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "templates", "templates", "{665DBB79-19BB-4461-9C57-EA6123941E43}"
+	ProjectSection(SolutionItems) = preProject
+		terraform\templates\secrets_container.json = terraform\templates\secrets_container.json
+		terraform\templates\task_mount_points.json = terraform\templates\task_mount_points.json
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{54ACE3B9-EDFD-42D9-A309-F1E095DC4026}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{54ACE3B9-EDFD-42D9-A309-F1E095DC4026}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{54ACE3B9-EDFD-42D9-A309-F1E095DC4026}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{54ACE3B9-EDFD-42D9-A309-F1E095DC4026}.Release|Any CPU.Build.0 = Release|Any CPU
+		{83C93796-88A0-43EC-AE81-70F6F4BD6841}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{83C93796-88A0-43EC-AE81-70F6F4BD6841}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{83C93796-88A0-43EC-AE81-70F6F4BD6841}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{83C93796-88A0-43EC-AE81-70F6F4BD6841}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2A31D6FC-F497-4A8B-B3E8-496FBBDFEFD6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A31D6FC-F497-4A8B-B3E8-496FBBDFEFD6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A31D6FC-F497-4A8B-B3E8-496FBBDFEFD6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A31D6FC-F497-4A8B-B3E8-496FBBDFEFD6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FF6470E2-5CC1-426B-B166-49F1677787B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FF6470E2-5CC1-426B-B166-49F1677787B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FF6470E2-5CC1-426B-B166-49F1677787B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FF6470E2-5CC1-426B-B166-49F1677787B8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6632784F-A2B7-4B23-B133-6075752B7157}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6632784F-A2B7-4B23-B133-6075752B7157}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6632784F-A2B7-4B23-B133-6075752B7157}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6632784F-A2B7-4B23-B133-6075752B7157}.Release|Any CPU.Build.0 = Release|Any CPU
+		{941FE82F-20E9-46C6-A04B-3E450DA8137D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{941FE82F-20E9-46C6-A04B-3E450DA8137D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{941FE82F-20E9-46C6-A04B-3E450DA8137D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{941FE82F-20E9-46C6-A04B-3E450DA8137D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1BB8D7CF-37C3-4C98-A3C5-0A53BC12B08E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1BB8D7CF-37C3-4C98-A3C5-0A53BC12B08E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1BB8D7CF-37C3-4C98-A3C5-0A53BC12B08E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1BB8D7CF-37C3-4C98-A3C5-0A53BC12B08E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{54ACE3B9-EDFD-42D9-A309-F1E095DC4026} = {73610B7E-E121-47B7-9D32-0106A4225DB7}
+		{83C93796-88A0-43EC-AE81-70F6F4BD6841} = {73610B7E-E121-47B7-9D32-0106A4225DB7}
+		{2A31D6FC-F497-4A8B-B3E8-496FBBDFEFD6} = {73610B7E-E121-47B7-9D32-0106A4225DB7}
+		{FF6470E2-5CC1-426B-B166-49F1677787B8} = {73610B7E-E121-47B7-9D32-0106A4225DB7}
+		{6632784F-A2B7-4B23-B133-6075752B7157} = {B94C3FDD-2908-40D5-9387-9CD45F52E78C}
+		{941FE82F-20E9-46C6-A04B-3E450DA8137D} = {B94C3FDD-2908-40D5-9387-9CD45F52E78C}
+		{1BB8D7CF-37C3-4C98-A3C5-0A53BC12B08E} = {B94C3FDD-2908-40D5-9387-9CD45F52E78C}
+		{ED8A68E1-314E-4F5D-A127-0A8589ABAE1E} = {B6A1706B-D373-48AB-813A-CB94EFDB4CEF}
+		{665DBB79-19BB-4461-9C57-EA6123941E43} = {ED8A68E1-314E-4F5D-A127-0A8589ABAE1E}
+	EndGlobalSection
+EndGlobal
