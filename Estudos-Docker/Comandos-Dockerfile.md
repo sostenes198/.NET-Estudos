@@ -1,5 +1,5 @@
 Exemplo Dockerfile básico
-
+```dockerfile
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1 AS build-env
 WORKDIR /app
 
@@ -13,64 +13,71 @@ FROM mcr.microsoft.com/dotnet/core/aspnet:3.1
 WORKDIR /app
 COPY --from=build-env /app/out .
 ENTRYPOINT ["dotnet", "Poc.TestesIntegradosJep.dll"]
+```
 
 ----------------------------------------------------------------------------------------------------------------------------
 
-REMOVER Imagens None
-docker image rm $(docker image ls -f 'dangling=true' -q)
-
-s
-COMANDO DOCKER
-
-Builda a imagem definindo um nome
-docker build -t aspnetapp .
+# REMOVER Imagens None
+    docker image rm $(docker image ls -f 'dangling=true' -q)
 
 
-docker image build -t functionestudossosoapp -f devops/Dockerfile  --no-cache . 
-(Exemplo de como buildar uma com o arquivo Dockerfile dentro de uma subpasta)
-(OBS: Deve-se builder da raiz do projeto que é aonde o dockerengine ira visualizar o sistema de arquivos)
+# COMANDO DOCKER
+
+## Builda a imagem definindo um nome
+    docker build -t aspnetapp .
 
 
-Exemplo para criar um container expondo a porta 80 do container na porta 8080 local
-docker run -d -p 8080:80 --name myapp aspnetapp
+    docker image build -t functionestudossosoapp -f devops/Dockerfile  --no-cache . 
+**(Exemplo de como buildar uma com o arquivo Dockerfile dentro de uma subpasta)
+(OBS: Deve-se builder da raiz do projeto que é aonde o dockerengine ira visualizar o sistema de arquivos)**
 
-Remove imagem com Id específico
-docker rmi $id_imagem 
+## Executando build de uma imagem docker a partir do docker file com detalhes:
+    docker build -t test:1.0 --progress=plain --no-cache .
 
-Remove container específico
-docker rm $id_container
 
-Cria um arquivo referente a imagem docker e salva uma imagem docker no diretório definido no parâmetro -o 
-docker save -o <path for generated tar file> <image name>
+## Exemplo para criar um container expondo a porta 80 do container na porta 8080 local
+    docker run -d -p 8080:80 --name myapp aspnetapp
 
-Carrega uma imagem salva para dentro do docker
-docker load -i <path to image tar file>
+## Remove imagem com Id específico
+    docker rmi $id_imagem 
 
-Entra no bash do container informado
-docker exec -it <id container> /bin/sh (Entra no container por linha de comando)
+## Remove container específico
+    docker rm $id_container
 
-Entrar no bash do container com usuário root
+## Cria um arquivo referente a imagem docker e salva uma imagem docker no diretório definido no parâmetro -o 
+    docker save -o <path for generated tar file> <image name>
+
+## Carrega uma imagem salva para dentro do docker
+    docker load -i <path to image tar file>
+
+## Entrar no bash do container informado
+    docker exec -it <id container> /bin/sh (Entra no container por linha de comando)
+
+## Entrar no bash do container com usuário root
 docker exec -it --user=root <id_container> /bin/sh
 
-Quando a imagem linux é alphine usar comandos
-apk update e apk add
+## Quando a imagem linux é alphine usar comandos
+    apk update e apk add
 
-Network Docker:
-    Criando rede docker:
-        docker network create -d bridge my-net
-    Associando Container existente a uma network:
-        docker network connet {{NOME_NETWORK}} {{NOME_OU_ID_CONTAINER}}
-    Criando container associando uma network:
-        docker run --network=my-net -itd --name=container3 busybox
-    Inspecionando Network:
-        docket network inspect {{NOME_NETWORK}}
+# Network Docker:
 
+## Criando rede docker:
+    docker network create -d bridge my-net 
 
+## Associando Container existente a uma network:
+    docker network connet {{NOME_NETWORK}} {{NOME_OU_ID_CONTAINER}}
+    
+## Criando container associando uma network:
+    docker run --network=my-net -itd --name=container3 busybox
+    
+## Inspecionando Network:
+    docket network inspect {{NOME_NETWORK}}
 
+**OBS: exemplo para executar um comando durante o build: `RUN /bin/bash -c "ls"`**
 
 
 ------------------------------------------------------------------ Exemplo docker-compose (SQLSERVER) rodando script ------------------------------------------------------------------
-
+```dockerfile
 version: "3.4"
 
 services:
@@ -115,5 +122,5 @@ services:
         - "--auth"
       volumes:
         - "/scripts/NOME_DO_SCRIPT.js:/docker-entrypoint-initdb.d/mongo-init.js:ro"
-
+```
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

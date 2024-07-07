@@ -461,6 +461,37 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Estudos.CleanArchitecture.M
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Estudos.CleanArchitecture.Modular.Modules.Signature.IntegratedEvents", "Estudos-CleanArchitecture-Modular\src\Estudos.CleanArchitecture.Modular.Modules.Signature.IntegratedEvents\Estudos.CleanArchitecture.Modular.Modules.Signature.IntegratedEvents.csproj", "{0B19B2BC-462E-424C-A30C-BF47F855B1BA}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Projetos-Schedule-Message", "Projetos-Schedule-Message", "{92604B3D-B4C2-4EE0-860E-E2F8A9664D44}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "environment", "environment", "{06BDC82A-BC76-4C9D-BE83-A55BDA934604}"
+	ProjectSection(SolutionItems) = preProject
+		Projetos-Schedule-Message\.dockerignore = Projetos-Schedule-Message\.dockerignore
+		Projetos-Schedule-Message\.gitignore = Projetos-Schedule-Message\.gitignore
+		Projetos-Schedule-Message\docker-compose.yaml = Projetos-Schedule-Message\docker-compose.yaml
+		Projetos-Schedule-Message\Dockerfile = Projetos-Schedule-Message\Dockerfile
+		Projetos-Schedule-Message\NuGet.Config = Projetos-Schedule-Message\NuGet.Config
+		Projetos-Schedule-Message\package.json = Projetos-Schedule-Message\package.json
+		Projetos-Schedule-Message\README.md = Projetos-Schedule-Message\README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{3C160FF8-874A-4884-B417-9261EF2F050D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{CAF34EF0-56C3-4B7A-80E8-CB8F0AD4F215}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scheduled.Message.Api", "Projetos-Schedule-Message\src\Scheduled.Message.Api\Scheduled.Message.Api.csproj", "{F01DE6A6-6CF2-4062-8C02-335300B1B023}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scheduled.Message.Application", "Projetos-Schedule-Message\src\Scheduled.Message.Application\Scheduled.Message.Application.csproj", "{8FC32CE9-F026-4AEC-83BA-9263CF430C48}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scheduled.Message.Domain", "Projetos-Schedule-Message\src\Scheduled.Message.Domain\Scheduled.Message.Domain.csproj", "{B5BBF7F8-5F43-4DE9-9FB8-E3A4D0C18EAA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scheduled.Message.Infrastructure", "Projetos-Schedule-Message\src\Scheduled.Message.Infrastructure\Scheduled.Message.Infrastructure.csproj", "{3D442F97-D33A-4160-9C76-67996BA0D1D0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scheduled.Message.Tests.Base", "Projetos-Schedule-Message\tests\Scheduled.Message.Tests.Base\Scheduled.Message.Tests.Base.csproj", "{25825B81-5929-4DF6-9524-C651A4C8D892}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scheduled.Message.Tests.Unit", "Projetos-Schedule-Message\tests\Scheduled.Message.Tests.Unit\Scheduled.Message.Tests.Unit.csproj", "{33CFEB28-0EB6-416A-AC1D-3DFC190831F4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scheduled.Message.Tests.Integration", "Projetos-Schedule-Message\tests\Scheduled.Message.Tests.Integration\Scheduled.Message.Tests.Integration.csproj", "{58063B04-3B4B-401D-AD93-AFAA5E890E6D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -851,6 +882,34 @@ Global
 		{0B19B2BC-462E-424C-A30C-BF47F855B1BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{0B19B2BC-462E-424C-A30C-BF47F855B1BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0B19B2BC-462E-424C-A30C-BF47F855B1BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F01DE6A6-6CF2-4062-8C02-335300B1B023}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F01DE6A6-6CF2-4062-8C02-335300B1B023}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F01DE6A6-6CF2-4062-8C02-335300B1B023}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F01DE6A6-6CF2-4062-8C02-335300B1B023}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8FC32CE9-F026-4AEC-83BA-9263CF430C48}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8FC32CE9-F026-4AEC-83BA-9263CF430C48}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8FC32CE9-F026-4AEC-83BA-9263CF430C48}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8FC32CE9-F026-4AEC-83BA-9263CF430C48}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B5BBF7F8-5F43-4DE9-9FB8-E3A4D0C18EAA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5BBF7F8-5F43-4DE9-9FB8-E3A4D0C18EAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B5BBF7F8-5F43-4DE9-9FB8-E3A4D0C18EAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5BBF7F8-5F43-4DE9-9FB8-E3A4D0C18EAA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3D442F97-D33A-4160-9C76-67996BA0D1D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D442F97-D33A-4160-9C76-67996BA0D1D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D442F97-D33A-4160-9C76-67996BA0D1D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D442F97-D33A-4160-9C76-67996BA0D1D0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{25825B81-5929-4DF6-9524-C651A4C8D892}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{25825B81-5929-4DF6-9524-C651A4C8D892}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{25825B81-5929-4DF6-9524-C651A4C8D892}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{25825B81-5929-4DF6-9524-C651A4C8D892}.Release|Any CPU.Build.0 = Release|Any CPU
+		{33CFEB28-0EB6-416A-AC1D-3DFC190831F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{33CFEB28-0EB6-416A-AC1D-3DFC190831F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{33CFEB28-0EB6-416A-AC1D-3DFC190831F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{33CFEB28-0EB6-416A-AC1D-3DFC190831F4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{58063B04-3B4B-401D-AD93-AFAA5E890E6D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{58063B04-3B4B-401D-AD93-AFAA5E890E6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{58063B04-3B4B-401D-AD93-AFAA5E890E6D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{58063B04-3B4B-401D-AD93-AFAA5E890E6D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -1011,6 +1070,16 @@ Global
 		{1DFBDE5C-1483-4398-8B01-9B48ABEC17DE} = {0A753C3F-9303-4A0E-A5AE-6D604953C05C}
 		{EEB3318A-DC2A-4B1C-82B5-B8FAD0B4B3FB} = {0A753C3F-9303-4A0E-A5AE-6D604953C05C}
 		{0B19B2BC-462E-424C-A30C-BF47F855B1BA} = {0A753C3F-9303-4A0E-A5AE-6D604953C05C}
+		{06BDC82A-BC76-4C9D-BE83-A55BDA934604} = {92604B3D-B4C2-4EE0-860E-E2F8A9664D44}
+		{3C160FF8-874A-4884-B417-9261EF2F050D} = {92604B3D-B4C2-4EE0-860E-E2F8A9664D44}
+		{CAF34EF0-56C3-4B7A-80E8-CB8F0AD4F215} = {92604B3D-B4C2-4EE0-860E-E2F8A9664D44}
+		{F01DE6A6-6CF2-4062-8C02-335300B1B023} = {3C160FF8-874A-4884-B417-9261EF2F050D}
+		{8FC32CE9-F026-4AEC-83BA-9263CF430C48} = {3C160FF8-874A-4884-B417-9261EF2F050D}
+		{B5BBF7F8-5F43-4DE9-9FB8-E3A4D0C18EAA} = {3C160FF8-874A-4884-B417-9261EF2F050D}
+		{3D442F97-D33A-4160-9C76-67996BA0D1D0} = {3C160FF8-874A-4884-B417-9261EF2F050D}
+		{25825B81-5929-4DF6-9524-C651A4C8D892} = {CAF34EF0-56C3-4B7A-80E8-CB8F0AD4F215}
+		{33CFEB28-0EB6-416A-AC1D-3DFC190831F4} = {CAF34EF0-56C3-4B7A-80E8-CB8F0AD4F215}
+		{58063B04-3B4B-401D-AD93-AFAA5E890E6D} = {CAF34EF0-56C3-4B7A-80E8-CB8F0AD4F215}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C17E424A-53EB-4327-89AB-D8A758AE8E67}
