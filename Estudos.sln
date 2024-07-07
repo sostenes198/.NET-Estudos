@@ -466,7 +466,6 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "environment", "environment", "{06BDC82A-BC76-4C9D-BE83-A55BDA934604}"
 	ProjectSection(SolutionItems) = preProject
 		Projetos-Schedule-Message\.dockerignore = Projetos-Schedule-Message\.dockerignore
-		Projetos-Schedule-Message\.gitignore = Projetos-Schedule-Message\.gitignore
 		Projetos-Schedule-Message\docker-compose.yaml = Projetos-Schedule-Message\docker-compose.yaml
 		Projetos-Schedule-Message\Dockerfile = Projetos-Schedule-Message\Dockerfile
 		Projetos-Schedule-Message\NuGet.Config = Projetos-Schedule-Message\NuGet.Config
